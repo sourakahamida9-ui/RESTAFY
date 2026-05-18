@@ -1,0 +1,11 @@
+{
+  "name": "restafy-landing",
+  "private": true,
+  "scripts": {
+    "build": "node ./build.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.98.0",
+    "@vercel/node": "^5.6.16"
+  }
+}

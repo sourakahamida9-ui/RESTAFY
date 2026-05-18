@@ -1,0 +1,60 @@
+========================================================
+SYSTEME DE NOTIFICATIONS RESTAFY - RESUME
+========================================================
+
+FONCTIONNALITES IMPLEMENTEES:
+
+1. NOTIFICATIONS SONORES
+   - Son de beep lors d'une nouvelle commande
+   - Utilise Web Audio API (pas de fichiers audio necessaires)
+   - 2 tons differents pour attirer l'attention
+
+2. NOTIFICATIONS PUSH (Browser)
+   - Demande de permission automatique
+   - Notification native du navigateur
+   - Affiche: numero commande + montant
+
+3. ALERTE VISUELLE (Dashboard)
+   - Banniere verte animee en haut de l'ecran
+   - Affiche pendant 5 secondes
+   - Bouton pour fermer manuellement
+
+4. CENTRE DE NOTIFICATIONS (Bell Icon)
+   - Dropdown avec liste des notifications
+   - Badge avec nombre non-lus
+   - Marquer comme lu au clic
+   - "Tout marquer lu" en un clic
+   - Temps relatif (Il y a 5 min, etc.)
+
+5. NOTIFICATIONS EN BASE DE DONNEES
+   - Table `notifications` avec RLS
+   - Trigger automatique sur nouvelle commande
+   - Trigger automatique sur changement de statut
+   - Real-time via Supabase subscriptions
+
+FICHIERS CREES/MODIFIES:
+
+src/lib/notifications.ts          - Utilitaires notifications
+src/components/NotificationCenter.tsx - Composant UI
+src/hooks/useRestaurantAdmin.ts   - Notifications temps reel
+src/pages/admin/Dashboard.tsx     - Alerte nouvelle commande
+src/components/admin/AdminLayout.tsx - Integration centre notifs
+scripts/024-create-notifications-table.sql - Table + triggers
+
+DONNEES DYNAMIQUES CORRIGEES:
+
+- Revenue: Affiche maintenant le total de TOUTES les commandes
+  (pas seulement 'delivered' et 'completed')
+- Stats: Se mettent a jour en temps reel via subscription
+
+TESTS:
+
+1. Creer une nouvelle commande depuis le client
+2. Verifier que:
+   - Un son se joue
+   - Une notification browser apparait
+   - La banniere verte s'affiche
+   - Le compteur de notifications augmente
+   - Le revenue s'actualise
+
+========================================================

@@ -1,0 +1,27 @@
+# v0 runtime files
+__v0_runtime_loader.js
+__v0_devtools.tsx
+__v0_jsx-dev-runtime.ts
+
+# Common ignores
+# Projet géré par pnpm uniquement (évite ERR_PNPM_OUTDATED_LOCKFILE si npm modifie package.json sans mettre à jour pnpm-lock.yaml)
+package-lock.json
+node_modules/
+.next/
+dist/
+# Sortie Vite à la racine + build statique landing (ne pas utiliser `public/` seul : masquerait `api/public/`)
+/public/
+landing/public/
+# Monorepo build outputs
+apps/web/public/
+apps/*/dist/
+.turbo/
+.DS_Store
+.vercel
+remotion/out/
+
+# Secrets (ne jamais committer — garder .env.example comme modèle)
+.env
+.env.local
+.env.*.local
+!.env.example

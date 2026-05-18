@@ -1,0 +1,233 @@
+-- ============================================================================
+-- MIGRATION 065 — NOUVELLES FONCTIONNALITÉS RESTAFY
+-- Réservations de table · Avis vérifiés améliorés · QR table
+-- ============================================================================
+
+-- ─────────────────────────────────────────────────────────────────────────────
+-- 1. TABLE RESERVATIONS
+-- ─────────────────────────────────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS table_reservations (
+  id                UUID        PRIMARY KEY DEFAULT gen_random_uuid(),
+  restaurant_id     UUID        NOT NULL REFERENCES restaurants(id) ON DELETE CASCADE,
+  customer_id       UUID        REFERENCES profiles(id) ON DELETE SET NULL,
+  customer_name     VARCHAR(150) NOT NULL,
+  customer_phone    VARCHAR(30)  NOT NULL,
+  customer_email    VARCHAR(255),
+  party_size        INTEGER      NOT NULL CHECK (party_size BETWEEN 1 AND 50),
+  reservation_date  DATE         NOT NULL,
+  reservation_time  TIME         NOT NULL,
+  notes             TEXT,
+  status            VARCHAR(20)  NOT NULL DEFAULT 'pending'
+                    CHECK (status IN ('pending', 'confirmed', 'refused', 'cancelled', 'completed')),
+  table_number      VARCHAR(20),
+  confirmed_at      TIMESTAMPTZ,
+  refused_reason    TEXT,
+  reminder_sent     BOOLEAN      DEFAULT false,
+  created_at        TIMESTAMPTZ  DEFAULT now(),
+  updated_at        TIMESTAMPTZ  DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_reservations_restaurant     ON table_reservations(restaurant_id);
+CREATE INDEX IF NOT EXISTS idx_reservations_date           ON table_reservations(reservation_date);
+CREATE INDEX IF NOT EXISTS idx_reservations_status         ON table_reservations(restaurant_id, status);
+CREATE INDEX IF NOT EXISTS idx_reservations_customer       ON table_reservations(customer_id);
+
+-- Updated_at trigger
+CREATE OR REPLACE FUNCTION set_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = now();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS set_reservations_updated_at ON table_reservations;
+CREATE TRIGGER set_reservations_updated_at
+  BEFORE UPDATE ON table_reservations
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+-- ─────────────────────────────────────────────────────────────────────────────
+-- 2. RLS RESERVATIONS
+-- ─────────────────────────────────────────────────────────────────────────────
+ALTER TABLE table_reservations ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "reservations_public_insert"    ON table_reservations;
+DROP POLICY IF EXISTS "reservations_customer_read"    ON table_reservations;
+DROP POLICY IF EXISTS "reservations_restaurant_all"   ON table_reservations;
+DROP POLICY IF EXISTS "reservations_superadmin"       ON table_reservations;
+
+-- N'importe qui peut créer une réservation (clients non connectés aussi)
+CREATE POLICY "reservations_public_insert" ON table_reservations
+  FOR INSERT WITH CHECK (true);
+
+-- Un client peut lire ses propres réservations
+CREATE POLICY "reservations_customer_read" ON table_reservations
+  FOR SELECT USING (
+    customer_id = auth.uid()
+    OR EXISTS (
+      SELECT 1 FROM restaurants
+      WHERE restaurants.id = table_reservations.restaurant_id
+        AND restaurants.owner_id = auth.uid()
+    )
+    OR EXISTS (
+      SELECT 1 FROM restaurant_staff
+      WHERE restaurant_staff.restaurant_id = table_reservations.restaurant_id
+        AND restaurant_staff.profile_id = auth.uid()
+    )
+  );
+
+-- Le restaurant peut tout gérer sur ses réservations
+CREATE POLICY "reservations_restaurant_all" ON table_reservations
+  FOR ALL USING (
+    EXISTS (
+      SELECT 1 FROM restaurants r
+      WHERE r.id = table_reservations.restaurant_id
+        AND r.owner_id = auth.uid()
+    )
+    OR EXISTS (
+      SELECT 1 FROM restaurant_staff rs
+      WHERE rs.restaurant_id = table_reservations.restaurant_id
+        AND rs.profile_id = auth.uid()
+        AND rs.role::text IN ('manager', 'staff')
+    )
+  );
+
+-- SuperAdmin peut tout voir
+CREATE POLICY "reservations_superadmin" ON table_reservations
+  FOR ALL USING (
+    EXISTS (
+      SELECT 1 FROM profiles
+      WHERE profiles.id = auth.uid()
+        AND profiles.role = 'super_admin'
+    )
+  );
+
+-- ─────────────────────────────────────────────────────────────────────────────
+-- 3. AMÉLIORATION TABLE REVIEWS — badge vérifié + réponse restaurant
+-- ─────────────────────────────────────────────────────────────────────────────
+ALTER TABLE reviews
+  ADD COLUMN IF NOT EXISTS is_verified     BOOLEAN  DEFAULT false,
+  ADD COLUMN IF NOT EXISTS verified_at     TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS reply_at        TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS helpful_count   INTEGER  DEFAULT 0;
+
+-- Trigger: auto-marquer vérifié si order_id = commande livrée
+CREATE OR REPLACE FUNCTION auto_verify_review()
+RETURNS TRIGGER AS $$
+BEGIN
+  IF NEW.order_id IS NOT NULL THEN
+    SELECT CASE
+      WHEN EXISTS (
+        SELECT 1 FROM orders
+        WHERE orders.id = NEW.order_id
+          AND orders.customer_id = NEW.customer_id
+          AND orders.status = 'delivered'
+      )
+      THEN true ELSE false
+    END INTO NEW.is_verified;
+
+    IF NEW.is_verified THEN
+      NEW.verified_at = now();
+    END IF;
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+DROP TRIGGER IF EXISTS auto_verify_review_trigger ON reviews;
+CREATE TRIGGER auto_verify_review_trigger
+  BEFORE INSERT ON reviews
+  FOR EACH ROW EXECUTE FUNCTION auto_verify_review();
+
+-- ─────────────────────────────────────────────────────────────────────────────
+-- 4. RAPPORT HEBDOMADAIRE — table de configuration
+-- ─────────────────────────────────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS weekly_report_configs (
+  id              UUID    PRIMARY KEY DEFAULT gen_random_uuid(),
+  restaurant_id   UUID    NOT NULL UNIQUE REFERENCES restaurants(id) ON DELETE CASCADE,
+  is_enabled      BOOLEAN DEFAULT true,
+  whatsapp_phone  VARCHAR(30),
+  last_sent_at    TIMESTAMPTZ,
+  created_at      TIMESTAMPTZ DEFAULT now()
+);
+
+ALTER TABLE weekly_report_configs ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "weekly_report_restaurant" ON weekly_report_configs;
+CREATE POLICY "weekly_report_restaurant" ON weekly_report_configs
+  FOR ALL USING (
+    EXISTS (
+      SELECT 1 FROM restaurants
+      WHERE restaurants.id = weekly_report_configs.restaurant_id
+        AND restaurants.owner_id = auth.uid()
+    )
+  );
+
+-- ─────────────────────────────────────────────────────────────────────────────
+-- 5. FONCTION RPC — statistiques restaurant semaine courante vs précédente
+-- ─────────────────────────────────────────────────────────────────────────────
+CREATE OR REPLACE FUNCTION get_restaurant_weekly_stats(p_restaurant_id UUID)
+RETURNS JSON AS $$
+DECLARE
+  v_week_start      DATE := date_trunc('week', CURRENT_DATE)::DATE;
+  v_prev_week_start DATE := (date_trunc('week', CURRENT_DATE) - INTERVAL '7 days')::DATE;
+  v_result          JSON;
+BEGIN
+  SELECT json_build_object(
+    'this_week', json_build_object(
+      'orders',   (SELECT COUNT(*)        FROM orders WHERE restaurant_id = p_restaurant_id AND created_at >= v_week_start),
+      'revenue',  (SELECT COALESCE(SUM(total_amount), 0) FROM orders WHERE restaurant_id = p_restaurant_id AND created_at >= v_week_start AND status NOT IN ('cancelled')),
+      'views',    (SELECT COUNT(*)        FROM analytics_events WHERE restaurant_id = p_restaurant_id AND created_at >= v_week_start AND event_name = 'restaurant_view'),
+      'menu_clicks', (SELECT COUNT(*)     FROM analytics_events WHERE restaurant_id = p_restaurant_id AND created_at >= v_week_start AND event_name = 'menu_view')
+    ),
+    'last_week', json_build_object(
+      'orders',   (SELECT COUNT(*)        FROM orders WHERE restaurant_id = p_restaurant_id AND created_at >= v_prev_week_start AND created_at < v_week_start),
+      'revenue',  (SELECT COALESCE(SUM(total_amount), 0) FROM orders WHERE restaurant_id = p_restaurant_id AND created_at >= v_prev_week_start AND created_at < v_week_start AND status NOT IN ('cancelled')),
+      'views',    (SELECT COUNT(*)        FROM analytics_events WHERE restaurant_id = p_restaurant_id AND created_at >= v_prev_week_start AND created_at < v_week_start AND event_name = 'restaurant_view'),
+      'menu_clicks', (SELECT COUNT(*)     FROM analytics_events WHERE restaurant_id = p_restaurant_id AND created_at >= v_prev_week_start AND created_at < v_week_start AND event_name = 'menu_view')
+    )
+  ) INTO v_result;
+
+  RETURN v_result;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- ─────────────────────────────────────────────────────────────────────────────
+-- 6. CRON JOB — rapport hebdomadaire (chaque lundi à 8h UTC = 9h Bénin)
+-- ─────────────────────────────────────────────────────────────────────────────
+-- Nécessite l'extension pg_cron activée dans Supabase
+-- (Dashboard → Database → Extensions → pg_cron)
+-- Supprimer le job s'il existe déjà, puis le recréer
+SELECT cron.unschedule('weekly-restaurant-reports')
+WHERE EXISTS (
+  SELECT 1 FROM cron.job WHERE jobname = 'weekly-restaurant-reports'
+);
+
+SELECT cron.schedule(
+  'weekly-restaurant-reports',
+  '0 8 * * 1',
+  $$
+  SELECT net.http_post(
+    url      := current_setting('app.supabase_url') || '/functions/v1/weekly-report',
+    headers  := json_build_object(
+      'Content-Type',  'application/json',
+      'Authorization', 'Bearer ' || current_setting('app.service_role_key')
+    )::jsonb,
+    body     := '{}'::jsonb
+  )
+  $$
+);
+
+-- ─────────────────────────────────────────────────────────────────────────────
+-- 7. INDEX PERFORMANCES SUPPLÉMENTAIRES
+-- ─────────────────────────────────────────────────────────────────────────────
+CREATE INDEX IF NOT EXISTS idx_reviews_restaurant_verified
+  ON reviews(restaurant_id, is_verified, created_at DESC);
+
+CREATE INDEX IF NOT EXISTS idx_reviews_order_id
+  ON reviews(order_id) WHERE order_id IS NOT NULL;
+
+CREATE INDEX IF NOT EXISTS idx_analytics_restaurant_event
+  ON analytics_events(restaurant_id, event_name, created_at DESC);
+
+SELECT 'Migration 065 - Nouvelles fonctionnalités appliquée avec succès' AS status;

@@ -1,0 +1,15 @@
+# Configuration CLI Supabase (déploiement des Edge Functions).
+# https://supabase.com/docs/guides/cli/config
+#
+# Sans verify_jwt = false, le navigateur reçoit souvent 401 et l’app affiche « Failed to fetch »
+# ou des erreurs de confirmation d’inscription (les appels utilisent la clé anon).
+
+[functions.register-confirmed]
+verify_jwt = false
+
+[functions.confirm-restaurant-signup]
+verify_jwt = false
+
+# Import menu IA : auth requise (restaurant_owner, admin, manager)
+[functions.gemini-menu-import]
+verify_jwt = true

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Souraka HAMIDA">
+  <defs>
+    <linearGradient id="g" x1="18%" y1="12%" x2="82%" y2="88%">
+      <stop offset="0%" stop-color="#e8d4a8"/>
+      <stop offset="45%" stop-color="#c9a96e"/>
+      <stop offset="100%" stop-color="#8b7344"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="#0d0c09"/>
+  <path fill="none" stroke="url(#g)" stroke-width="5" opacity="0.38" d="M104 104h304v304H104z"/>
+  <text x="256" y="318" font-family="Georgia, 'Times New Roman', serif" font-size="220" font-weight="400" fill="url(#g)" text-anchor="middle" font-style="italic" letter-spacing="-0.08em">SH</text>
+</svg>

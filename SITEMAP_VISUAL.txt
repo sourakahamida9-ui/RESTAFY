@@ -1,0 +1,225 @@
+═══════════════════════════════════════════════════════════════════════════════
+🗺️  RESTAFY - SITEMAP VISUEL
+═══════════════════════════════════════════════════════════════════════════════
+
+RESTAFY (/)
+│
+├─ 🌐 PUBLIC (Pas d'authentification requise)
+│  │
+│  ├─ / (Home - Liste restaurants)
+│  ├─ /restaurant/{slug} (Menu du restaurant)
+│  ├─ /cart (Panier)
+│  └─ /events (Événements)
+│
+├─ 🔐 AUTHENTIFICATION
+│  │
+│  ├─ /auth/login (Se connecter)
+│  ├─ /auth/signup (S'inscrire)
+│  └─ /auth/callback (Confirmation email)
+│
+├─ 👤 CLIENT AUTHENTIFIÉ
+│  │
+│  ├─ /profile (Mon profil)
+│  ├─ /cart (Passer commande)
+│  ├─ /my-tickets (Mes billets événements)
+│  └─ /orders (Mon historique)
+│
+├─ 🍽️  RESTAURANT OWNER (/restaurant/dashboard/...)
+│  │
+│  ├─ ✅ ESSENTIELS
+│  │  ├─ /restaurant/dashboard (Accueil)
+│  │  ├─ /restaurant/dashboard/menu (Gérer plats)
+│  │  ├─ /restaurant/dashboard/settings (Config)
+│  │  └─ /restaurant/dashboard/analytics (Statistiques)
+│  │
+│  ├─ 📦 GESTION RESTAURANT
+│  │  ├─ /restaurant/dashboard/team (Staff/Livreurs)
+│  │  ├─ /restaurant/dashboard/menu-generalization (Dupliquer menus)
+│  │  └─ /restaurant/dashboard/pos (Caisse)
+│  │
+│  └─ 🎯 MARKETING
+│     ├─ /restaurant/dashboard/events (Événements)
+│     ├─ /restaurant/dashboard/promos (Codes promo)
+│     └─ (Analytics pour comprendre clients)
+│
+└─ 🔒 SUPER ADMIN (/superadmin/...)
+   │
+   ├─ /superadmin/login (Connexion)
+   │
+   ├─ 📊 VUE GLOBALE
+   │  ├─ /superadmin (Dashboard)
+   │  └─ /superadmin/finances (Revenus)
+   │
+   ├─ 🍽️  GESTION RESTAURANTS
+   │  ├─ /superadmin/restaurants (Approuver/gérer)
+   │  └─ /superadmin/invites (Invitations)
+   │
+   ├─ 👥 GESTION UTILISATEURS
+   │  ├─ /superadmin/users (Voir/bannir/supprimer)
+   │  └─ /superadmin/user-management-guide (Tutoriel)
+   │
+   ├─ ⚙️  CONFIGURATION SYSTÈME
+   │  ├─ /superadmin/payment-methods (MTN/Moov/Celtiis)
+   │  ├─ /superadmin/order-modes (Livraison/Retrait/etc)
+   │  └─ /superadmin/data (Sauvegardes)
+   │
+   └─ 📈 MONITORING
+      ├─ /superadmin/monitoring (Logs/Erreurs)
+      └─ /superadmin/data (Data center)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+FLUX D'UTILISATION TYPIQUE
+═══════════════════════════════════════════════════════════════════════════════
+
+👨‍🔧 RESTAURANT OWNER - 1ER JOUR
+┌─────────────────────────────────┐
+│ 1. /auth/signup                 │ Créer compte
+│ 2. /auth/login                  │ Se connecter
+│ 3. /restaurant/dashboard        │ Voir accueil
+│ 4. /restaurant/dashboard/settings│ Info restaurant
+│ 5. /restaurant/dashboard/menu    │ Ajouter plats
+└─────────────────────────────────┘
+         ↓
+Voilà! Restaurant prêt à recevoir commandes
+
+┌─────────────────────────────────┐
+│ ENSUITE (Au fur à mesure)       │
+│ • /restaurant/dashboard         │ Chaque jour
+│ • /restaurant/dashboard/analytics│ 1x/semaine
+│ • /restaurant/dashboard/team    │ Embauche
+│ • /restaurant/dashboard/promos  │ Campagne
+└─────────────────────────────────┘
+
+👥 CLIENT - PREMIER ACHAT
+┌─────────────────────────────────┐
+│ 1. /                            │ Trouver restaurant
+│ 2. /restaurant/{slug}           │ Voir menu
+│ 3. /cart                        │ Commander
+│ 4. /auth/login ou /auth/signup  │ Se connecter
+│ 5. /cart                        │ Payer
+│ 6. /profile                     │ Suivi commande
+└─────────────────────────────────┘
+
+🔒 SUPER ADMIN - DÉMARRAGE
+┌─────────────────────────────────┐
+│ 1. /superadmin/login            │ Se connecter
+│ 2. /superadmin/payment-methods  │ Config paiements
+│ 3. /superadmin/order-modes      │ Config modes
+│ 4. /superadmin/restaurants      │ Approuver 1ers
+│ 5. /superadmin/dashboard        │ Monitoring
+└─────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+
+HIÉRARCHIE PERMISSIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+🔓 PUBLIC (aucune auth)
+   └─ Voir restaurants
+   └─ Voir menus
+   └─ Panier (lecture seule)
+
+🔐 AUTHENTIFIÉ (client)
+   └─ Profil personnel
+   └─ Historique commandes
+   └─ Panier complet
+   └─ Événements
+
+🍽️ RESTAURANT OWNER (+ manager/staff)
+   └─ Manager: Accès total dashboard
+   └─ Staff: Accès caisse + commandes
+   └─ Livreur: Voir commandes à livrer
+   └─ Propriétaire: Tout + Settings
+
+🔒 SUPER ADMIN
+   └─ Accès total à tout
+   └─ Peut supprimer users
+   └─ Peut désactiver restaurants
+   └─ Gère paiements et config globale
+
+═══════════════════════════════════════════════════════════════════════════════
+
+ARCHITECTURE TECHNIQUE (Pour développeurs)
+═══════════════════════════════════════════════════════════════════════════════
+
+/
+├─ Pages publiques (pas d'auth)
+│  ├─ Home.tsx
+│  ├─ RestaurantPage.tsx
+│  ├─ Cart.tsx
+│  └─ Events.tsx
+│
+├─ Auth
+│  ├─ Login.tsx
+│  ├─ Signup.tsx
+│  └─ Callback.tsx
+│
+├─ Client (ProtectedRoute)
+│  ├─ Profile.tsx
+│  ├─ Orders.tsx
+│  └─ MyTickets.tsx
+│
+├─ Restaurant Admin (ProtectedRoute + requiredRole="restaurant_owner")
+│  ├─ AdminLayout.tsx (wrapper)
+│  ├─ Dashboard.tsx
+│  ├─ MenuManagement.tsx
+│  ├─ Settings.tsx
+│  ├─ Analytics.tsx
+│  ├─ TeamManagement.tsx
+│  ├─ RestaurantDashboardEvents.tsx
+│  ├─ PromoManager.tsx
+│  ├─ MenuGeneralization.tsx
+│  └─ CaissePOS.tsx
+│
+└─ Super Admin (ProtectedRoute + requiredRole="super_admin")
+   ├─ SuperAdminLayout.tsx (wrapper)
+   ├─ Dashboard.tsx
+   ├─ Restaurants.tsx
+   ├─ Users.tsx
+   ├─ Finances.tsx
+   ├─ DataCenter.tsx
+   ├─ Monitoring.tsx
+   ├─ RestaurantInvites.tsx
+   ├─ PaymentMethodsAdmin.tsx
+   ├─ OrderModesAdmin.tsx
+   └─ UserManagementGuide.tsx
+
+═══════════════════════════════════════════════════════════════════════════════
+
+RACCOURCIS NAVIGATION (À IMPLÉMENTER)
+═══════════════════════════════════════════════════════════════════════════════
+
+Restaurant Owner:
+   G D = /restaurant/dashboard
+   G M = /restaurant/dashboard/menu
+   G A = /restaurant/dashboard/analytics
+   G S = /restaurant/dashboard/settings
+
+Super Admin:
+   G A = /superadmin
+   G R = /superadmin/restaurants
+   G U = /superadmin/users
+   G F = /superadmin/finances
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📱 RESPONSIVE DESIGN
+═══════════════════════════════════════════════════════════════════════════════
+
+Mobile (< 768px):
+   - Menu latéral → Hamburger menu
+   - Dashboard → Cartes empilées
+   - Tableaux → Carousel ou scroll horizontal
+
+Tablet (768px - 1024px):
+   - Menu latéral visible
+   - Grille 2 colonnes
+
+Desktop (> 1024px):
+   - Menu latéral complet
+   - Grille 3-4 colonnes
+   - Tableaux étendus
+
+═══════════════════════════════════════════════════════════════════════════════
+Généré: 10 Mars 2026

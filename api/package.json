@@ -1,0 +1,19 @@
+{
+  "name": "@restafy/api",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Restafy Vercel serverless functions (consumed at /api by Vercel root project).",
+  "scripts": {
+    "lint": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@kkiapay-org/nodejs-sdk": "^1.0.7",
+    "@supabase/supabase-js": "^2.104.0",
+    "@vercel/node": "^5.7.12",
+    "jose": "^6.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.17",
+    "typescript": "~5.8.3"
+  }
+}

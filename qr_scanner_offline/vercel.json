@@ -1,0 +1,63 @@
+{
+  "name": "restafy-qr-scanner",
+  "version": 2,
+  "installCommand": "pnpm install --no-frozen-lockfile",
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "dist/public",
+  "ignoreCommand": "bash ../scripts/vercel-ignore/scan.sh",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/server/_core/index.ts"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "env": {
+    "JWT_SECRET": "restafy-qr-scanner-secret-key-2024-secure-jwt-token",
+    "JWT_ISSUER": "restafy-qr-scanner",
+    "JWT_AUDIENCE": "qr-scanner-app",
+    "SCANNER_APP_URL": "https://scan.restafy.shop",
+    "RESTAFY_API_URL": "https://app.restafy.shop",
+    "VITE_RESTAFY_APP_URL": "https://app.restafy.shop",
+    "VITE_USSD_MOOV_API_KEY": "",
+    "VITE_USSD_CELTIIS_API_KEY": "",
+    "VITE_AI_GATEWAY_URL": "",
+    "VITE_MENU_IMPORT_FUNCTION_URL": "",
+    "VITE_MAPBOX_TOKEN": ""
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

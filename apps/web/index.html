@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <!-- ── Character Encoding ────────────────────────────────────────────── -->
+  <meta charset="UTF-8" />
+
+  <!--
+      ✅ PERF FIX #1 — Viewport corrigé
+      AVANT : maximum-scale=1, user-scalable=no
+        → bloque le zoom (pénalité Lighthouse accessibilité)
+        → Lighthouse pénalise aussi la performance mobile
+      APRÈS : maximum-scale=5 → zoom autorisé → WCAG 1.4.4 respecté
+    -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
+
+  <!-- ── SEO ──────────────────────────────────────────────────────────── -->
+  <title>La faim ? Trouvez votre restaurant à Abomey-Calavi. | Restafy</title>
+  <meta name="description"
+    content="Restafy — Découvrez les meilleurs restaurants à Abomey-Calavi et Cotonou. Menus, avis, événements et billetterie en ligne. Votre guide gastronomique au Bénin." />
+  <meta name="keywords"
+    content="restaurant Abomey-Calavi, restaurant Cotonou, Bénin, trouver restaurant, menu restaurant, événement Cotonou, billetterie Bénin, Restafy" />
+  <meta name="author" content="Restafy" />
+  <meta name="theme-color" content="#ea580c" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+
+  <!-- ── Geo Targeting ─────────────────────────────────────────────────── -->
+  <meta name="geo.region" content="BJ-AQ" />
+  <meta name="geo.placename" content="Abomey-Calavi, Bénin" />
+  <meta name="geo.position" content="6.4480;2.3559" />
+  <meta name="ICBM" content="6.4480, 2.3559" />
+
+  <!-- ── iOS/Apple ─────────────────────────────────────────────────────── -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Restafy" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- ── Open Graph ────────────────────────────────────────────────────── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://restafy.shop" />
+  <meta property="og:site_name" content="Restafy" />
+  <meta property="og:title" content="La faim ? Trouvez votre restaurant à Abomey-Calavi." />
+  <meta property="og:description"
+    content="Découvrez les meilleurs restaurants à Abomey-Calavi et Cotonou. Menus complets, événements et billetterie en ligne." />
+  <meta property="og:image" content="https://restafy.shop/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Restafy — Découvrez les restaurants à Abomey-Calavi" />
+  <meta property="og:locale" content="fr_FR" />
+
+  <!-- ── Twitter Card ──────────────────────────────────────────────────── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@restafy_bj" />
+  <meta name="twitter:title" content="La faim ? Trouvez votre restaurant à Abomey-Calavi." />
+  <meta name="twitter:description"
+    content="Découvrez restaurants, événements et billetterie à Abomey-Calavi et Cotonou." />
+  <meta name="twitter:image" content="https://restafy.shop/og-image.png" />
+
+  <!-- ── Favicons ──────────────────────────────────────────────────────── -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+  <!-- ── PWA Manifest ──────────────────────────────────────────────────── -->
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- ── Canonical ─────────────────────────────────────────────────────── -->
+  <link rel="canonical" href="https://restafy.shop" />
+  <link rel="alternate" hreflang="fr" href="https://restafy.shop" />
+  <link rel="alternate" hreflang="fr-BJ" href="https://restafy.shop" />
+  <link rel="alternate" hreflang="x-default" href="https://restafy.shop" />
+
+  <!--
+      ✅ PERF FIX #2 — Google Fonts sorti du CSS → plus de render-blocking
+      
+      AVANT (dans index.css) :
+        @import url('https://fonts.googleapis.com/css2?...')
+        → LE NAVIGATEUR DOIT TÉLÉCHARGER LE CSS, PARSER LES IMPORTS, PUIS TÉLÉCHARGER LES FONTS
+        → bloque le FCP de ~600ms à 1s sur mobile
+      
+      APRÈS : preconnect + preload dans <head>
+        → Le navigateur commence le téléchargement immédiatement, en parallèle
+        → font-display=swap → le texte s'affiche immédiatement avec la police système,
+          puis bascule vers la police chargée (pas de FOIT / Flash Of Invisible Text)
+        → Gain estimé : -400ms à -800ms sur FCP mobile
+    -->
+
+  <!-- Preconnect obligatoire AVANT le stylesheet Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!--
+      On ne charge que DM Sans (police principale du body) en Critical Path.
+      Geist et Plus Jakarta Sans sont chargées en non-bloquant via <link media="print">.
+      Elles ne servent qu'à des titres secondaires — pas nécessaires au FCP.
+    -->
+  <!-- DM Sans en non-bloquant : le critical CSS utilise déjà system-ui en secours (FCP mobile). -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+    media="print"
+    onload="this.media='all'" />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </noscript>
+  <!-- Syne (titres / font-display Tailwind) — non-bloquant -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&display=swap"
+    rel="stylesheet"
+    media="print"
+    onload="this.media='all'" />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&display=swap" rel="stylesheet" />
+  </noscript>
+  <!-- Geist + Plus Jakarta en non-bloquant (chargé après le rendu initial) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'" />
+  <!-- Fallback si JS désactivé -->
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet" />
+  </noscript>
+
+  <!--
+      ✅ PERF FIX #3 — Preconnect tiers critiques
+      Établit la connexion TCP+TLS avec Supabase + Kkiapay avant même
+      que le JS ne soit parsé → réduit le TTFB des premières requêtes.
+    -->
+  <link rel="dns-prefetch" href="https://supabase.co" />
+  <link rel="preconnect" href="https://cdn.kkiapay.me" crossorigin />
+  <link rel="dns-prefetch" href="https://cdn.kkiapay.me" />
+  <link rel="preconnect" href="https://api.kkiapay.me" crossorigin />
+  <link rel="dns-prefetch" href="https://api.kkiapay.me" />
+
+  <!--
+      ✅ PERF FIX #4 — Inline Critical CSS
+      Le hero gradient est le LCP element. En inlinant son CSS minimal,
+      on évite un Flash Of Unstyled Content et on réduit le CLS.
+      Le navigateur n'a pas besoin d'attendre le bundle CSS pour afficher le hero.
+    -->
+  <style>
+    /* Critical CSS — above the fold uniquement */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box
+    }
+
+    html {
+      height: 100%;
+      -webkit-text-size-adjust: 100%
+    }
+
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      /* DM Sans peut arriver après le 1er paint — filet system-ui d’abord */
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background: #f9fafb;
+    }
+
+    #root {
+      height: 100%
+    }
+
+    /*
+      Skeleton hero aligné sur la vraie section (min-h-[55vh]) pour éviter le gros CLS
+      au moment où React remplace le contenu de #root (avant c’était ~220px vs ~55vh).
+    */
+    .hero-skeleton {
+      background: #08080a;
+      background-image:
+        radial-gradient(ellipse 120% 80% at 50% 20%, rgba(234, 88, 12, 0.35), transparent 55%),
+        radial-gradient(ellipse 70% 50% at 85% 35%, rgba(147, 51, 234, 0.12), transparent 45%);
+      min-height: 55vh;
+      min-height: 55dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Évite le FOUC (Flash Of Unstyled Content) sur l'header sticky */
+    .header-skeleton {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #f4f4f5;
+      /* Proche du header Layout (py-3 + logo ~32px) */
+      height: 57px;
+      flex-shrink: 0;
+    }
+
+    /* font-display swap pour DM Sans */
+    @font-face {
+      font-family: 'DM Sans';
+      font-display: swap;
+    }
+  </style>
+
+  <!-- ── JSON-LD : Organization ─────────────────────────────────────────── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Restafy",
+      "url": "https://restafy.shop",
+      "logo": "https://restafy.shop/icons/icon-192.png",
+      "description": "Plateforme de découverte de restaurants à Abomey-Calavi et Cotonou, Bénin",
+      "sameAs": [
+        "https://facebook.com/restafy",
+        "https://twitter.com/restafy_bj",
+        "https://instagram.com/restafy_bj"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "BJ",
+        "addressRegion": "Atlantique",
+        "addressLocality": "Abomey-Calavi"
+      },
+      "areaServed": [
+        {"@type": "City", "name": "Abomey-Calavi"},
+        {"@type": "City", "name": "Cotonou"}
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Support",
+        "email": "support@restafy.shop"
+      }
+    }
+    </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Restafy",
+      "url": "https://restafy.shop",
+      "description": "Découvrez les meilleurs restaurants à Abomey-Calavi et Cotonou",
+      "inLanguage": "fr-BJ",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://restafy.shop/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+</head>
+
+<body>
+  <!--
+      ✅ PERF FIX #5 — No-JS skeleton visible pendant le chargement React
+      Évite le CLS (Cumulative Layout Shift) et améliore le FCP perçu.
+      React remplace #root dès qu'il est hydraté.
+    -->
+  <div id="root">
+    <!-- Skeleton visible uniquement si JS n'a pas encore chargé -->
+    <div class="header-skeleton" aria-hidden="true"></div>
+    <div class="hero-skeleton" aria-hidden="true"></div>
+  </div>
+
+  <!--
+      Point d'entrée : en build, Vite injecte dans <head> le <script type="module">
+      et les modulepreload des chunks (router, supabase, etc.). Ne pas ajouter ici un
+      modulepreload vers /src/main.tsx : en prod cela devient un data: inutile et lourd.
+    -->
+  <script type="module" src="/src/main.tsx"></script>
+
+  <!--
+      ✅ PERF FIX #7 — Service Worker différé après load
+      Ne pas enregistrer le SW pendant le chargement initial
+      → ne concurrence pas les ressources critiques.
+      AVANT : window.addEventListener('load', ...) — OK mais pas de defer
+    -->
+  <script>
+    // Enregistrement SW différé : après que le navigateur soit idle
+    // requestIdleCallback est préféré à 'load' pour ne pas concurrencer le LCP
+    if ('serviceWorker' in navigator) {
+      const registerSW = () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => { });
+      };
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(registerSW, { timeout: 5000 });
+      } else {
+        window.addEventListener('load', registerSW);
+      }
+    }
+  </script>
+</body>
+
+</html>

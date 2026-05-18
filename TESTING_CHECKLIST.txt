@@ -1,0 +1,109 @@
+CHECKLIST DE TEST - VÉRIFIER QUE TOUT FONCTIONNE
+================================================
+
+COMMANDES
+---------
+[ ] Ajouter un plat au panier
+[ ] Sélectionner "Sur place" comme mode de livraison
+[ ] Sélectionner une heure de récupération
+[ ] Vérifier que "Aucun frais de livraison" s'affiche
+[ ] Cliquer "Payer maintenant"
+[ ] Vérifier que la commande est créée sans erreur
+[ ] Vérifier que la page de confirmation s'affiche
+
+CODES PROMO
+-----------
+[ ] Ajouter un code promo valide dans le panier
+[ ] Vérifier que la réduction s'applique
+[ ] Essayer un code invalide
+[ ] Vérifier le message d'erreur
+
+FRAIS DE LIVRAISON
+------------------
+[ ] Sélectionner "Livraison" comme mode
+[ ] Vérifier que les frais s'ajoutent
+[ ] Vérifier que le total est correct
+[ ] Comparer avec "Sur place"
+
+ÉVÉNEMENTS
+----------
+[ ] Aller à /restaurant/dashboard/events
+[ ] Créer un nouvel événement
+[ ] Remplir tous les champs
+[ ] Cliquer "Créer"
+[ ] Vérifier que l'événement s'affiche dans la liste
+[ ] Éditer l'événement
+[ ] Supprimer l'événement
+
+MENUS
+-----
+[ ] Aller à /restaurant/dashboard/menu
+[ ] Ajouter une nouvelle catégorie
+[ ] Ajouter un plat à la catégorie
+[ ] Aller à /restaurant/dashboard/menu-generalization
+[ ] Dupliquer le menu
+[ ] Exporter le menu en JSON
+[ ] Importer le menu
+[ ] Vérifier la sauvegarde de snapshots
+
+PARAMÈTRES
+----------
+[ ] Aller à /restaurant/dashboard/settings
+[ ] Modifier le nom du restaurant
+[ ] Modifier la description
+[ ] Modifier les frais de livraison
+[ ] Modifier la durée de livraison
+[ ] Cliquer "Enregistrer"
+[ ] Vérifier que les changements sont sauvegardés
+[ ] Rafraîchir la page - changements persistent
+
+ÉQUIPE
+------
+[ ] Aller à /restaurant/dashboard/team
+[ ] Ajouter un membre d'équipe
+[ ] Remplir tous les champs requis
+[ ] Assigner un rôle
+[ ] Ajouter des heures de travail
+[ ] Cliquer "Ajouter"
+[ ] Vérifier que le membre s'affiche
+[ ] Éditer le membre
+[ ] Supprimer le membre
+
+ACCUEIL
+-------
+[ ] Aller à /
+[ ] Vérifier que les restaurants s'affichent
+[ ] Pas de "Failed to fetch restaurants"
+[ ] Rechercher un restaurant
+[ ] Cliquer sur un restaurant
+[ ] Consulter le menu
+
+PROFILS
+-------
+[ ] Créer un compte client
+[ ] Se connecter
+[ ] Modifier le profil
+[ ] Consulter l'historique des commandes
+[ ] Se déconnecter
+
+SUPER ADMIN
+-----------
+[ ] Aller à /superadmin/dashboard
+[ ] Consulter les statistiques
+[ ] Aller à /superadmin/users
+[ ] Rechercher un utilisateur
+[ ] Cliquer le menu "..."
+[ ] Sélectionner "Supprimer le compte"
+[ ] Remplir la confirmation
+[ ] Vérifier la suppression
+
+ERREURS À NE PLUS VOIR
+----------------------
+[ ] "Failed to fetch restaurants"
+[ ] "null value in column 'subtotal'"
+[ ] "null value in column 'item_name'"
+[ ] "invalid input value for enum order_type"
+[ ] "Error creating event"
+[ ] "Restaurant non lié" (message d'erreur)
+
+Si tout est OK ✅ l'application est prête pour la production!

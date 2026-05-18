@@ -1,0 +1,213 @@
+═══════════════════════════════════════════════════════════════════════════════
+🔒 RESTAFY - LIENS SUPER ADMIN
+═══════════════════════════════════════════════════════════════════════════════
+
+🔐 CONNEXION
+═══════════════════════════════════════════════════════════════════════════════
+
+Login Super Admin
+   /superadmin/login
+   └─ Utiliser credentials super admin
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 LES 10 SECTIONS CRITIQUES
+═══════════════════════════════════════════════════════════════════════════════
+
+1. 🏠 DASHBOARD
+   /superadmin
+   ou
+   /superadmin/dashboard
+   └─ Vue globale + Statistiques système
+
+2. 🍽️ RESTAURANTS
+   /superadmin/restaurants
+   └─ Approuver nouveaux restaurants
+   └─ Gérer restaurants existants
+   └─ Activer/désactiver
+
+3. 👥 UTILISATEURS
+   /superadmin/users
+   └─ Bannir utilisateurs problématiques
+   └─ Supprimer comptes
+   └─ Voir tous les users (clients, livreurs, staff)
+
+4. 💰 FINANCES
+   /superadmin/finances
+   └─ Revenus globaux
+   └─ Transactions par restaurant
+   └─ Commission/frais
+
+5. 📊 DATA CENTER
+   /superadmin/data
+   └─ Sauvegardes
+   └─ Exports données
+   └─ Logs système
+
+6. 🔍 MONITORING
+   /superadmin/monitoring
+   └─ Erreurs/bugs
+   └─ Performance
+   └─ Logs temps réel
+
+7. 📧 INVITATIONS
+   /superadmin/invites
+   └─ Inviter nouveaux restaurants
+   └─ Gérer invitations en attente
+
+8. 💳 MÉTHODES PAIEMENT
+   /superadmin/payment-methods
+   └─ Ajouter/modifier MTN, Moov, Celtiis
+   └─ Configurer clés API
+
+9. 📦 MODES COMMANDE
+   /superadmin/order-modes
+   └─ Ajouter livraison, retrait, sur place
+   └─ Configurer frais par mode
+
+10. 📚 GUIDE GESTION USERS
+    /superadmin/user-management-guide
+    └─ Comment supprimer users
+    └─ Procédure sécurisée
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✨ FLUX SUPER ADMIN QUOTIDIEN
+═══════════════════════════════════════════════════════════════════════════════
+
+MATIN:
+1. /superadmin (voir dashboard)
+2. /superadmin/restaurants (valider demandes)
+3. /superadmin/finances (vérifier revenus)
+
+MIDI:
+1. /superadmin/monitoring (vérifier logs)
+2. /superadmin/users (modérer si nécessaire)
+
+SOIR:
+1. /superadmin (backup du jour)
+2. /superadmin/data (exporter données si requis)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚨 ACTIONS D'URGENCE
+═══════════════════════════════════════════════════════════════════════════════
+
+Restaurant hors ligne?
+   → /superadmin/restaurants
+      → Chercher restaurant → Désactiver → Contacter owner
+
+User spam/harcèlement?
+   → /superadmin/users
+      → Chercher user → Menu ⋮ → Bannir ou Supprimer
+
+Paiements ne fonctionnent pas?
+   → /superadmin/payment-methods
+      → Vérifier clés API → Retester providers
+
+Erreur système grave?
+   → /superadmin/monitoring
+      → Voir logs → Analyser erreur → Fix
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⚙️ CONFIGURATION INITIALE
+═══════════════════════════════════════════════════════════════════════════════
+
+[ ] 1. /superadmin/payment-methods
+       → Ajouter MTN (clé API, code marchand)
+       → Ajouter Moov (clé API, code marchand)
+       → Ajouter Celtiis (clé API, code marchand)
+
+[ ] 2. /superadmin/order-modes
+       → Ajouter "Livraison" (frais défaut)
+       → Ajouter "Sur place" (gratuit)
+       → Ajouter "À emporter" (gratuit ou frais)
+
+[ ] 3. /superadmin/restaurants
+       → Créer ou approuver premiers restaurants
+
+[ ] 4. /superadmin/users
+       → Vérifier utilisateurs
+
+[ ] 5. /superadmin/finances
+       → Configurer commission
+
+═══════════════════════════════════════════════════════════════════════════════
+
+💡 TIPS SUPER ADMIN
+═══════════════════════════════════════════════════════════════════════════════
+
+• Créer une checklist Excel avec tous ces liens
+  (à imprimer ou garder en onglet navigateur)
+
+• Mettre /superadmin en favoris
+  (principal point d'entrée)
+
+• Vérifier /superadmin/monitoring 1x par jour
+  (pour détecter bugs avant clients)
+
+• Backup régulier via /superadmin/data
+  (mensuel recommandé)
+
+• Documentation complète:
+  Voir RESTAURANT_IMPORTANT_LINKS.md pour toutes les URLs
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔐 SÉCURITÉ
+═══════════════════════════════════════════════════════════════════════════════
+
+⚠️ N'oubliez pas votre mot de passe super admin!
+   → Stocké de manière sécurisée dans Supabase
+   → 2FA recommandé si disponible
+
+⚠️ Attention avant de supprimer users
+   → Action irréversible
+   → Confirmation requise (voir guide)
+
+⚠️ Clés API sensibles
+   → /superadmin/payment-methods
+   → Ne pas partager avec restaurants
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📞 AIDE RAPIDE
+═══════════════════════════════════════════════════════════════════════════════
+
+Problème de connexion?
+   → Vérifier credentials super admin
+   → Réinitialiser mot de passe si oublié
+
+Erreur base de données?
+   → /superadmin/monitoring
+   → Voir logs détaillés
+
+Besoin de support technique?
+   → Contacter équipe développement
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📊 STATISTIQUES IMPORTANTES À SURVEILLER
+═══════════════════════════════════════════════════════════════════════════════
+
+Via /superadmin:
+• Nombre restaurants actifs
+• Nombre commandes jour
+• Revenus totaux
+• Utilisateurs actifs
+• Taux de paiements réussis
+
+Via /superadmin/finances:
+• Revenus par restaurant
+• Commissions collectées
+• Remboursements/litiges
+
+Via /superadmin/monitoring:
+• Erreurs API
+• Temps réponse
+• Utilisation serveur
+
+═══════════════════════════════════════════════════════════════════════════════
+Généré: 10 Mars 2026
+Version: 1.0

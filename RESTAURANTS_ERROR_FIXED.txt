@@ -1,0 +1,38 @@
+PROBLÈME FIXÉ: "Failed to fetch restaurants"
+
+═══════════════════════════════════════════════════════════════
+
+3 CORRECTIONS APPLIQUÉES:
+
+1. RLS POLICIES RECONFIGURÉ
+   - script/018-fix-restaurants-rls.sql exécuté
+   - Politiques simplifiées et claires
+   - Restaurants actifs visibles pour tous
+
+2. HOOK AMÉLIORÉ  
+   - src/hooks/useRestaurant.ts
+   - .order('name', { ascending: true })
+   - Console.log pour debugging
+
+3. MESSAGE D'ERREUR AMÉLIORÉ
+   - src/pages/Home.tsx
+   - UI/UX meilleure
+   - Instructions pour l'utilisateur
+
+═══════════════════════════════════════════════════════════════
+
+VÉRIFICATION:
+✓ Ouvrir console du browser (F12)
+✓ Chercher "[v0]" pour les logs
+✓ Rafraîchir la page
+✓ Les restaurants doivent s'afficher
+
+═══════════════════════════════════════════════════════════════
+
+Si erreur persiste:
+1. Vérifier Supabase connection
+2. Vérifier au moins 1 restaurant est_active = true
+3. Vérifier RLS est bien activée (ALTER TABLE restaurants ENABLE ROW LEVEL SECURITY)
+4. Consulter browser console pour le message d'erreur exact
+
+═══════════════════════════════════════════════════════════════

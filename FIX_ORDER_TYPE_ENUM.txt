@@ -1,0 +1,44 @@
+CORRECTION: Erreur "invalid input value for enum order_type"
+===============================================================
+
+PROBLEME:
+- Erreur: "invalid input value for enum order_type: 'pickup'"
+- Cause: La table order_modes ne contenait pas les modes de commande valides
+
+SOLUTION APPLIQUEE:
+===============================================================
+
+1. Script SQL 020 - Populate order_modes table
+   - Inseré 4 modes: 'delivery', 'dine_in', 'pickup', 'takeaway'
+   - Chaque mode a un nom, description, icon, et config JSON
+
+2. Script SQL 021 - Fix order_type column  
+   - Ajouta CHECK constraint: order_type IN ('delivery', 'dine_in', 'pickup', 'takeaway')
+   - Convertit les anciennes valeurs ('sur_place' → 'pickup')
+   - Ajouta indices de performance
+
+3. Code - Cart.tsx FONCTIONNE MAINTENANT
+   - Envoie orderMode='delivery', 'dine_in', 'pickup', ou 'takeaway'
+   - Ces valeurs sont maintenant ACCEPTEES par la DB
+
+UTILISATION:
+===============================================================
+
+Cart.tsx line 288:
+  orderType: orderMode  // ← peut être 'delivery', 'dine_in', 'pickup', 'takeaway'
+
+Les 4 modes de commande supportés:
+  • delivery     → Livraison à domicile (requires_address: true)
+  • dine_in      → Sur place (requires_table: true)  
+  • pickup       → Retrait au restaurant
+  • takeaway     → Emporter
+
+VERIFICATION:
+===============================================================
+
+Exécutez en Supabase SQL Editor:
+  SELECT * FROM order_modes;
+  
+Vous devez voir 4 lignes avec les codes ci-dessus.
+
+La commande devrait maintenant être créée sans erreur d'enum!

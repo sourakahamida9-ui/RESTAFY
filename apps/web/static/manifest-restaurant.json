@@ -1,0 +1,55 @@
+{
+  "name": "Restafy — Dashboard Restaurant",
+  "short_name": "Restafy Pro",
+  "description": "Dashboard mobile pour restaurateurs: commandes, caisse, stats et réglages.",
+  "lang": "fr",
+  "dir": "ltr",
+  "id": "/restaurant/dashboard",
+  "start_url": "/restaurant/dashboard",
+  "scope": "/restaurant/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#f97316",
+  "categories": ["business", "food"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Commandes",
+      "short_name": "Commandes",
+      "url": "/restaurant/dashboard/orders",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Caisse",
+      "short_name": "Caisse",
+      "url": "/restaurant/dashboard/pos",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Statistiques",
+      "short_name": "Stats",
+      "url": "/restaurant/dashboard/analytics",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Réglages",
+      "short_name": "Réglages",
+      "url": "/restaurant/dashboard/settings",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}

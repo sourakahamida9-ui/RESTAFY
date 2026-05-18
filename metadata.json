@@ -1,0 +1,8 @@
+{
+  "name": "RESTAFY - SaaS Restaurant & POS Benin",
+  "description": "Plateforme SaaS multi-tenant pour la gestion de restaurants, POS, livraison et billetterie au Bénin. Support USSD, offline-first et logs IA.",
+  "requestFramePermissions": [
+    "geolocation",
+    "camera"
+  ]
+}

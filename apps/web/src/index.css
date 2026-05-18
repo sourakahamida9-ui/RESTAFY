@@ -1,0 +1,547 @@
+/* src/index.css — Restafy Design System v2 */
+/* Polices : chargées depuis index.html (non bloquant) — pas d’@import ici (bloquait FCP/CSS). */
+
+@import "tailwindcss";
+
+/* Home hero — orbes animés en CSS pur (évite framer-motion sur la route / → FCP/LCP mobile) */
+@keyframes home-hero-orb-a {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+@keyframes home-hero-orb-b {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+@keyframes home-hero-orb-c {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+.home-hero-orb-a {
+  animation: home-hero-orb-a 8s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+.home-hero-orb-b {
+  animation: home-hero-orb-b 10s ease-in-out 2s infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+.home-hero-orb-c {
+  animation: home-hero-orb-c 12s ease-in-out 4s infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-orb-a,
+  .home-hero-orb-b,
+  .home-hero-orb-c {
+    animation: none;
+  }
+}
+
+/* Par défaut Tailwind v4 utilise prefers-color-scheme pour `dark:` — incompatible avec le toggle restaurant.
+ * On pilote `dark:` via la classe .dark sur <html> (pages publiques, sync OS) ou sur le shell dashboard. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Design tokens v3 — Restafy SaaS Design System ── */
+@theme {
+  --color-primary:    #ea580c;
+  --color-primary-50: #fff7ed;
+  --color-primary-100:#ffedd5;
+  --color-primary-200:#fed7aa;
+  --color-primary-300:#fdba74;
+  --color-primary-400:#fb923c;
+  --color-primary-500:#f97316;
+  --color-primary-600:#ea580c;
+  --color-primary-700:#c2410c;
+  --color-primary-800:#9a3412;
+  --color-primary-900:#7c2d12;
+
+  --color-success:    #16a34a;
+  --color-success-50: #f0fdf4;
+  --color-success-100:#dcfce7;
+  --color-success-500:#22c55e;
+  --color-success-600:#16a34a;
+
+  --color-warning:    #d97706;
+  --color-warning-50: #fffbeb;
+  --color-warning-100:#fef3c7;
+  --color-warning-500:#f59e0b;
+  --color-warning-600:#d97706;
+
+  --color-danger:     #dc2626;
+  --color-danger-50:  #fef2f2;
+  --color-danger-100: #fee2e2;
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+
+  --color-paper:      #fafaf9;
+  --color-surface:    #ffffff;
+
+  --font-sans:    'DM Sans', system-ui, sans-serif;
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-geist:   'DM Sans', system-ui, sans-serif;
+  --font-jakarta: 'DM Sans', system-ui, sans-serif;
+
+  /* UI rhythm tokens */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --measure-reading: 72rem;
+
+  --radius-sm:  0.5rem;
+  --radius-md:  0.75rem;
+  --radius-lg:  1rem;
+  --radius-xl:  1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  --shadow-xs:  0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:  0 4px 6px -1px rgba(0,0,0,0.06), 0 2px 4px -2px rgba(0,0,0,0.04);
+  --shadow-lg:  0 10px 15px -3px rgba(0,0,0,0.06), 0 4px 6px -4px rgba(0,0,0,0.04);
+  --shadow-xl:  0 20px 25px -5px rgba(0,0,0,0.06), 0 8px 10px -6px rgba(0,0,0,0.04);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { height: 100%; -webkit-text-size-adjust: 100%; }
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* CURSEUR — défaut partout sauf où explicitement pointer */
+  cursor: default;
+}
+
+/* CURSEUR CORRECT — tous les éléments interactifs */
+a, button, [role="button"], [role="link"],
+label[for], select, summary,
+input[type="submit"], input[type="button"],
+input[type="reset"], input[type="checkbox"],
+input[type="radio"], input[type="file"],
+input[type="range"] {
+  cursor: pointer;
+}
+
+/* Inputs texte → curseur texte */
+input[type="text"], input[type="email"], input[type="password"],
+input[type="number"], input[type="tel"], input[type="url"],
+input[type="search"], input[type="date"], input[type="time"],
+input[type="datetime-local"], textarea, [contenteditable] {
+  cursor: text;
+}
+
+/* Éléments désactivés */
+[disabled], [aria-disabled="true"], .cursor-not-allowed { cursor: not-allowed !important; }
+
+#root { height: 100%; }
+
+/* ── Scrollbar fine ── */
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 100px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.22); }
+
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ── Safe area iOS ── */
+.safe-top    { padding-top:    env(safe-area-inset-top); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+/* ── Focus accessible ── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Navbar theme tokens (Instagram-style) ── */
+:root {
+  --nav-bg: #ffffff;
+  --nav-border: rgba(0, 0, 0, 0.06);
+  --nav-idle: #A1A1AA;
+  --nav-accent: #0E0E0E;
+}
+.dark {
+  --nav-bg: #0E0E0E;
+  --nav-border: rgba(255, 255, 255, 0.06);
+  --nav-idle: #52525B;
+  --nav-accent: #F5F5F5;
+}
+
+/* ── Animations ── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+.animate-pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+@keyframes pulse-border {
+  0%, 100% { border-color: rgb(253 176 34 / 0.4); }
+  50%       { border-color: rgb(253 176 34 / 1); }
+}
+.animate-pulse-border { animation: pulse-border 1.5s ease-in-out infinite; }
+
+@keyframes restafy-spin-cw  { to { transform: rotate(360deg);  } }
+@keyframes restafy-spin-ccw { to { transform: rotate(-360deg); } }
+@keyframes restafy-pulse {
+  0%, 100% { transform: scale(1);    box-shadow: 0 0 20px rgba(234,88,12,0.4); }
+  50%       { transform: scale(1.08); box-shadow: 0 0 30px rgba(234,88,12,0.6); }
+}
+@keyframes restafy-bounce {
+  0%, 100% { transform: translateY(0);    opacity: 0.7; }
+  50%       { transform: translateY(-2px); opacity: 1;   }
+}
+@keyframes restafy-dot {
+  0%, 100% { transform: scale(1);   opacity: 0.4; }
+  50%       { transform: scale(1.5); opacity: 1;   }
+}
+@keyframes restafy-fade {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1;   }
+}
+@keyframes slide-in-right {
+  from { transform: translateX(8px); opacity: 0; }
+  to   { transform: translateX(0);   opacity: 1; }
+}
+
+/* PIN kiosque / équipe : évite type=password (Edge + Windows Hello refusent l’enregistrement et notifient) */
+.input-pin-obscured {
+  -webkit-text-security: disc;
+}
+
+/* ── Classe utilitaire display font ── */
+.font-display { font-family: var(--font-display) !important; }
+
+/* ── Texture grain légère sur le dashboard ── */
+.restafy-grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ── Afro-moderne micro-animations ── */
+.afro-pattern {
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(232, 111, 63, 0.03) 12px, rgba(232, 111, 63, 0.03) 14px),
+    repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(42, 107, 94, 0.03) 12px, rgba(42, 107, 94, 0.03) 14px);
+}
+
+@keyframes pulse-dot-afro {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+.pulse-dot-afro { animation: pulse-dot-afro 2s ease-in-out infinite; }
+
+.order-card-afro {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.order-card-afro:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(232, 111, 63, 0.12);
+  border-color: #E86F3F;
+}
+
+.nav-item-afro {
+  transition: color 0.15s ease, transform 0.15s ease, background-color 0.15s ease;
+}
+.nav-item-afro:hover { transform: translateX(3px); }
+
+.btn-micro-afro { transition: transform 0.12s ease, box-shadow 0.12s ease; }
+.btn-micro-afro:hover { transform: scale(0.98); }
+.btn-micro-afro:active { transform: scale(0.95); }
+
+.kpi-card-afro {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.kpi-card-afro:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Dashboard restaurant — thèmes clair / nuit (data-restaurant-theme sur le shell) ── */
+[data-restaurant-theme="dark"] {
+  --sidebar-bg: #0F1E1B;
+  --restaurant-main-bg: #0F1E1B;
+  --restaurant-card: rgba(22, 34, 32, 0.88);
+  --restaurant-card-border: #243330;
+  --restaurant-inset-bg: #1E2E2B;
+  --restaurant-inset-border: #243330;
+  --r-card-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  --r-sidebar-border: #243330;
+  --r-text: #F0EDE6;
+  --r-text-muted: #A3B5B1;
+  --r-text-subtle: rgba(240, 237, 230, 0.52);
+  --r-surface: rgba(255, 255, 255, 0.06);
+  --r-surface-hover: rgba(255, 255, 255, 0.1);
+  --r-header-bg: rgba(15, 30, 27, 0.88);
+  --r-header-border: #243330;
+  --r-input-bg: #162220;
+  --r-input-border: #243330;
+  --r-input-placeholder: #8A9E9A;
+  --r-nav-idle: #8A9E9A;
+  --r-nav-hover: #F0EDE6;
+  --r-mobile-nav-bg: rgba(15, 30, 27, 0.94);
+  --r-mobile-nav-border: #243330;
+  --r-collapse-btn-bg: #162220;
+  --r-collapse-btn-border: #243330;
+  --r-drawer-scrim: rgba(0, 0, 0, 0.55);
+  --r-logo-ring: #0F1E1B;
+  --r-accent: #E86F3F;
+  --r-accent-secondary: #F3A739;
+  --r-accent-sage: #2A6B5E;
+  --r-page-gap: 1.25rem;
+}
+
+[data-restaurant-theme="light"] {
+  --sidebar-bg: #ffffff;
+  --restaurant-main-bg: #FEF9F0;
+  --restaurant-card: rgba(255, 255, 255, 0.94);
+  --restaurant-card-border: #EDE5D8;
+  --restaurant-inset-bg: #F5EFE4;
+  --restaurant-inset-border: #EDE5D8;
+  --r-card-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  --r-sidebar-border: #EDE5D8;
+  --r-text: #1A2F2B;
+  --r-text-muted: #4A5E5A;
+  --r-text-subtle: #6B7E7A;
+  --r-surface: rgba(42, 107, 94, 0.06);
+  --r-surface-hover: rgba(42, 107, 94, 0.1);
+  --r-header-bg: rgba(255, 255, 255, 0.9);
+  --r-header-border: #EDE5D8;
+  --r-input-bg: #ffffff;
+  --r-input-border: #EDE5D8;
+  --r-input-placeholder: #6B7E7A;
+  --r-nav-idle: #4A5E5A;
+  --r-nav-hover: #1A2F2B;
+  --r-mobile-nav-bg: rgba(254, 249, 240, 0.96);
+  --r-mobile-nav-border: #EDE5D8;
+  --r-collapse-btn-bg: #ffffff;
+  --r-collapse-btn-border: #EDE5D8;
+  --r-drawer-scrim: rgba(0, 0, 0, 0.35);
+  --r-logo-ring: #ffffff;
+  --r-accent: #E86F3F;
+  --r-accent-secondary: #F3A739;
+  --r-accent-sage: #2A6B5E;
+  --r-page-gap: 1.25rem;
+}
+
+/* Fallback si attribut absent (anciennes routes) */
+:root {
+  --sidebar-bg: #0f0f0f;
+  --restaurant-main-bg: #121215;
+  --restaurant-card: rgba(26, 26, 32, 0.88);
+  --restaurant-card-border: rgba(255, 255, 255, 0.08);
+}
+
+/* Zone dashboard restaurant : scrollbars */
+[data-restaurant-theme="dark"] .restaurant-admin-main::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+}
+[data-restaurant-theme="dark"] .restaurant-admin-main::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+[data-restaurant-theme="light"] .restaurant-admin-main::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+}
+[data-restaurant-theme="light"] .restaurant-admin-main::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Mode clair : textes zinc/blanc dans la zone contenu → lisibilité cohérente */
+[data-restaurant-theme="light"] .restaurant-admin-main .text-zinc-100:not([class*="text-orange"]):not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-red"]):not([class*="text-blue"]):not([class*="text-purple"]):not([class*="text-cyan"]) {
+  color: var(--r-text);
+}
+[data-restaurant-theme="light"] .restaurant-admin-main .text-zinc-200:not([class*="text-orange"]):not([class*="text-amber"]) {
+  color: #27272a;
+}
+[data-restaurant-theme="light"] .restaurant-admin-main .text-zinc-300 {
+  color: #3f3f46;
+}
+[data-restaurant-theme="light"] .restaurant-admin-main .text-zinc-400 {
+  color: #52525b;
+}
+[data-restaurant-theme="light"] .restaurant-admin-main .text-zinc-500 {
+  color: #71717a;
+}
+[data-restaurant-theme="light"] .restaurant-admin-main .text-zinc-600 {
+  color: #52525b;
+}
+
+/* Mode nuit dashboard : pages encore en « zinc clair » sans préfixe dark: */
+[data-restaurant-theme="dark"] .restaurant-admin-main .text-zinc-900:not([class*="text-orange"]):not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-red"]):not([class*="text-blue"]):not([class*="text-purple"]):not([class*="text-cyan"]):not([class*="text-violet"]) {
+  color: var(--r-text);
+}
+[data-restaurant-theme="dark"] .restaurant-admin-main .text-zinc-800:not([class*="text-orange"]):not([class*="text-amber"]) {
+  color: #e4e4e7;
+}
+[data-restaurant-theme="dark"] .restaurant-admin-main .text-zinc-700 {
+  color: #d4d4d8;
+}
+[data-restaurant-theme="dark"] .restaurant-admin-main .text-zinc-600 {
+  color: var(--r-text-muted);
+}
+[data-restaurant-theme="dark"] .restaurant-admin-main .text-zinc-500 {
+  color: var(--r-text-muted);
+}
+[data-restaurant-theme="dark"] .restaurant-admin-main .text-zinc-400 {
+  color: var(--r-text-muted);
+}
+[data-restaurant-theme="dark"] .restaurant-admin-main .bg-white {
+  background-color: var(--restaurant-card);
+}
+[data-restaurant-theme="dark"] .restaurant-admin-main .bg-zinc-50 {
+  background-color: var(--restaurant-inset-bg);
+}
+[data-restaurant-theme="dark"] .restaurant-admin-main .bg-zinc-100 {
+  background-color: var(--r-surface);
+}
+[data-restaurant-theme="dark"] .restaurant-admin-main .border-zinc-100,
+[data-restaurant-theme="dark"] .restaurant-admin-main .border-zinc-200 {
+  border-color: var(--restaurant-card-border);
+}
+[data-restaurant-theme="dark"] .restaurant-admin-main .divide-zinc-200 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--restaurant-card-border);
+}
+
+@layer components {
+  /* CTA principal (panier, profil, onboarding…) — la classe existait dans le JSX sans règle CSS */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 1rem;
+    font-weight: 700;
+    min-height: 3rem;
+    padding-inline: 1.25rem;
+    padding-block: 0.875rem;
+    background-color: var(--color-primary-600);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 22px rgba(234, 88, 12, 0.38);
+    transition:
+      background-color 0.15s ease,
+      box-shadow 0.15s ease,
+      transform 0.1s ease,
+      opacity 0.15s ease;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-color: var(--color-primary-700);
+    box-shadow: 0 6px 28px rgba(194, 65, 12, 0.45);
+  }
+  .btn-primary:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+  .btn-primary:focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 3px;
+  }
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  .r-admin-card {
+    border-radius: 1rem;
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--restaurant-card-border);
+    background: var(--restaurant-card);
+    box-shadow: var(--r-card-shadow);
+  }
+  .r-admin-inset {
+    border-radius: 0.75rem;
+    border: 1px solid var(--restaurant-inset-border);
+    background: var(--restaurant-inset-bg);
+  }
+
+  .r-page-shell {
+    width: 100%;
+    max-width: var(--measure-reading);
+    margin-inline: auto;
+    padding-inline: var(--space-4);
+    padding-block: var(--space-6);
+    display: grid;
+    gap: var(--r-page-gap);
+  }
+
+  .r-page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .r-section-title {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--r-text-muted);
+  }
+
+  .r-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+
+  .r-toolbar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 768px) {
+    .r-page-shell {
+      padding-inline: var(--space-6);
+      padding-block: var(--space-8);
+    }
+    .r-kpi-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+  }
+}

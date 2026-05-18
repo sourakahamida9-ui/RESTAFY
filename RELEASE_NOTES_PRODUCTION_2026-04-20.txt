@@ -1,0 +1,6 @@
+Release: v1.1.0-prod-2026-04-20
+Commit: 469abdd
+Timestamp: 2026-04-20T20:52:45.2514436+02:00
+Status: build/tests/typecheck passed locally before tagging
+Audit updates applied: brace-expansion@5.0.5, picomatch@4.0.4
+Notes: Ensure environment vars for production are set in hosting provider (SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, GENIUSPAY keys, RESEND_API_KEY).

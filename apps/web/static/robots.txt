@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+Allow: /restaurant/$
+Allow: /restaurant/login
+Allow: /events
+Allow: /sitemap.xml
+
+# Zones privées — ne pas indexer
+Disallow: /restaurant/dashboard
+Disallow: /restaurant/signup
+Disallow: /invite/restaurant
+Disallow: /superadmin/
+Disallow: /admin/
+Disallow: /auth
+Disallow: /login
+Disallow: /signup
+Disallow: /cart
+Disallow: /orders
+Disallow: /profile
+Disallow: /notifications
+Disallow: /track/
+Disallow: /*.json$
+Disallow: /api/
+
+# Délai de crawl respectueux
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://restafy.shop/sitemap.xml

@@ -1,0 +1,192 @@
+<!--
+  =====================================================================
+  RESTAFY LITE WIDGET - Copier-coller unique pour votre site
+  =====================================================================
+  
+  Instructions:
+  1. Copier tout le code ci-dessous
+  2. Coller dans une page HTML ou widget HTML de votre site
+  3. Remplacer "mon-restaurant" par le slug de votre restaurant
+  
+  Pour WordPress: Ajouter dans un bloc "HTML personnalisé"
+  Pour Wix: Ajouter dans un bloc "Embed Code"
+  Pour Squarespace: Ajouter dans "Code d'intégration"
+  
+  @author Restafy Team
+  =====================================================================
+-->
+
+<div id="restafy-widget" data-slug="mon-restaurant"></div>
+
+<script>
+(function() {
+  'use strict';
+  
+  var API_URL = 'https://restafy.shop';
+  var container = document.getElementById('restafy-widget');
+  var slug = container ? container.dataset.slug : '';
+  var cart = [];
+  var currentCat = 'all';
+  var search = '';
+  
+  // STYLES - tout inclus dans le HTML
+  var styles = `
+    #restafy-widget{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--primary:#FF6600;--bg:#fff;--text:#222;--muted:#666;--border:#eee;background:var(--bg);color:var(--text);border-radius:12px;max-width:420px;margin:0 auto;overflow:hidden}
+    .rw-header{padding:16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+    .rw-logo{width:48px;height:48px;border-radius:8px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px}
+    .rw-title{font-size:16px;font-weight:700;margin:0}
+    .rw-sub{font-size:12px;color:var(--muted);margin:4px 0 0}
+    .rw-search{padding:12px 16px;border-bottom:1px solid var(--border)}
+    .rw-search input{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px}
+    .rw-cats{display:flex;gap:8px;padding:12px 16px;overflow-x:auto}
+    .rw-cat{padding:6px 12px;border-radius:16px;font-size:12px;font-weight:500;white-space:nowrap;background:#f5f5f5;border:none;cursor:pointer;flex-shrink:0}
+    .rw-cat.active,.rw-cat:hover{background:var(--primary);color:#fff}
+    .rw-items{padding:8px 16px;max-height:400px;overflow-y:auto}
+    .rw-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);align-items:center}
+    .rw-item:last-child{border-bottom:none}
+    .rw-img{width:64px;height:64px;border-radius:8px;object-fit:cover;flex-shrink:0;background:#f5f5f5}
+    .rw-info{flex:1;min-width:0}
+    .rw-name{font-size:14px;font-weight:600;margin:0 0 4px}
+    .rw-desc{font-size:11px;color:var(--muted);margin:0}
+    .rw-price{font-size:14px;font-weight:700;color:var(--primary);margin:6px 0 0}
+    .rw-add{width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;line-height:1}
+    .rw-fixed{position:sticky;bottom:0;background:#fff;padding:12px 16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .rw-btn{flex:1;padding:12px;border-radius:10px;background:var(--primary);color:#fff;font-weight:600;border:none;cursor:pointer;font-size:14px;text-decoration:none;display:block;text-align:center}
+    .rw-btn:disabled{background:#ccc;cursor:not-allowed;opacity:0.7}
+    .rw-badge{background:var(--primary);color:#fff;padding:2px 6px;border-radius:10px;font-size:10px;font-weight:600}
+    .rw-empty{text-align:center;padding:40px 20px;color:var(--muted)}
+    .rw-load{text-align:center;padding:60px 20px}
+    .rw-price-sm{font-size:12px}
+    .rw-price-tot{font-size:14px;font-weight:700}
+    @keyframes rw-spin{to{transform:rotate(360deg)}}
+    @media(max-width:480px){#restafy-widget{max-width:100%;border-radius:0}}
+  `;
+  
+  // Injecter styles
+  function injectStyles() {
+    if (document.getElementById('rw-styles')) return;
+    var style = document.createElement('style');
+    style.id = 'rw-styles';
+    style.textContent = styles;
+    (document.head || document.getElementsByTagName('head')[0]).appendChild(style);
+  }
+  
+  // Charger données
+  function loadData() {
+    if (!container) return;
+    container.innerHTML = '<div class="rw-load">⏳ Chargement...</div>';
+    
+    fetch(API_URL + '/api/lite?slug=' + encodeURIComponent(slug))
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.error) {
+          container.innerHTML = '<div class="rw-empty"><p>' + data.error + '</p></div>';
+          return;
+        }
+        render(data);
+      })
+      .catch(function() {
+        container.innerHTML = '<div class="rw-empty"><p>Erreur de chargement</p></div>';
+      });
+  }
+  
+  // Rendre le widget
+  function render(data) {
+    var restaurant = data.restaurant;
+    var items = data.items;
+    var cats = data.categories;
+    var total = cart.reduce(function(t, i) { return t + i.price * i.qty; }, 0);
+    var count = cart.reduce(function(t, i) { return t + i.qty; }, 0);
+    
+    // Filtrer
+    var filtered = items.filter(function(i) {
+      var c = currentCat === 'all' || i.category_id === currentCat;
+      var s = !search || i.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+      return c && s;
+    });
+    
+    // Categories HTML
+    var catsHtml = '<button class="rw-cat ' + (currentCat === 'all' ? 'active' : '') + '" data-cat="all">Tout</button>';
+    cats.forEach(function(c) {
+      catsHtml += '<button class="rw-cat ' + (currentCat === c.id ? 'active' : '') + '" data-cat="' + c.id + '">' + c.name + '</button>';
+    });
+    
+    // Items HTML
+    var itemsHtml = '';
+    if (filtered.length === 0) {
+      itemsHtml = '<div class="rw-empty"><p>Aucun plat trouvé</p></div>';
+    } else {
+      filtered.forEach(function(i) {
+        itemsHtml += '<div class="rw-item">' +
+          (i.image_url ? '<img class="rw-img" src="' + i.image_url + '" alt="' + i.name + '">' : '') +
+          '<div class="rw-info">' +
+            '<h3 class="rw-name">' + i.name + '</h3>' +
+            (i.description ? '<p class="rw-desc">' + i.description + '</p>' : '') +
+            '<p class="rw-price">' + i.price.toLocaleString() + ' F</p>' +
+          '</div>' +
+          '<button class="rw-add" data-id="' + i.id + '" data-name="' + i.name + '" data-price="' + i.price + '">+</button>' +
+        '</div>';
+      });
+    }
+    
+    // Cart bar
+    var cartBar = '';
+    if (count > 0) {
+      cartBar = '<div class="rw-fixed">' +
+        '<div style="display:flex;align-items:center;gap:8px">' +
+          '<span style="position:relative">🛒<span class="rw-badge">' + count + '</span></span>' +
+          '<div><p class="rw-price-sm">' + count + ' plat' + (count > 1 ? 's' : '') + '</p><p class="rw-price-tot">' + total.toLocaleString() + ' F</p></div>' +
+        '</div>' +
+        '<a class="rw-btn" href="' + API_URL + '/r/' + restaurant.slug + '?from=lite">Commander →</a>' +
+      '</div>';
+    }
+    
+    // Container HTML
+    container.innerHTML = 
+      '<style>' + styles + '</style>' +
+      '<div class="rw-header">' +
+        '<div class="rw-logo">' + restaurant.name.charAt(0).toUpperCase() + '</div>' +
+        '<div><h2 class="rw-title">' + restaurant.name + '</h2>' +
+        '<p class="rw-sub">🕒 ' + restaurant.delivery_time + (restaurant.min_order ? ' • Min: ' + restaurant.min_order + ' F' : '') + '</p></div>' +
+      '</div>' +
+      '<div class="rw-search"><input type="text" placeholder="Rechercher..." value="' + search + '"></div>' +
+      '<div class="rw-cats">' + catsHtml + '</div>' +
+      '<div class="rw-items">' + itemsHtml + '</div>' +
+      cartBar;
+    
+    // Events
+    var input = container.querySelector('.rw-search input');
+    if (input) {
+      input.addEventListener('input', function(e) {
+        search = e.target.value;
+        loadData();
+      });
+    }
+    
+    container.querySelectorAll('.rw-cat').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        currentCat = btn.dataset.cat;
+        render(data);
+      });
+    });
+    
+    container.querySelectorAll('.rw-add').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var id = btn.dataset.id;
+        var exists = cart.find(function(i) { return i.id === id; });
+        if (exists) exists.qty++; else cart.push({ id: id, name: btn.dataset.name, price: parseInt(btn.dataset.price), qty: 1 });
+        
+        // Feedback
+        btn.textContent = '✓';
+        setTimeout(function() { btn.textContent = '+'; }, 500);
+        
+        render(data);
+      });
+    });
+  }
+  
+  // Init
+  injectStyles();
+  if (slug) loadData();
+})();
+</script>

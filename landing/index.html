@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restafy — OMS Restaurant Bénin | Commandes, Cuisine, Paiements Kkiapay, Facturation</title>
+    <meta
+      name="description"
+      content="Restafy : Order Management System pour restaurants au Bénin. Centralisez commandes, cuisine (KDS), paiements Mobile Money via Kkiapay, facturation et analytics. 0 % commission sur les ventes."
+    />
+    <meta
+      name="keywords"
+      content="OMS restaurant, logiciel restaurant Bénin, Kkiapay, commande en ligne, Mobile Money, MTN MoMo, Moov Money, Celtiis, KDS cuisine, facturation restaurant, Restafy, Cotonou"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Restafy" />
+    <meta name="geo.region" content="BJ-LI" />
+    <meta name="geo.placename" content="Cotonou, Bénin" />
+    <meta name="ICBM" content="6.3654, 2.4183" />
+    <link rel="canonical" href="https://restafy.shop/" />
+    <link rel="alternate" hreflang="fr" href="https://restafy.shop/" />
+    <link rel="alternate" hreflang="fr-BJ" href="https://restafy.shop/" />
+    <link rel="alternate" hreflang="x-default" href="https://restafy.shop/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://restafy.shop/" />
+    <meta property="og:site_name" content="Restafy" />
+    <meta
+      property="og:title"
+      content="Restafy — OMS Restaurant Bénin | Commandes, Cuisine, Paiements, Facturation"
+    />
+    <meta
+      property="og:description"
+      content="Order Management System pour restaurants : commandes centralisées, cuisine KDS, paiements Kkiapay (MTN, Moov, Celtiis), facturation normalisée. 0 % commission."
+    />
+    <meta property="og:image" content="https://restafy.shop/og-image.png" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Restafy — OMS Restaurant Bénin" />
+    <meta
+      name="twitter:description"
+      content="Centralisez commandes, cuisine, paiements Mobile Money et facturation. 0 % commission."
+    />
+    <meta name="twitter:image" content="https://restafy.shop/og-image.png" />
+    <meta name="theme-color" content="#f8f6f3" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://restafy.shop/#organization",
+            "name": "Restafy",
+            "url": "https://restafy.shop/",
+            "description": "Order Management System (OMS) pour restaurants au Bénin : commandes, cuisine KDS, paiements Mobile Money via Kkiapay, facturation normalisée et analytics.",
+            "areaServed": [
+              { "@type": "Country", "name": "Bénin" },
+              { "@type": "City", "name": "Cotonou" }
+            ],
+            "sameAs": ["https://app.restafy.shop/"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://restafy.shop/#website",
+            "url": "https://restafy.shop/",
+            "name": "Restafy",
+            "inLanguage": "fr-BJ",
+            "publisher": { "@id": "https://restafy.shop/#organization" }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Restafy",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "url": "https://app.restafy.shop/",
+            "description": "OMS Restaurant : commandes centralisées, KDS cuisine, paiements Kkiapay (MTN, Moov, Celtiis), facturation et analytics.",
+            "provider": { "@id": "https://restafy.shop/#organization" },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "XOF",
+              "description": "Offre Gratuit — sous conditions affichées dans l'app"
+            }
+          }
+        ]
+      }
+    </script>
+    <link rel="icon" href="./assets/favicon-32x32.png" type="image/png" sizes="32x32" />
+    <link rel="shortcut icon" href="./assets/favicon-32x32.png" type="image/png" />
+    <link rel="icon" href="./assets/favicon-16x16.png" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" sizes="180x180" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1KN4YFT84"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-B1KN4YFT84');
+    </script>
+    <script>
+      (function () {
+        try {
+          window.addEventListener('pageshow', function (e) {
+            if (e.persisted || (window.performance && performance.getEntriesByType &&
+                (performance.getEntriesByType('navigation')[0] || {}).type === 'back_forward')) {
+              window.location.reload();
+            }
+          });
+        } catch (_) { /* no-op */ }
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap nav">
+        <a href="#" class="logo" aria-label="Restafy — accueil">RESTAFY<span>.</span></a>
+        <nav class="nav-links" aria-label="Principal">
+          <a href="#modules" class="hide-nav-md">Modules</a>
+          <a href="#paiement" class="hide-nav-md">Paiement</a>
+          <a href="#tarifs" class="hide-nav-md">Tarifs</a>
+          <a href="#faq" class="hide-sm">FAQ</a>
+          <a
+            href="#rejoindre"
+            class="btn btn-primary"
+            data-prefill-msg="Je souhaite une invitation pour créer le compte de mon restaurant. Merci de me recontacter."
+            >Créer mon compte</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- ═══ HERO ═══ -->
+      <div class="wrap hero">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">Order Management System pour restaurants</p>
+            <h1>Pilotez votre restaurant <span class="accent">de la commande à la facture.</span></h1>
+            <p class="lead">
+              Restafy est l'OMS qui centralise vos commandes, pilote votre cuisine, encaisse via
+              <strong>Kkiapay</strong> (MTN, Moov, Celtiis) et génère vos factures — le tout dans un
+              seul système. <strong>0&nbsp;% de commission</strong> sur vos ventes.
+            </p>
+            <div class="hero-cta">
+              <a
+                href="#rejoindre"
+                class="btn btn-primary"
+                data-prefill-msg="Je souhaite une invitation pour créer le compte de mon restaurant. Merci de me recontacter."
+                >Créer mon compte</a
+              >
+              <a href="/demo" class="btn btn-ghost">Voir la démo</a>
+            </div>
+            <p class="hero-cta-micro">
+              Sans carte bancaire · Compte sur invitation · Configuration en ~5&nbsp;min
+            </p>
+            <div class="hero-trust" aria-label="Partenaires de paiement">
+              <span class="trust-note">Paiements propulsés par</span>
+              <img
+                src="./assets/partners/kkiapay.svg"
+                alt="Kkiapay"
+                class="trust-logo-img trust-logo-img--kkiapay"
+                width="96"
+                height="20"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="trust-sep" aria-hidden="true">·</span>
+              <img
+                src="./assets/partners/mtn-momo.svg"
+                alt="MTN MoMo"
+                class="trust-logo-img trust-logo-img--mtn"
+                height="24"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="./assets/partners/moov-africa.png"
+                alt="Moov Africa"
+                class="trust-logo-img trust-logo-img--moov"
+                height="24"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="./assets/partners/celtiis.svg"
+                alt="Celtiis"
+                class="trust-logo-img trust-logo-img--celtiis"
+                height="24"
+                width="24"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+          <div
+            class="device device--phone hero-device"
+            title="Application Restafy — côté client"
+            aria-label="Application Restafy sur smartphone"
+          >
+            <span class="device__notch" aria-hidden="true"></span>
+            <div class="device__screen">
+              <picture>
+                <source srcset="./assets/screen-app-mobile.webp" type="image/webp" />
+                <img
+                  src="./assets/screen-app-mobile.png"
+                  width="390"
+                  height="844"
+                  alt="Application Restafy OMS sur smartphone"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ FLUX OMS ═══ -->
+      <section id="flux" class="section section--alt" aria-labelledby="flux-title">
+        <div class="wrap">
+          <p class="section-kicker">Comment ça marche</p>
+          <h2 id="flux-title">Un flux complet, <span class="accent">de bout en bout</span></h2>
+          <p class="sub">
+            Du clic du client à la facture normalisée, chaque étape est automatisée et traçable.
+          </p>
+          <div class="oms-flow">
+            <div class="oms-flow-step">
+              <div class="oms-flow-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <h3>Client</h3>
+              <p>Commande en ligne, QR code table ou sur place</p>
+            </div>
+            <div class="oms-flow-arrow" aria-hidden="true">→</div>
+            <div class="oms-flow-step">
+              <div class="oms-flow-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <h3>Commande</h3>
+              <p>Centralisée dans l'OMS Restafy</p>
+            </div>
+            <div class="oms-flow-arrow" aria-hidden="true">→</div>
+            <div class="oms-flow-step">
+              <div class="oms-flow-icon oms-flow-icon--kkiapay">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              </div>
+              <h3>Paiement</h3>
+              <p>Kkiapay — MTN, Moov, Celtiis</p>
+            </div>
+            <div class="oms-flow-arrow" aria-hidden="true">→</div>
+            <div class="oms-flow-step">
+              <div class="oms-flow-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              </div>
+              <h3>Cuisine</h3>
+              <p>KDS temps réel, priorisation</p>
+            </div>
+            <div class="oms-flow-arrow" aria-hidden="true">→</div>
+            <div class="oms-flow-step">
+              <div class="oms-flow-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <h3>Facture</h3>
+              <p>Numérotée, exportable, conforme</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ POSITIONNEMENT ═══ -->
+      <section id="apropos" class="section">
+        <div class="wrap">
+          <p class="section-kicker">Pourquoi Restafy</p>
+          <h2>Plus qu'une commande en ligne — <span class="accent">un système de gestion complet.</span></h2>
+          <p class="sub">
+            Restafy n'est plus juste une plateforme de commande. C'est un <strong>Order Management System</strong>
+            pensé pour les restaurants et maquis d'Afrique de l'Ouest : commandes (POS digital), cuisine (KDS),
+            paiements, facturation, reporting. Pilotez votre restaurant comme une entreprise structurée.
+          </p>
+          <div class="value-grid">
+            <div class="value-card">
+              <div class="value-number">0%</div>
+              <h3>Commission</h3>
+              <p>Aucune commission Restafy sur vos ventes. Vos marges restent à vous.</p>
+            </div>
+            <div class="value-card">
+              <div class="value-number">1</div>
+              <h3>Seul système</h3>
+              <p>Commandes, cuisine, paiements, factures et analytics — un seul outil.</p>
+            </div>
+            <div class="value-card">
+              <div class="value-number">24/7</div>
+              <h3>Temps réel</h3>
+              <p>Suivi en direct des commandes, de la cuisine et des encaissements.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ MODULES PRINCIPAUX ═══ -->
+      <section id="modules" class="section" aria-labelledby="modules-title">
+        <div class="wrap">
+          <p class="section-kicker">Modules OMS</p>
+          <h2 id="modules-title">Six modules, <span class="accent">un seul système</span></h2>
+          <p class="sub">
+            Chaque module est conçu pour fonctionner ensemble. Du clic client au rapport comptable,
+            tout est connecté et synchronisé en temps réel.
+          </p>
+          <div class="grid-features cols-3">
+            <article class="feature-card feature-card--highlight">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <h3>Commandes (POS)</h3>
+              <p>Sur place, à emporter, livraison, QR menu — une seule liste, un seul ticket cuisine. Fini les copies d'écran WhatsApp.</p>
+            </article>
+            <article class="feature-card feature-card--highlight">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              </div>
+              <h3>Cuisine (KDS)</h3>
+              <p>Affichage en temps réel des commandes, priorisation automatique des plats, statut de chaque commande visible par toute l'équipe.</p>
+            </article>
+            <article class="feature-card feature-card--highlight">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              </div>
+              <h3>Paiement</h3>
+              <p>Mobile Money via <strong>Kkiapay</strong> : MTN MoMo, Moov Money, Celtiis Cash. Confirmation automatique, zéro capture d'écran à vérifier.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <h3>Facturation</h3>
+              <p>Factures numériques standardisées, numérotation unique des tickets, historique des ventes, export comptable (Excel / PDF).</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
+              <h3>Dashboard &amp; Analytics</h3>
+              <p>Ventes journalières, plats les plus vendus, performance restaurant. Vous décidez avec des chiffres, pas au feeling.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </div>
+              <h3>Tables &amp; QR Codes</h3>
+              <p>Gestion des tables, QR codes personnalisés à coller sur chaque table. Le client scanne et commande directement.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ PARTENARIAT KKIAPAY ═══ -->
+      <section id="paiement" class="section partnership-section" aria-labelledby="paiement-title">
+        <div class="wrap">
+          <div class="partnership-card">
+            <div class="partnership-content">
+              <p class="section-kicker">Partenaire paiement officiel</p>
+              <h2 id="paiement-title">Propulsé par <span class="accent">Kkiapay</span> — le 1er agrégateur de paiement au Bénin</h2>
+              <p class="partnership-desc">
+                Tous les paiements passent par <strong>Kkiapay</strong>, agrégateur certifié et fondé en 2018. 
+                Acceptez MTN Mobile Money, Moov Money, Celtiis Cash et les cartes bancaires via une intégration 
+                unique, sécurisée et conforme aux standards BCEAO.
+              </p>
+              <ul class="partnership-benefits">
+                <li><span class="check">✓</span> MTN Mobile Money — push USSD direct au client</li>
+                <li><span class="check">✓</span> Moov Money — paiement en un clic</li>
+                <li><span class="check">✓</span> Celtiis Cash — couverture complète Bénin</li>
+                <li><span class="check">✓</span> Cartes bancaires (Visa / Mastercard)</li>
+                <li><span class="check">✓</span> Confirmation automatique — pas de capture d'écran</li>
+                <li><span class="check">✓</span> Dashboard de suivi des transactions</li>
+                <li><span class="check">✓</span> Disponible au Bénin, Côte d'Ivoire, Togo, Sénégal</li>
+              </ul>
+            </div>
+            <div class="partnership-logo">
+              <div class="kkiapay-badge">
+                <img
+                  src="./assets/partners/kkiapay.svg"
+                  alt="Kkiapay"
+                  class="kkiapay-brand"
+                  width="186"
+                  height="38"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="kkiapay-sub">1er agrégateur de paiement au Bénin</span>
+              </div>
+              <p class="partnership-tagline">Partenaire paiement officiel de Restafy</p>
+              <a href="https://kkiapay.me" target="_blank" rel="noopener" class="partnership-link">kkiapay.me →</a>
+              <div class="payment-operators">
+                <div class="operator-badge operator-badge--mtn">
+                  <img
+                    src="./assets/partners/mtn-momo.svg"
+                    alt="MTN MoMo"
+                    height="28"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>MTN MoMo</span>
+                </div>
+                <div class="operator-badge operator-badge--moov">
+                  <img
+                    src="./assets/partners/moov-africa.png"
+                    alt="Moov Africa"
+                    height="28"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>Moov Money</span>
+                </div>
+                <div class="operator-badge operator-badge--celtiis">
+                  <img
+                    src="./assets/partners/celtiis.svg"
+                    alt="Celtiis"
+                    height="32"
+                    width="32"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>Celtiis Cash</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ APERÇUS ═══ -->
+      <section id="apercus" class="section mockup-showcase" aria-labelledby="apercus-title">
+        <div class="wrap">
+          <p class="section-kicker">Aperçu</p>
+          <h2 id="apercus-title">Votre OMS en action — <span class="accent">dashboard et terrain</span></h2>
+          <p class="sub">
+            Pilotez depuis le dashboard sur ordinateur ou smartphone. Vos clients commandent en temps réel,
+            la cuisine reçoit les tickets, vous suivez tout depuis un seul écran.
+          </p>
+          <div class="mockups-grid">
+            <figure class="mockup-figure mockup-figure--wide">
+              <div class="device device--laptop" aria-label="Dashboard Restafy OMS sur ordinateur">
+                <div class="device__bezel">
+                  <div class="device__screen">
+                    <picture>
+                      <source srcset="./assets/screen-dashboard-desktop.webp" type="image/webp" />
+                      <img
+                      src="./assets/screen-dashboard-desktop.png"
+                      width="1440"
+                      height="900"
+                      alt="Dashboard OMS Restafy — commandes en temps réel"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                      </picture>
+                  </div>
+                </div>
+                <div class="device__base" aria-hidden="true"></div>
+              </div>
+              <figcaption>Dashboard restaurateur — commandes, KDS et analytics en temps réel</figcaption>
+            </figure>
+            <figure class="mockup-figure mockup-figure--wide">
+              <div class="device device--laptop" aria-label="Statistiques Restafy OMS">
+                <div class="device__bezel">
+                  <div class="device__screen">
+                    <picture>
+                      <source srcset="./assets/screen-analytics-desktop.webp" type="image/webp" />
+                      <img
+                      src="./assets/screen-analytics-desktop.png"
+                      width="1440"
+                      height="900"
+                      alt="Analytics OMS Restafy — revenus et performance"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                      </picture>
+                  </div>
+                </div>
+                <div class="device__base" aria-hidden="true"></div>
+              </div>
+              <figcaption>Analytique — revenus, tickets, top articles, export comptable</figcaption>
+            </figure>
+            <div class="mockup-phones mockup-phones--three">
+              <figure class="mockup-figure">
+                <div class="device device--phone" aria-label="Suivi de commande en temps réel">
+                  <span class="device__notch" aria-hidden="true"></span>
+                  <div class="device__screen">
+                    <picture>
+                      <source srcset="./assets/screen-tracking-mobile.webp" type="image/webp" />
+                      <img
+                      src="./assets/screen-tracking-mobile.png"
+                      width="390"
+                      height="844"
+                      alt="Suivi de commande en temps réel"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                      </picture>
+                  </div>
+                </div>
+                <figcaption>Suivi commande — étapes en temps réel</figcaption>
+              </figure>
+              <figure class="mockup-figure">
+                <div class="device device--phone" aria-label="Page restaurant dans l'app">
+                  <span class="device__notch" aria-hidden="true"></span>
+                  <div class="device__screen">
+                    <picture>
+                      <source srcset="./assets/screen-le-petit-parisien-mobile.webp" type="image/webp" />
+                      <img
+                      src="./assets/screen-le-petit-parisien-mobile.png"
+                      width="390"
+                      height="844"
+                      alt="Page restaurant — menu et commande directe"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                      </picture>
+                  </div>
+                </div>
+                <figcaption>Page restaurant — installable en PWA</figcaption>
+              </figure>
+              <figure class="mockup-figure">
+                <div class="device device--phone" aria-label="Dashboard mobile">
+                  <span class="device__notch" aria-hidden="true"></span>
+                  <div class="device__screen">
+                    <picture>
+                      <source srcset="./assets/screen-dashboard-mobile.webp" type="image/webp" />
+                      <img
+                      src="./assets/screen-dashboard-mobile.png"
+                      width="390"
+                      height="844"
+                      alt="Dashboard OMS mobile — commandes du jour"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                      </picture>
+                  </div>
+                </div>
+                <figcaption>Pilotage mobile — partout, tout le temps</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ MODÈLE ÉCONOMIQUE ═══ -->
+      <section id="modele" class="section" aria-labelledby="modele-title">
+        <div class="wrap">
+          <p class="section-kicker">Modèle économique</p>
+          <h2 id="modele-title">0&nbsp;% commission, <span class="accent">abonnement SaaS transparent</span></h2>
+          <p class="sub">
+            Contrairement aux plateformes de livraison qui prennent 15-30% sur chaque commande,
+            Restafy fonctionne en <strong>abonnement mensuel</strong>. Vous payez un prix fixe prévisible,
+            et <strong>100% du chiffre d'affaires de vos ventes vous revient</strong>.
+          </p>
+          <div class="model-comparison">
+            <div class="model-card model-card--bad">
+              <h3>Plateformes classiques</h3>
+              <div class="model-stat">15-30%</div>
+              <p>de commission sur chaque vente</p>
+              <ul>
+                <li>Commission variable imprévisible</li>
+                <li>Plus vous vendez, plus vous payez</li>
+                <li>Marges réduites sur les petits paniers</li>
+              </ul>
+            </div>
+            <div class="model-card model-card--good">
+              <h3>Restafy OMS</h3>
+              <div class="model-stat">0%</div>
+              <p>commission sur vos ventes</p>
+              <ul>
+                <li>Abonnement fixe prévisible</li>
+                <li>Plus vous vendez, plus vous gagnez</li>
+                <li>Toutes les fonctionnalités incluses</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ TARIFS ═══ -->
+      <section id="tarifs" class="section">
+        <div class="wrap">
+          <p class="section-kicker">Tarification</p>
+          <h2>Des plans pensés <span class="accent">pour chaque étape</span></h2>
+          <p class="sub">
+            Commencez avec l'offre <strong>Gratuit</strong>, passez à <strong>Starter</strong> pour les promos et la gestion quotidienne, puis <strong>Pro</strong> pour l'OMS complet avec paiements Kkiapay avancés et facturation normalisée.
+            <strong>Les trois plans incluent l'encaissement via Kkiapay</strong> (MTN, Moov, Celtiis).
+            Les montants ci-dessous sont indicatifs : la grille affichée dans l'app au moment de la souscription fait foi.
+          </p>
+          <div class="pricing-grid">
+            <article class="price-card">
+              <h3>Gratuit</h3>
+              <p class="pitch">Votre vitrine en ligne et un menu scannable — sans abonnement.</p>
+              <div class="price-tag">
+                <strong>0&nbsp;FCFA</strong>
+                <span>pour toujours</span>
+                <span class="price-tag-eur">≈ 0&nbsp;EUR</span>
+              </div>
+              <p class="price-list-label">Inclus</p>
+              <ul class="price-list price-list--included">
+                <li>Profil restaurant public</li>
+                <li>QR code menu (statique)</li>
+                <li>Paiement Kkiapay (MTN, Moov, Celtiis)</li>
+                <li>Jusqu'à 30 commandes / mois</li>
+                <li>1 membre d'équipe</li>
+              </ul>
+              <p class="price-list-label price-list-label--muted">Non inclus</p>
+              <ul class="price-list price-list--excluded">
+                <li>Pas de facturation normalisée</li>
+                <li>Pas de module livraison</li>
+                <li>Badge « Powered by Restafy »</li>
+              </ul>
+              <a
+                href="#rejoindre"
+                class="btn btn-ghost btn-block"
+                data-prefill-msg="Je souhaite démarrer sur l'offre Gratuit. Merci de m'envoyer une invitation pour créer le compte restaurant."
+                >Demander une invitation</a
+              >
+            </article>
+            <article class="price-card featured">
+              <span class="price-badge">Recommandé</span>
+              <h3>Starter</h3>
+              <p class="pitch">Paiements Kkiapay, promos et gestion quotidienne — le tremplin vers l'OMS complet.</p>
+              <div class="price-tag">
+                <strong>9&nbsp;900&nbsp;FCFA</strong>
+                <span>/ mois</span>
+                <span class="price-tag-eur">≈ 15&nbsp;EUR / mois</span>
+              </div>
+              <p class="price-list-label">Inclus</p>
+              <ul class="price-list price-list--included">
+                <li>Tout le plan Gratuit</li>
+                <li>Paiement Kkiapay intégré (MTN, Moov, Celtiis)</li>
+                <li>Commandes illimitées</li>
+                <li>Codes promo (jusqu'à 5 actifs)</li>
+                <li>QR code dynamique</li>
+                <li>Jusqu'à 3 membres d'équipe</li>
+                <li>Analytics basique</li>
+              </ul>
+              <p class="price-list-label price-list-label--muted">Non inclus</p>
+              <ul class="price-list price-list--excluded">
+                <li>Pas de facturation normalisée</li>
+                <li>Pas de KDS cuisine</li>
+              </ul>
+              <a
+                href="#rejoindre"
+                class="btn btn-primary btn-block"
+                data-prefill-msg="Je souhaite démarrer sur l'offre Starter. Merci de m'envoyer une invitation."
+                >Demander une invitation</a
+              >
+            </article>
+            <article class="price-card">
+              <h3>Pro</h3>
+              <p class="pitch">L'OMS complet : Kkiapay, KDS cuisine, facturation, analytics et équipe illimitée.</p>
+              <div class="price-tag">
+                <strong>24&nbsp;900&nbsp;FCFA</strong>
+                <span>/ mois</span>
+                <span class="price-tag-eur">≈ 38&nbsp;EUR / mois</span>
+              </div>
+              <p class="price-list-label">Inclus</p>
+              <ul class="price-list price-list--included">
+                <li>Tout le plan Starter</li>
+                <li>Paiement Kkiapay avancé (split, retraits automatisés)</li>
+                <li>Module livraison complet</li>
+                <li>Facturation normalisée + export comptable</li>
+                <li>KDS cuisine en temps réel</li>
+                <li>Membres d'équipe illimités</li>
+                <li>Analytics avancés + exports</li>
+                <li>Support prioritaire WhatsApp</li>
+                <li>Sans badge Restafy</li>
+              </ul>
+              <a
+                href="#rejoindre"
+                class="btn btn-ghost btn-block"
+                data-prefill-msg="Je souhaite démarrer sur l'offre Pro (OMS complet + Kkiapay). Merci de me recontacter."
+                >Demander une invitation</a
+              >
+            </article>
+          </div>
+          <p class="price-footnote">
+            Les formules et limites peuvent évoluer avec le produit. Les frais des opérateurs Mobile Money restent
+            ceux de votre contrat opérateur (fixés par Kkiapay). Pour les chaînes et besoins sur mesure,
+            écrivez-nous via <a href="#rejoindre">Rejoindre Restafy</a>.
+          </p>
+        </div>
+      </section>
+
+      <!-- ═══ FAQ ═══ -->
+      <section id="faq" class="section">
+        <div class="wrap">
+          <p class="section-kicker">FAQ</p>
+          <h2>Vos questions, <span class="accent">nos réponses</span></h2>
+          <p class="faq-hint">
+            Une question précise ? Écrivez-nous via le formulaire « Rejoindre Restafy » ou sur WhatsApp.
+          </p>
+          <div class="faq-list">
+            <details open>
+              <summary>Qu'est-ce qui différencie Restafy d'une simple application de commande&nbsp;?</summary>
+              <div class="faq-a">
+                Restafy est un <strong>Order Management System</strong> complet. Au-delà des commandes, vous avez
+                un KDS cuisine en temps réel, des paiements intégrés via Kkiapay, une facturation normalisée et
+                des analytics détaillés. C'est un système de gestion complet, pas juste un formulaire de commande.
+              </div>
+            </details>
+            <details>
+              <summary>Comment fonctionnent les paiements Mobile Money&nbsp;?</summary>
+              <div class="faq-a">
+                Les paiements passent par <strong>Kkiapay</strong>, 1er agrégateur de paiement au Bénin.
+                MTN Mobile Money, Moov Money et Celtiis Cash sont supportés. Le client reçoit une notification
+                push sur son téléphone, confirme le paiement, et la commande est automatiquement validée dans
+                votre OMS. Plus besoin de vérifier des captures d'écran.
+              </div>
+            </details>
+            <details>
+              <summary>Combien ça coûte vraiment&nbsp;? Y a-t-il des frais cachés&nbsp;?</summary>
+              <div class="faq-a">
+                <strong>0% de commission Restafy</strong> sur vos ventes. Vous payez un abonnement mensuel fixe
+                (Gratuit, Starter ou Pro). Les frais de transaction Mobile Money sont ceux de Kkiapay/opérateurs,
+                pas les nôtres. Aucun frais caché.
+              </div>
+            </details>
+            <details>
+              <summary>Est-ce que mes données sont sécurisées&nbsp;?</summary>
+              <div class="faq-a">
+                Les données transitent en HTTPS ; l'architecture s'appuie sur des services managés (base PostgreSQL,
+                règles d'accès). Les paiements sont traités par Kkiapay avec une sécurité de niveau bancaire.
+              </div>
+            </details>
+            <details>
+              <summary>Je peux commencer gratuitement&nbsp;?</summary>
+              <div class="faq-a">
+                Oui : l'offre <strong>Gratuit</strong> est sans abonnement (dans les limites affichées) et inclut déjà
+                l'encaissement Kkiapay (MTN, Moov, Celtiis). <strong>Starter</strong> débloque les commandes illimitées,
+                les codes promo et l'analytics. <strong>Pro</strong> ajoute les modules avancés&nbsp;: KDS cuisine,
+                facturation normalisée, module livraison et Kkiapay avancé (split, retraits automatisés).
+              </div>
+            </details>
+            <details>
+              <summary>C'est quoi un KDS (Kitchen Display System)&nbsp;?</summary>
+              <div class="faq-a">
+                Le KDS est l'écran de la cuisine qui affiche les commandes en temps réel, dans l'ordre de priorité.
+                La cuisine sait exactement quoi préparer, et la salle peut suivre l'avancement de chaque commande.
+                Fini les tickets papier perdus ou les erreurs de communication.
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ CTA FINAL ═══ -->
+      <section class="section">
+        <div class="wrap">
+          <div class="cta-band">
+            <h2>Prêt à piloter votre restaurant <span class="accent">comme une entreprise structurée</span>&nbsp;?</h2>
+            <p>
+              Après le clic : <strong>demande d'invitation</strong>, puis configuration menu et paiements Kkiapay
+              (avec aide si besoin). Aucune carte bancaire requise pour démarrer sur l'offre Gratuit.
+            </p>
+            <div class="cta-actions">
+              <a
+                href="#rejoindre"
+                class="btn btn-primary btn-arrow"
+                data-prefill-msg="Je souhaite une invitation pour créer le compte de mon restaurant. Merci de me recontacter."
+                >Demander une invitation</a
+              >
+              <a href="#" class="btn btn-wa btn-arrow" id="wa-cta-btn">Discuter sur WhatsApp</a>
+            </div>
+            <div class="cta-micro">
+              <span>0% commission sur les ventes</span>
+              <span>Paiements Kkiapay intégrés</span>
+              <span>Interface en français</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ FORMULAIRE REJOINDRE ═══ -->
+      <section id="rejoindre" class="section">
+        <div class="wrap">
+          <p class="section-kicker">Partenaires</p>
+          <h2>Rejoindre <span class="accent">Restafy</span></h2>
+          <p class="sub">
+            Vous gérez un restaurant ou un groupe et souhaitez intégrer la plateforme OMS&nbsp;? Laissez vos coordonnées :
+            la demande arrive dans l'espace super administrateur pour traitement. <strong>Les comptes restaurant sont créés
+            sur invitation</strong> après validation.
+          </p>
+          <div class="join-section">
+            <form id="join-form" novalidate>
+              <div class="honeypot-field" aria-hidden="true">
+                <label for="join-hp-website">Ne pas remplir</label>
+                <input
+                  type="text"
+                  id="join-hp-website"
+                  name="website"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="form-grid form-grid-2">
+                <div class="field">
+                  <label for="fullName">Nom complet *</label>
+                  <input id="fullName" name="fullName" required maxlength="200" autocomplete="name" />
+                </div>
+                <div class="field">
+                  <label for="email">E-mail professionnel *</label>
+                  <input id="email" name="email" type="email" required maxlength="320" autocomplete="email" />
+                </div>
+                <div class="field">
+                  <label for="phone">Téléphone</label>
+                  <input id="phone" name="phone" type="tel" maxlength="60" autocomplete="tel" />
+                </div>
+                <div class="field">
+                  <label for="city">Ville</label>
+                  <input id="city" name="city" maxlength="120" autocomplete="address-level2" />
+                </div>
+              </div>
+              <div class="field" style="margin-top: 1.1rem">
+                <label for="restaurantName">Nom de l'établissement *</label>
+                <input id="restaurantName" name="restaurantName" required maxlength="200" autocomplete="organization" />
+              </div>
+              <div class="field" style="margin-top: 1.1rem">
+                <label for="message">Message (optionnel)</label>
+                <textarea id="message" name="message" maxlength="4000" placeholder="Horaires, nombre de couverts, besoins spécifiques…"></textarea>
+              </div>
+              <p style="margin-top: 1.25rem">
+                <button type="submit" class="btn btn-primary" id="join-submit">Envoyer la demande</button>
+              </p>
+              <p class="form-msg" id="join-msg" role="status"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="logo">RESTAFY<span>.</span></div>
+            <p>
+              Order Management System pour restaurants au Bénin : commandes centralisées, cuisine KDS,
+              paiements Mobile Money via Kkiapay (MTN, Moov, Celtiis), facturation normalisée et analytics.
+              <strong>0&nbsp;% de commission</strong> sur vos ventes. Plans Gratuit, Starter et Pro.
+            </p>
+            <div class="social-row" aria-label="Réseaux sociaux">
+              <a href="https://app.restafy.shop/" rel="noopener noreferrer" aria-label="Ouvrir l'application">App</a>
+              <a href="https://wa.me/2290193527256" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
+              <a href="https://www.linkedin.com/company/restafy" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+              <a href="https://www.facebook.com/restafy.shop" rel="noopener noreferrer" aria-label="Facebook">fb</a>
+              <a href="https://www.instagram.com/restafy.shop" rel="noopener noreferrer" aria-label="Instagram">ig</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>OMS</h4>
+            <ul>
+              <li><a href="#modules">Modules</a></li>
+              <li><a href="#paiement">Paiement Kkiapay</a></li>
+              <li><a href="#tarifs">Tarifs</a></li>
+              <li><a href="https://app.restafy.shop/">Ouvrir l'application</a></li>
+              <li><a href="/demo">Démo</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Ressources</h4>
+            <ul>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#rejoindre">Rejoindre Restafy</a></li>
+              <li><a href="https://app.restafy.shop/login">Connexion restaurateur</a></li>
+              <li><a href="https://app.restafy.shop/auth">Créer un compte client</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Entreprise</h4>
+            <ul>
+              <li><a href="#apropos">À propos</a></li>
+              <li><a href="mailto:contact@restafy.shop">contact@restafy.shop</a></li>
+              <li><a href="mailto:partenaires@restafy.shop">partenaires@restafy.shop</a></li>
+              <li><a href="tel:+2290193527256">+229 01 93 52 72 56</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© <span id="y"></span> Restafy. Fait avec soin à Cotonou, Bénin. <em>Ne mangez pas. Savourez.</em></p>
+          <div class="footer-legal">
+            <a href="/confidentialite">Confidentialité</a>
+            <a href="/cookies">Cookies</a>
+            <a href="/mentions-legales">Mentions légales</a>
+            <a href="/cgu">CGU</a>
+            <a href="/cgv">CGV</a>
+            <button type="button" class="footer-cookie-btn" id="cookie-settings-btn">Gérer les cookies</button>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="cookie-banner" id="cookie-banner" role="dialog" aria-modal="true" aria-label="Gestion des cookies">
+      <div class="cookie-banner__card">
+        <div class="cookie-banner__text">
+          <strong>Cookies</strong>
+          <p>
+            Nous utilisons des cookies/traceurs nécessaires au fonctionnement et, si vous l'acceptez, des mesures
+            d'audience pour comprendre l'utilisation du site.
+            <a href="/cookies">En savoir plus</a>.
+          </p>
+        </div>
+        <div class="cookie-banner__actions">
+          <button type="button" class="btn btn-ghost" id="cookie-reject">Refuser</button>
+          <button type="button" class="btn btn-primary" id="cookie-accept">Accepter</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="global-error" id="global-error" role="status" aria-live="polite">
+      <div class="global-error__card">
+        <div class="global-error__title">Un souci est survenu</div>
+        <div class="global-error__msg" id="global-error-msg">
+          Le site a rencontré une erreur. Vous pouvez réessayer, ou nous contacter via WhatsApp / formulaire.
+        </div>
+        <div class="global-error__actions">
+          <button type="button" class="btn btn-ghost" id="global-error-retry">Réessayer</button>
+          <a class="btn btn-primary" id="global-error-contact" href="#rejoindre">Nous contacter</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="#rejoindre" class="wa-float" id="wa-float" aria-label="Contact WhatsApp ou formulaire">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+        />
+      </svg>
+    </a>
+
+    <script>
+      (function () {
+        var RESTAFY_APP_ORIGIN =
+          (typeof window !== 'undefined' &&
+            typeof window.RESTAFY_APP_ORIGIN === 'string' &&
+            window.RESTAFY_APP_ORIGIN.trim()) ||
+          'https://app.restafy.shop';
+        var PARTNER_JOIN_URL =
+          (typeof window !== 'undefined' &&
+            typeof window.RESTAFY_PARTNER_JOIN_URL === 'string' &&
+            window.RESTAFY_PARTNER_JOIN_URL.trim()) ||
+          RESTAFY_APP_ORIGIN.replace(/\/$/, '') + '/api/partner-join-request';
+        var RESTAFY_WHATSAPP_E164 = '2290193527256';
+
+        document.getElementById('y').textContent = new Date().getFullYear();
+
+        function waUrl() {
+          if (!RESTAFY_WHATSAPP_E164 || !String(RESTAFY_WHATSAPP_E164).replace(/\D/g, '')) {
+            return '#rejoindre';
+          }
+          var n = String(RESTAFY_WHATSAPP_E164).replace(/\D/g, '');
+          return 'https://wa.me/' + n + '?text=' + encodeURIComponent('Bonjour Restafy, je souhaite des infos sur l\'OMS.');
+        }
+
+        var waFloat = document.getElementById('wa-float');
+        var waCta = document.getElementById('wa-cta-btn');
+        if (waFloat) waFloat.setAttribute('href', waUrl());
+        if (waCta) waCta.setAttribute('href', waUrl());
+
+        /* Gestion d'erreurs globale */
+        var errorBox = document.getElementById('global-error');
+        var errorMsg = document.getElementById('global-error-msg');
+        var errorRetry = document.getElementById('global-error-retry');
+        var errorContact = document.getElementById('global-error-contact');
+        var ERROR_LOG_KEY = 'restafy_client_errors_v1';
+
+        function safeString(x) {
+          try {
+            if (x == null) return '';
+            if (typeof x === 'string') return x;
+            if (x instanceof Error) return x.message || String(x);
+            return String(x);
+          } catch (_) {
+            return '';
+          }
+        }
+
+        function logClientError(evt) {
+          try {
+            var arr = [];
+            try {
+              arr = JSON.parse(localStorage.getItem(ERROR_LOG_KEY) || '[]') || [];
+              if (!Array.isArray(arr)) arr = [];
+            } catch (_) {
+              arr = [];
+            }
+            arr.push({
+              at: new Date().toISOString(),
+              href: String(location.href || ''),
+              message: evt.message || '',
+              stack: evt.stack || '',
+            });
+            if (arr.length > 20) arr = arr.slice(arr.length - 20);
+            localStorage.setItem(ERROR_LOG_KEY, JSON.stringify(arr));
+          } catch (_) {}
+        }
+
+        function showGlobalError(message) {
+          if (!errorBox) return;
+          if (errorMsg) errorMsg.textContent = message || 'Une erreur est survenue.';
+          if (errorContact) errorContact.setAttribute('href', waUrl() || '#rejoindre');
+          errorBox.classList.add('is-open');
+        }
+
+        if (errorRetry) {
+          errorRetry.addEventListener('click', function () {
+            try {
+              location.reload();
+            } catch (_) {}
+          });
+        }
+
+        window.addEventListener('error', function (e) {
+          var msg = '';
+          try {
+            msg = (e && e.message) || '';
+          } catch (_) {}
+          logClientError({ message: msg || 'Erreur JavaScript', stack: (e && e.error && e.error.stack) || '' });
+          showGlobalError(
+            'Le site a rencontré une erreur technique. Réessayez, ou contactez-nous si le problème persiste.'
+          );
+        });
+
+        window.addEventListener('unhandledrejection', function (e) {
+          var reason = (e && e.reason) || '';
+          var msg = safeString(reason) || 'Erreur réseau / promise';
+          var stack = reason && reason.stack ? String(reason.stack) : '';
+          logClientError({ message: msg, stack: stack });
+          showGlobalError(
+            'Une opération a échoué (réseau ou serveur). Réessayez, ou contactez-nous si le problème persiste.'
+          );
+        });
+
+        /* CTA → #rejoindre avec défilement, focus et message typé */
+        function scrollToJoinAndFocus() {
+          var section = document.getElementById('rejoindre');
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          setTimeout(function () {
+            var first = document.getElementById('fullName');
+            if (first && typeof first.focus === 'function') {
+              first.focus();
+            }
+          }, 450);
+        }
+
+        document.querySelectorAll('a[href="#rejoindre"][data-prefill-msg]').forEach(function (link) {
+          link.addEventListener('click', function (e) {
+            var prefill = link.getAttribute('data-prefill-msg');
+            if (!prefill) return;
+            e.preventDefault();
+            var ta = document.getElementById('message');
+            if (ta) {
+              var cur = String(ta.value || '').trim();
+              if (!cur) {
+                ta.value = prefill;
+              }
+            }
+            scrollToJoinAndFocus();
+            try {
+              history.replaceState(null, '', '#rejoindre');
+            } catch (_) {}
+          });
+        });
+
+        /* Cookies */
+        var CONSENT_KEY = 'restafy_cookie_consent_v1';
+        function getConsent() {
+          try {
+            var raw = localStorage.getItem(CONSENT_KEY);
+            return raw ? JSON.parse(raw) : null;
+          } catch (_) {
+            return null;
+          }
+        }
+        function setConsent(value) {
+          try {
+            localStorage.setItem(CONSENT_KEY, JSON.stringify(value));
+          } catch (_) {}
+          try {
+            var days = 180;
+            var d = new Date();
+            d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+            document.cookie =
+              'restafy_cookie_consent=' +
+              encodeURIComponent(value && value.analytics ? 'analytics' : 'essential') +
+              '; expires=' +
+              d.toUTCString() +
+              '; path=/; SameSite=Lax';
+          } catch (_) {}
+        }
+        function loadAudience() {
+          if (document.getElementById('vercel-insights')) return;
+          var s = document.createElement('script');
+          s.id = 'vercel-insights';
+          s.defer = true;
+          s.src = '/_vercel/insights/script.js';
+          document.head.appendChild(s);
+        }
+
+        var banner = document.getElementById('cookie-banner');
+        var acceptBtn = document.getElementById('cookie-accept');
+        var rejectBtn = document.getElementById('cookie-reject');
+        var settingsBtn = document.getElementById('cookie-settings-btn');
+
+        function closeBanner() {
+          if (!banner) return;
+          banner.classList.remove('is-open');
+        }
+        function openBanner() {
+          if (!banner) return;
+          banner.classList.add('is-open');
+        }
+
+        var consent = getConsent();
+        if (!consent) {
+          openBanner();
+        } else if (consent.analytics) {
+          loadAudience();
+        }
+
+        if (acceptBtn) {
+          acceptBtn.addEventListener('click', function () {
+            setConsent({ analytics: true, at: new Date().toISOString() });
+            loadAudience();
+            closeBanner();
+          });
+        }
+        if (rejectBtn) {
+          rejectBtn.addEventListener('click', function () {
+            setConsent({ analytics: false, at: new Date().toISOString() });
+            closeBanner();
+          });
+        }
+        if (settingsBtn) {
+          settingsBtn.addEventListener('click', function () {
+            openBanner();
+          });
+        }
+
+        /* Tilt 3D + reflet sur les device mockups */
+        if (window.matchMedia('(pointer:fine)').matches) {
+          var devices = document.querySelectorAll('.device');
+          devices.forEach(function (dev) {
+            dev.addEventListener('mousemove', function (e) {
+              var r = dev.getBoundingClientRect();
+              var x = e.clientX - r.left;
+              var y = e.clientY - r.top;
+              var px = (x / r.width) * 100;
+              var py = (y / r.height) * 100;
+              var tiltY = ((x / r.width) - 0.5) * 6;
+              var tiltX = ((0.5 - y / r.height)) * 4;
+              dev.style.setProperty('--device-mx', px + '%');
+              dev.style.setProperty('--device-my', py + '%');
+              dev.style.setProperty('--device-tilt-x', tiltX.toFixed(2) + 'deg');
+              dev.style.setProperty('--device-tilt-y', tiltY.toFixed(2) + 'deg');
+              dev.classList.add('is-hovered');
+            });
+            dev.addEventListener('mouseleave', function () {
+              dev.classList.remove('is-hovered');
+              dev.style.setProperty('--device-tilt-x', '0deg');
+              dev.style.setProperty('--device-tilt-y', '0deg');
+            });
+          });
+        }
+
+        /* Reveal au scroll */
+        var revealTargets = document.querySelectorAll(
+          '.section, .feature-card, .step-card, .price-card, .stat-box, .join-section, .faq-list details, .mockup-figure, .oms-flow-step, .value-card, .model-card'
+        );
+        if ('IntersectionObserver' in window) {
+          var obs = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  var parent = entry.target.parentElement;
+                  var siblingIdx = parent
+                    ? Array.prototype.indexOf.call(parent.children, entry.target)
+                    : 0;
+                  var delay = Math.min(siblingIdx * 60, 240);
+                  entry.target.style.transitionDelay = delay + 'ms';
+                  entry.target.classList.add('is-visible');
+                  obs.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+          );
+          revealTargets.forEach(function (el) { obs.observe(el); });
+        } else {
+          revealTargets.forEach(function (el) { el.classList.add('is-visible'); });
+        }
+
+        /* Formulaire partenaire */
+        var form = document.getElementById('join-form');
+        var msg = document.getElementById('join-msg');
+        var submitBtn = document.getElementById('join-submit');
+
+        if (!form || !msg || !submitBtn) return;
+
+        function showMsg(text, ok) {
+          msg.textContent = text;
+          msg.className = 'form-msg ' + (ok ? 'ok' : 'err');
+        }
+
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          msg.className = 'form-msg';
+          msg.textContent = '';
+
+          var hpEl = document.getElementById('join-hp-website');
+          var hpVal = hpEl && hpEl.value != null ? String(hpEl.value).trim() : '';
+          if (hpVal) {
+            showMsg('Demande enregistrée.', true);
+            return;
+          }
+
+          var payload = {
+            fullName: (document.getElementById('fullName') || {}).value || '',
+            email: (document.getElementById('email') || {}).value || '',
+            phone: (document.getElementById('phone') || {}).value || '',
+            restaurantName: (document.getElementById('restaurantName') || {}).value || '',
+            city: (document.getElementById('city') || {}).value || '',
+            message: (document.getElementById('message') || {}).value || '',
+            website: hpVal,
+          };
+
+          submitBtn.disabled = true;
+          try {
+            var res = await fetch(PARTNER_JOIN_URL, {
+              method: 'POST',
+              mode: 'cors',
+              credentials: 'omit',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            });
+            var raw = '';
+            try {
+              raw = await res.text();
+            } catch (_) {}
+            var data = {};
+            if (raw) {
+              try {
+                data = JSON.parse(raw);
+              } catch (_) {}
+            }
+            if (!data || typeof data !== 'object') data = {};
+
+            if (res.ok && data.ok) {
+              showMsg('Merci ! Votre demande a bien été transmise. Nous vous recontactons bientôt.', true);
+              form.reset();
+            } else {
+              var errText = typeof data.error === 'string' ? data.error : '';
+              if (!errText) {
+                if (res.status === 404) {
+                  errText =
+                    'Service d\'inscription introuvable (404). Vérifiez le déploiement ou contactez-nous sur WhatsApp.';
+                } else if (res.status >= 500) {
+                  errText =
+                    'Erreur serveur (' +
+                    res.status +
+                    '). Si cela continue, contactez-nous sur WhatsApp.';
+                } else if (!res.ok) {
+                  errText = 'Réponse serveur inattendue (HTTP ' + res.status + ').';
+                }
+              }
+              showMsg(
+                errText || 'Envoi impossible. Réessayez plus tard ou contactez-nous sur WhatsApp.',
+                false
+              );
+            }
+          } catch (err) {
+            showMsg(
+              'Connexion vers le serveur impossible (réseau ou blocage). Vérifiez votre connexion, réessayez, ou écrivez-nous sur WhatsApp.',
+              false
+            );
+          } finally {
+            submitBtn.disabled = false;
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

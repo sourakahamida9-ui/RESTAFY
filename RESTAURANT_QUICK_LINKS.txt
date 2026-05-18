@@ -1,0 +1,126 @@
+═══════════════════════════════════════════════════════════════════════════════
+🍽️  RESTAFY - LIENS RAPIDES RESTAURANTS
+═══════════════════════════════════════════════════════════════════════════════
+
+📌 LES 7 LIENS LES PLUS IMPORTANTS (À MÉMORISER)
+═══════════════════════════════════════════════════════════════════════════════
+
+1. 🏠 DASHBOARD (Accueil)
+   /restaurant/dashboard
+   └─ Vue d'ensemble + Commandes du jour
+
+2. 🍽️ MENU (Ajouter plats)
+   /restaurant/dashboard/menu
+   └─ Créer/modifier menu + Catégories
+
+3. ⚙️ PARAMÈTRES (Configuration)
+   /restaurant/dashboard/settings
+   └─ Infos restaurant, horaires, frais
+
+4. 📊 ANALYTICS (Statistiques)
+   /restaurant/dashboard/analytics
+   └─ Ventes, revenus, plats populaires
+
+5. 👥 ÉQUIPE (Staff)
+   /restaurant/dashboard/team
+   └─ Inviter livreurs, managers
+
+6. 🎉 ÉVÉNEMENTS (Soirées)
+   /restaurant/dashboard/events
+   └─ Créer soirées spéciales
+
+7. 🏷️ PROMOS (Codes réduction)
+   /restaurant/dashboard/promos
+   └─ Gérer codes promo
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔐 AUTRES LIENS IMPORTANTS
+═══════════════════════════════════════════════════════════════════════════════
+
+📱 CAISSE POS (Ventes comptoir)
+   /restaurant/dashboard/pos
+
+📋 GÉNÉRALISATION MENU (Dupliquer/importer)
+   /restaurant/dashboard/menu-generalization
+
+═══════════════════════════════════════════════════════════════════════════════
+
+👥 LIENS CLIENT (Vos clients utilisent ceci)
+═══════════════════════════════════════════════════════════════════════════════
+
+🏠 Accueil
+   /
+
+🍽️ Voir votre restaurant
+   /restaurant/[votre-slug]
+
+🛒 Panier (pour commander)
+   /cart
+
+👤 Profil client
+   /profile
+
+🎫 Mes événements/tickets
+   /my-tickets
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚨 SI VOUS ÊTES BLOQUÉ
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Pas de connexion?
+   → Aller à /auth/login
+
+2. Perdu dans l'app?
+   → Cliquer sur le logo RESTAFY (ramène à /)
+
+3. Restaurant non trouvé?
+   → Contacter super admin: /superadmin
+
+4. Problème page?
+   → Rafraîchir (Ctrl+R ou Cmd+R)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ CHECKLIST PREMIÈRE UTILISATION
+═══════════════════════════════════════════════════════════════════════════════
+
+[ ] 1. Aller à /restaurant/dashboard/settings
+       → Ajouter infos restaurant (adresse, tel, horaires)
+
+[ ] 2. Aller à /restaurant/dashboard/menu
+       → Ajouter catégories + premiers plats
+
+[ ] 3. Aller à /restaurant/dashboard/team
+       → Inviter staff
+
+[ ] 4. Aller à /restaurant/dashboard/promos
+       → Créer code promo bienvenue
+
+[ ] 5. Aller à /restaurant/dashboard/analytics
+       → Voir tableau de bord
+
+═══════════════════════════════════════════════════════════════════════════════
+
+💡 ASTUCES PRODUCTIVITÉ
+═══════════════════════════════════════════════════════════════════════════════
+
+• Mettre en favoris: /restaurant/dashboard
+  (Vous irez là 10x par jour)
+
+• Ajouter à l'écran d'accueil (mobile):
+  Menu → "Ajouter à l'écran d'accueil"
+
+• Partager restaurant aux clients:
+  /restaurant/[votre-slug]
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📚 DOCUMENTATION COMPLÈTE
+═══════════════════════════════════════════════════════════════════════════════
+
+Voir: RESTAURANT_IMPORTANT_LINKS.md
+
+═══════════════════════════════════════════════════════════════════════════════
+Généré: 10 Mars 2026

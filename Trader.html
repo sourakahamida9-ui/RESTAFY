@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mr WAL Officiel | Top Trader & Formateur - Indices Synthétiques & Trading</title>
+  <meta name="description" content="Devenez trader professionnel avec Mr WAL Officiel - Formateur expert en indices synthétiques. 13K+ abonnés, formation complète avec broker partenaire Gowt.net." />
+  <meta name="keywords" content="trading indices synthétiques, formation trading Bénin, apprendre trading, Mr WAL, Gowt.net, trading en ligne" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Mr WAL Officiel | Top Trader & Formateur" />
+  <meta property="og:description" content="Maîtrisez le trading sur indices synthétiques. Formation complète avec accès au broker Gowt.net." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://crd.co/mr-wal" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23c9a84c'/><text x='32' y='46' text-anchor='middle' font-size='38' font-family='Georgia,serif' fill='%2307070d' font-weight='bold'>W</text></svg>" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationalOrganization","name":"MIS Trading Academy","founder":{"@type":"Person","name":"Mr WAL Officiel"},"url":"https://crd.co/mr-wal","telephone":"+229197755185","address":{"@type":"PostalAddress","addressCountry":"BJ","addressLocality":"Abomey-Calavi"},"description":"Académie de trading spécialisée en indices synthétiques.","numberOfStudents":"1000+"}</script>
+  <style>
+    :root{--black:#07070d;--dark:#0d0d18;--card:#111122;--card-border:#1e1e35;--gold:#c9a84c;--gold-light:#e8c96d;--gold-dark:#9a7a30;--white:#f5f0e8;--grey:#8a8aa0;--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'DM Sans',sans-serif;--transition:0.4s cubic-bezier(0.25,0.46,0.45,0.94)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--black);color:var(--white);font-family:var(--font-body);font-weight:300;line-height:1.7;overflow-x:hidden}
+    img{max-width:100%;display:block;object-fit:cover}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+    ::selection{background:var(--gold);color:var(--black)}
+    #canvas-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.35}
+    body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.04}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--gold-dark)}
+    section{position:relative;z-index:1}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    .section-pad{padding:120px 0}
+    .label{font-size:11px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+    .label::before{content:'';display:block;width:32px;height:1px;background:var(--gold)}
+    h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15}
+
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 38px;font-family:var(--font-body);font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border:none;transition:var(--transition);text-decoration:none;position:relative;overflow:hidden}
+    .btn-gold{background:var(--gold);color:var(--black)}
+    .btn-gold::after{content:'';position:absolute;inset:0;background:var(--gold-light);transform:translateX(-101%);transition:transform .35s ease}
+    .btn-gold:hover::after{transform:translateX(0)}
+    .btn-gold span{position:relative;z-index:1}
+    .btn-outline{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.25)}
+    .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+    .gold-line{width:48px;height:2px;background:var(--gold);margin:24px 0}
+
+    /* NAVBAR */
+    nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .4s ease}
+    nav.scrolled{background:rgba(7,7,13,.94);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.15)}
+    .nav-logo{font-family:var(--font-display);font-size:22px;font-weight:600}
+    .nav-logo span{color:var(--gold)}
+    .nav-links{display:flex;gap:36px;align-items:center}
+    .nav-links a{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--grey);transition:color .3s}
+    .nav-links a:hover{color:var(--gold)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:24px;height:1.5px;background:var(--white);transition:var(--transition)}
+    .mobile-menu{display:none;position:fixed;inset:0;z-index:998;background:var(--dark);flex-direction:column;align-items:center;justify-content:center;gap:44px}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-family:var(--font-display);font-size:34px;font-weight:300;color:var(--white);transition:color .3s}
+    .mobile-menu a:hover{color:var(--gold)}
+    .mobile-close{position:absolute;top:24px;right:32px;font-size:30px;background:none;border:none;color:var(--white);cursor:pointer}
+
+    /* HERO */
+    #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:140px 0 0}
+    .hero-inner{display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:center}
+    .hero-tag{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.3);padding:6px 16px;margin-bottom:32px}
+    .hero-tag::before{content:'★';font-size:9px}
+    h1.hero-h1{font-size:clamp(50px,6vw,86px);font-weight:300;line-height:1.05;margin-bottom:28px}
+    h1.hero-h1 em{color:var(--gold);font-style:italic}
+    .hero-sub{font-size:16px;color:var(--grey);max-width:480px;line-height:1.8;margin-bottom:48px}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+    .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:72px;border:1px solid var(--card-border)}
+    .stat-item{padding:28px 24px;border-right:1px solid var(--card-border)}
+    .stat-item:last-child{border-right:none}
+    .stat-num{font-family:var(--font-display);font-size:42px;font-weight:600;color:var(--gold);line-height:1}
+    .stat-label{font-size:12px;color:var(--grey);letter-spacing:.1em;margin-top:6px}
+
+    /* HERO CARD */
+    .hero-card{background:var(--card);border:1px solid var(--card-border);position:relative;overflow:hidden}
+    .hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold-dark),var(--gold-light),var(--gold-dark));z-index:2}
+    .hero-photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top center;display:block;background:linear-gradient(160deg,#0d1030,#1a1a40);min-height:340px}
+    .hero-photo-fallback{width:100%;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#0d1030,#1a1a40);font-family:var(--font-display);font-size:100px;color:var(--gold);opacity:.2}
+    .hero-card-body{padding:28px 32px 32px}
+    .hero-card-name{font-family:var(--font-display);font-size:24px}
+    .hero-card-title{font-size:11px;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-top:6px}
+    .hero-card-loc{font-size:13px;color:var(--grey);margin-top:10px}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .badge{font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--gold-dark);color:var(--gold-light)}
+    .floating-ribbon{position:absolute;top:16px;right:-2px;z-index:3;background:var(--gold);color:var(--black);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:7px 18px}
+
+    /* TICKER */
+    .ticker-wrap{border-top:1px solid var(--card-border);border-bottom:1px solid var(--card-border);overflow:hidden;padding:14px 0;background:var(--dark);margin-top:80px}
+    .ticker{display:flex;gap:56px;animation:ticker-scroll 32s linear infinite;width:max-content}
+    .ticker-item{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;color:var(--grey)}
+    .ticker-item strong{color:var(--white)}
+    .up{color:#4caf84}.dn{color:#e05252}
+    .ticker-sep{color:var(--gold);opacity:.4}
+    @keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* ABOUT */
+    #about{background:var(--dark)}
+    .about-grid{display:grid;grid-template-columns:480px 1fr;gap:100px;align-items:start}
+    .about-photo-wrap{position:relative}
+    .about-photo-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+    .about-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;border:1px solid var(--card-border);background:linear-gradient(160deg,#0d0d25,#1a1a40)}
+    .about-photo-fallback{width:100%;aspect-ratio:3/4;background:linear-gradient(160deg,#0d0d25,#1a1a40);border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:120px;color:var(--gold);opacity:.15}
+    .about-accent{position:absolute;bottom:-28px;right:-28px;width:160px;height:160px;border:1px solid var(--gold-dark);z-index:-1}
+    .about-years{position:absolute;top:28px;left:-28px;background:var(--gold);color:var(--black);padding:22px 18px;text-align:center;z-index:2}
+    .about-years strong{font-family:var(--font-display);font-size:38px;font-weight:700;display:block}
+    .about-years small{font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+    h2.about-h2{font-size:clamp(36px,4vw,54px);font-weight:300;margin-bottom:20px}
+    h2.about-h2 em{color:var(--gold);font-style:italic}
+    .about-text{font-size:15px;color:var(--grey);line-height:1.9;margin-bottom:18px}
+    .about-creds{margin-top:36px;display:grid;gap:14px}
+    .cred-item{display:flex;gap:16px;padding:16px 20px;border-left:2px solid var(--gold-dark);background:rgba(201,168,76,.04)}
+    .cred-icon{color:var(--gold);font-size:18px;flex-shrink:0;margin-top:2px}
+    .cred-text{font-size:14px;color:var(--grey)}
+    .cred-text strong{color:var(--white);display:block;margin-bottom:2px}
+
+    /* SERVICES */
+    .services-header{text-align:center;max-width:600px;margin:0 auto 80px}
+    .services-header .label{justify-content:center}
+    .services-header .label::before{display:none}
+    h2.section-h2{font-size:clamp(34px,4vw,54px);font-weight:300}
+    h2.section-h2 em{color:var(--gold);font-style:italic}
+    .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--card-border)}
+    .service-card{background:var(--dark);padding:52px 44px;transition:background var(--transition);position:relative;overflow:hidden}
+    .service-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .5s ease}
+    .service-card:hover{background:var(--card)}
+    .service-card:hover::after{width:100%}
+    .service-num{font-family:var(--font-display);font-size:72px;font-weight:300;color:var(--gold);opacity:.1;line-height:1;position:absolute;top:20px;right:28px}
+    .service-icon{font-size:30px;margin-bottom:22px}
+    h3.service-title{font-family:var(--font-display);font-size:26px;font-weight:600;margin-bottom:14px}
+    .service-desc{font-size:14px;color:var(--grey);line-height:1.8}
+
+    /* GALERIE */
+    #formations{background:var(--dark)}
+    .formations-header{text-align:center;max-width:600px;margin:0 auto 60px}
+    .formations-header .label{justify-content:center}
+    .formations-header .label::before{display:none}
+    .formations-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:16px}
+    .formation-photo-card{position:relative;overflow:hidden;cursor:pointer}
+    .formation-photo-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(7,7,13,.75) 0%,transparent 55%);transition:opacity .3s}
+    .formation-photo-card:hover::after{opacity:.4}
+    .formation-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:linear-gradient(135deg,#0d0d25,#1a1a40);transition:transform .5s ease;min-height:200px}
+    .formation-photo-card:hover .formation-img{transform:scale(1.06)}
+    .formation-photo-fallback{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#0d0d25 0%,#1a2040 50%,#0d1530 100%);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:40px;color:var(--gold);opacity:.25}
+    .formation-photo-label{position:absolute;bottom:14px;left:16px;z-index:2;font-size:11px;color:var(--white);letter-spacing:.12em;text-transform:uppercase}
+    .formation-photo-card.large{grid-column:span 2}
+
+    /* COURSE / PRICING */
+    #course{background:var(--black)}
+    .course-inner{display:grid;grid-template-columns:1fr 460px;gap:80px;align-items:start}
+    h2.course-h2{font-size:clamp(36px,4vw,56px);font-weight:300;margin-bottom:20px}
+    h2.course-h2 em{color:var(--gold);font-style:italic}
+    .course-desc{font-size:15px;color:var(--grey);line-height:1.9;margin-bottom:40px}
+    .modules-list{display:grid;gap:10px}
+    .module-item{display:flex;align-items:center;gap:16px;padding:15px 20px;border:1px solid var(--card-border);font-size:14px;color:var(--grey);transition:border-color .3s,color .3s}
+    .module-item:hover{border-color:var(--gold-dark);color:var(--white)}
+    .module-check{color:var(--gold);font-size:14px;flex-shrink:0}
+    .pricing-card{background:var(--card);border:1px solid var(--card-border);position:relative;overflow:hidden}
+    .pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold-dark),var(--gold-light),var(--gold-dark))}
+    .pricing-header{padding:36px 32px 28px;border-bottom:1px solid var(--card-border)}
+    .pricing-badge{display:inline-block;background:var(--gold);color:var(--black);font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:4px 14px;margin-bottom:18px}
+    .pricing-name{font-family:var(--font-display);font-size:26px}
+    .pricing-price{font-family:var(--font-display);font-size:52px;color:var(--gold);line-height:1;margin:14px 0 4px}
+    .pricing-price small{font-size:20px;color:var(--grey)}
+    .pricing-usd{font-family:var(--font-display);font-size:26px;color:var(--gold-dark);margin-bottom:8px}
+    .pricing-orig{font-size:13px;color:var(--grey);text-decoration:line-through}
+    .pricing-body{padding:28px 32px}
+    .pricing-feat{display:grid;gap:12px;margin-bottom:28px}
+    .pricing-feat li{display:flex;gap:12px;font-size:14px;color:var(--grey)}
+    .pricing-feat li::before{content:'✦';color:var(--gold);font-size:10px;margin-top:4px;flex-shrink:0}
+    .pricing-feat li strong{color:var(--white)}
+    .pricing-note{font-size:12px;color:var(--grey);text-align:center;margin-top:14px}
+    .pricing-schedule{margin-top:20px;padding:18px;border:1px solid var(--card-border);font-size:13px;color:var(--grey)}
+    .pricing-schedule strong{color:var(--gold);display:block;margin-bottom:4px}
+
+    /* WA BUTTON */
+    .btn-wa{display:flex;width:100%;align-items:center;justify-content:center;gap:12px;padding:17px;background:#25D366;color:#fff;font-family:var(--font-body);font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s;text-decoration:none}
+    .btn-wa:hover{background:#1ebe5d}
+    .btn-telegram{display:flex;width:100%;align-items:center;justify-content:center;gap:12px;padding:17px;background:#0088cc;color:#fff;font-family:var(--font-body);font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s;text-decoration:none;margin-top:12px}
+    .btn-telegram:hover{background:#0077b5}
+    .wa-big-contact{display:flex;align-items:center;gap:14px;padding:18px 28px;background:#25D366;color:#fff;font-family:var(--font-body);font-size:15px;font-weight:500;transition:background .3s;cursor:pointer;text-decoration:none;margin-top:12px}
+    .wa-big-contact:hover{background:#1ebe5d}
+    .telegram-big-contact{display:flex;align-items:center;gap:14px;padding:18px 28px;background:#0088cc;color:#fff;font-family:var(--font-body);font-size:15px;font-weight:500;transition:background .3s;cursor:pointer;text-decoration:none;margin-top:12px}
+    .telegram-big-contact:hover{background:#0077b5}
+
+    /* TESTIMONIALS */
+    #testimonials{background:var(--dark)}
+    .testi-header{text-align:center;max-width:600px;margin:0 auto 72px}
+    .testi-header .label{justify-content:center}
+    .testi-header .label::before{display:none}
+    h2.testi-h2{font-size:clamp(34px,4vw,52px);font-weight:300}
+    h2.testi-h2 em{color:var(--gold);font-style:italic}
+    .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .testi-card{background:var(--card);border:1px solid var(--card-border);padding:36px 28px;transition:border-color var(--transition)}
+    .testi-card:hover{border-color:var(--gold-dark)}
+    .testi-quote{font-family:var(--font-display);font-size:60px;color:var(--gold);line-height:.5;margin-bottom:22px;opacity:.35}
+    .testi-text{font-size:14px;color:var(--grey);line-height:1.9;font-style:italic;margin-bottom:28px}
+    .testi-author{display:flex;align-items:center;gap:14px}
+    .testi-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--black);flex-shrink:0;overflow:hidden}
+    .testi-avatar img{width:100%;height:100%;object-fit:cover}
+    .testi-name{font-size:14px;font-weight:500;color:var(--white)}
+    .testi-country{font-size:12px;color:var(--grey)}
+    .stars{color:var(--gold);font-size:12px;letter-spacing:2px;margin-bottom:18px}
+
+    /* BLOG */
+    #blog{background:var(--black)}
+    .blog-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px}
+    h2.blog-h2{font-size:clamp(34px,4vw,50px);font-weight:300}
+    h2.blog-h2 em{color:var(--gold);font-style:italic}
+    .blog-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px}
+    .blog-card{background:var(--dark);border:1px solid var(--card-border);overflow:hidden;display:flex;flex-direction:column;transition:border-color var(--transition)}
+    .blog-card:hover{border-color:var(--gold-dark)}
+    .blog-img-zone{overflow:hidden;background:linear-gradient(135deg,#0d0d25,#1a1a40)}
+    .blog-img-zone img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;transition:transform .5s}
+    .blog-card:hover .blog-img-zone img{transform:scale(1.05)}
+    .blog-img-fallback{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:40px;color:var(--gold);opacity:.2}
+    .blog-card.featured .blog-img-zone img,.blog-card.featured .blog-img-fallback{aspect-ratio:4/3}
+    .blog-body{padding:24px 22px;flex:1;display:flex;flex-direction:column}
+    .blog-cat{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+    h3.blog-title{font-family:var(--font-display);font-size:22px;font-weight:600;margin-bottom:10px;line-height:1.25}
+    .blog-card.featured h3.blog-title{font-size:28px}
+    .blog-excerpt{font-size:13px;color:var(--grey);line-height:1.7;flex:1;margin-bottom:18px}
+    .blog-meta{font-size:11px;color:var(--gold-dark);letter-spacing:.08em;text-transform:uppercase}
+
+    /* CONTACT */
+    #contact{background:var(--dark)}
+    .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+    h2.contact-h2{font-size:clamp(34px,4vw,52px);font-weight:300;margin-bottom:20px}
+    h2.contact-h2 em{color:var(--gold);font-style:italic}
+    .contact-sub{font-size:15px;color:var(--grey);line-height:1.8;margin-bottom:40px}
+    .contact-item{display:flex;gap:20px;align-items:flex-start;margin-bottom:24px}
+    .contact-icon{width:48px;height:48px;flex-shrink:0;border:1px solid var(--gold-dark);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--gold)}
+    .contact-info strong{display:block;font-size:13px;color:var(--white);margin-bottom:3px}
+    .contact-info span{font-size:14px;color:var(--grey)}
+    .form{display:grid;gap:18px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .form-group{display:flex;flex-direction:column;gap:7px}
+    .form-group label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--grey)}
+    .form-group input,.form-group select,.form-group textarea{background:var(--card);border:1px solid var(--card-border);color:var(--white);font-family:var(--font-body);font-size:14px;padding:14px 16px;outline:none;transition:border-color .3s;width:100%;appearance:none}
+    .form-group select{cursor:pointer}
+    .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(138,138,160,.5)}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
+    .form-group textarea{resize:vertical;min-height:100px}
+    .form-note{font-size:12px;color:var(--grey);text-align:center;margin-top:10px}
+
+    /* FOOTER */
+    footer{background:var(--dark);border-top:1px solid var(--card-border);padding:80px 0 40px}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:56px}
+    .footer-brand-name{font-family:var(--font-display);font-size:26px;margin-bottom:14px}
+    .footer-brand-name span{color:var(--gold)}
+    .footer-brand-text{font-size:13px;color:var(--grey);line-height:1.8;max-width:280px}
+    .footer-col h4{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+    .footer-col ul{display:grid;gap:11px}
+    .footer-col ul a{font-size:13px;color:var(--grey);transition:color .3s}
+    .footer-col ul a:hover{color:var(--white)}
+    .footer-bottom{border-top:1px solid var(--card-border);padding-top:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+    .footer-copy{font-size:12px;color:var(--grey);line-height:1.7}
+    .footer-legal{display:flex;gap:20px;align-items:center}
+    .footer-legal a{font-size:12px;color:var(--grey);transition:color .3s}
+    .footer-legal a:hover{color:var(--gold)}
+    .rgpd-badge{font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border:1px solid var(--card-border);color:var(--grey)}
+
+    /* ANIMATIONS */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:.12s}
+    .reveal-delay-2{transition-delay:.24s}
+    .reveal-delay-3{transition-delay:.36s}
+    #progress-bar{position:fixed;top:0;left:0;height:2px;z-index:1000;background:linear-gradient(90deg,var(--gold-dark),var(--gold-light));width:0%;transition:width .2s ease}
+
+    /* RESPONSIVE */
+    @media(max-width:1060px){
+      .hero-inner{grid-template-columns:1fr}
+      .hero-visual{display:none}
+      .about-grid{grid-template-columns:1fr}
+      .about-visual{display:none}
+      .course-inner{grid-template-columns:1fr}
+      .blog-grid{grid-template-columns:1fr 1fr}
+      .blog-card.featured{grid-column:1/-1}
+      .footer-top{grid-template-columns:1fr 1fr}
+      .testi-grid{grid-template-columns:1fr 1fr}
+      .formations-grid{grid-template-columns:1fr 1fr}
+      .formation-photo-card.large{grid-column:span 1}
+    }
+    @media(max-width:768px){
+      .section-pad{padding:80px 0}
+      nav{padding:0 20px}
+      .nav-links{display:none}
+      .hamburger{display:flex}
+      .services-grid,.contact-inner,.testi-grid,.blog-grid,.formations-grid{grid-template-columns:1fr}
+      .form-row{grid-template-columns:1fr}
+      .footer-top{grid-template-columns:1fr;gap:36px}
+      .hero-stats{grid-template-columns:1fr}
+      .stat-item{border-right:none;border-bottom:1px solid var(--card-border)}
+      .blog-header{flex-direction:column;align-items:flex-start;gap:20px}
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<canvas id="canvas-bg"></canvas>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#accueil" class="mobile-link">Accueil</a>
+  <a href="#about" class="mobile-link">À propos</a>
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#formations" class="mobile-link">Galerie</a>
+  <a href="#course" class="mobile-link">Formation</a>
+  <a href="#testimonials" class="mobile-link">Témoignages</a>
+  <a href="#blog" class="mobile-link">Blog</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
+
+<!-- Navbar -->
+<nav id="navbar">
+  <a class="nav-logo" href="#accueil">WAL<span>.</span></a>
+  <div class="nav-links">
+    <a href="#about">À propos</a>
+    <a href="#services">Services</a>
+    <a href="#course">Formation</a>
+    <a href="#testimonials">Témoignages</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="https://t.me/+4jV86YR_JSplMWRk" class="btn btn-gold" target="_blank" rel="noopener">
+    <span>Canal Telegram</span>
+  </a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="accueil">
+  <div id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-tag">Expert en Indices Synthétiques</div>
+          <h1 class="hero-h1 reveal">Je t'aide à <br/><em>gagner de l'argent</em><br/>grâce au trading.</h1>
+          <p class="hero-sub reveal reveal-delay-1">Formation complète sur les indices synthétiques avec accès au broker Gowt.net. Rejoins mon canal Telegram privé et ma communauté de 13K+ abonnés.</p>
+          <div class="hero-actions reveal reveal-delay-2">
+            <a href="https://t.me/+4jV86YR_JSplMWRk" target="_blank" rel="noopener" class="btn btn-gold"><span>Canal Telegram</span></a>
+            <a href="https://gowt.net/ib65217" target="_blank" rel="noopener" class="btn btn-outline">Créer compte Gowt</a>
+          </div>
+          <div class="hero-stats reveal reveal-delay-3">
+            <div class="stat-item"><div class="stat-num" data-target="13">0</div><div class="stat-label">K abonnés</div></div>
+            <div class="stat-item"><div class="stat-num" data-target="1000">0</div><div class="stat-label">Personnes formées</div></div>
+            <div class="stat-item"><div class="stat-num" data-target="2023">0</div><div class="stat-label">Meilleur Jeune Trader</div></div>
+          </div>
+        </div>
+        <div class="hero-visual reveal reveal-delay-2">
+          <div class="hero-card">
+            <div class="floating-ribbon">MIS Trading Academy</div>
+            <img src="https://scontent.fcoo2-2.fna.fbcdn.net/v/t39.30808-6/353671695_271516972046832_2603930607912255596_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeGIgWD1FUxJek-g7Viiq8DQg4R-3iBMh0mDhH7eIEyHSUqQL8RxNzkFNJ3adkpbCtqFWZH9O1xXhDEzvuN7BZfk&_nc_ohc=QZFiKBOO638Q7kNvwGSls_K&_nc_oc=AdnJO9CkycTZLUmTbGlyOroCcI0rrC_7D35kPp9qVb9XmiOGxfi72XCXz4j9k8rokU8&_nc_zt=23&_nc_ht=scontent.fcoo2-2.fna&_nc_gid=jyxt3e5ACNOD8yWgFkXlWA&oh=00_AfvPmWLUvRnBvY0gDzh-7fAwLNszHd_EZqYPtPs_i5fx3w&oe=69A0C7B8" alt="Mr WAL Officiel — Expert Trading Indices Synthétiques" class="hero-photo" loading="eager"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="hero-photo-fallback" style="display:none;">WAL</div>
+            <div class="hero-card-body">
+              <div class="hero-card-name">Mr WAL Officiel</div>
+              <div class="hero-card-title">Trader & Formateur · Expert Indices Synthétiques</div>
+              <div class="hero-card-loc"><i class="fa-solid fa-location-dot" style="margin-right:6px;color:var(--gold);font-size:12px;"></i>Abomey-Calavi, Bénin</div>
+              <div class="badges">
+                <span class="badge">Meilleur Jeune Trader 2023</span>
+                <span class="badge">MIS Trading Academy</span>
+                <span class="badge">13K+ Followers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Ticker -->
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <div class="ticker-item"><strong>Volatility 10</strong> <span class="up">▲ +2.4%</span></div><div class="ticker-sep">—</div>
+        <div class="ticker-item"><strong>Volatility 25</strong> <span class="up">▲ +1.8%</span></div><div class="ticker-sep">—</div>
+        <div class="ticker-item"><strong>Volatility 50</strong> <span class="dn">▼ -0.7%</span></div><div class="ticker-sep">—</div>
+        <div class="ticker-item"><strong>Volatility 75</strong> <span class="up">▲ +3.2%</span></div><div class="ticker-sep">—</div>
+        <div class="ticker-item"><strong>Volatility 100</strong> <span class="up">▲ +5.1%</span></div><div class="ticker-sep">—</div>
+        <div class="ticker-item"><strong>Step Index</strong> <span class="dn">▼ -1.2%</span></div><div class="ticker-sep">—</div>
+        <div class="ticker-item"><strong>Boom & Crash</strong> <span class="up">▲ +4.3%</span></div><div class="ticker-sep">—</div>
+        <!-- duplicate for seamless loop -->
+        <div class="ticker-item"><strong>Volatility 10</strong> <span class="up">▲ +2.4%</span></div><div class="ticker-sep">—</div>
+        <div class="ticker-item"><strong>Volatility 25</strong> <span class="up">▲ +1.8%</span></div><div class="ticker-sep">—</div>
+        <div class="ticker-item"><strong>Volatility 50</strong> <span class="dn">▼ -0.7%</span></div><div class="ticker-sep">—</div>
+        <div class="ticker-item"><strong>Volatility 75</strong> <span class="up">▲ +3.2%</span></div><div class="ticker-sep">—</div>
+        <div class="ticker-item"><strong>Volatility 100</strong> <span class="up">▲ +5.1%</span></div><div class="ticker-sep">—</div>
+        <div class="ticker-item"><strong>Step Index</strong> <span class="dn">▼ -1.2%</span></div><div class="ticker-sep">—</div>
+        <div class="ticker-item"><strong>Boom & Crash</strong> <span class="up">▲ +4.3%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about" class="section-pad">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-years"><strong>2023</strong><small>Meilleur<br/>Jeune Trader</small></div>
+        <div class="about-photo-wrap">
+          <img src="https://scontent.fcoo2-2.fna.fbcdn.net/v/t39.30808-6/353671695_271516972046832_2603930607912255596_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeGIgWD1FUxJek-g7Viiq8DQg4R-3iBMh0mDhH7eIEyHSUqQL8RxNzkFNJ3adkpbCtqFWZH9O1xXhDEzvuN7BZfk&_nc_ohc=QZFiKBOO638Q7kNvwGSls_K&_nc_oc=AdnJO9CkycTZLUmTbGlyOroCcI0rrC_7D35kPp9qVb9XmiOGxfi72XCXz4j9k8rokU8&_nc_zt=23&_nc_ht=scontent.fcoo2-2.fna&_nc_gid=jyxt3e5ACNOD8yWgFkXlWA&oh=00_AfvPmWLUvRnBvY0gDzh-7fAwLNszHd_EZqYPtPs_i5fx3w&oe=69A0C7B8" alt="Mr WAL Officiel formateur trading" class="about-photo" loading="lazy"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="about-photo-fallback" style="display:none;">WAL</div>
+        </div>
+        <div class="about-accent"></div>
+      </div>
+      <div>
+        <div class="label reveal">À Propos</div>
+        <h2 class="about-h2 reveal">MIS Trading Academy<br/><em>meilleur entreprise</em><br/>du secteur en 2023.</h2>
+        <div class="gold-line reveal"></div>
+        <p class="about-text reveal">Je suis <strong>Mr WAL Officiel</strong> — trader professionnel et formateur spécialisé dans les indices synthétiques. Fondateur de <strong>MIS Trading Academy</strong>, reconnue meilleure entreprise du secteur du trading de l'année 2023 et meilleur jeune trader.</p>
+        <p class="about-text reveal">Ma mission : t'aider à gagner de l'argent grâce au trading avec des méthodes simples, efficaces et accessibles à tous. Que tu sois débutant ou expérimenté, je te guide pas à pas vers la rentabilité.</p>
+        <div class="about-creds reveal">
+          <div class="cred-item"><div class="cred-icon">🏆</div><div class="cred-text"><strong>Meilleur Jeune Trader 2023</strong>Distinction dans le secteur du trading pour l'excellence et les résultats.</div></div>
+          <div class="cred-item"><div class="cred-icon"><i class="fa-solid fa-building"></i></div><div class="cred-text"><strong>MIS Trading Academy</strong>Académie de trading spécialisée en indices synthétiques et stratégies gagnantes.</div></div>
+          <div class="cred-item"><div class="cred-icon"><i class="fa-brands fa-telegram"></i></div><div class="cred-text"><strong>13 000+ abonnés</strong>Communauté active sur Telegram avec signaux et formations exclusives.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section id="services" class="section-pad" style="background:var(--black);">
+  <div class="container">
+    <div class="services-header">
+      <div class="label">Ce que je propose</div>
+      <h2 class="section-h2 reveal">Une expertise,<br/><em>quatre piliers</em><br/>pour ta réussite.</h2>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card"><div class="service-num">01</div><div class="service-icon"><i class="fa-solid fa-chart-simple"></i></div><h3 class="service-title">Indices Synthétiques</h3><p class="service-desc">Maîtrise les indices Volatility, Step Index, Boom & Crash. Stratégies exclusives sur le nouveau broker Gowt.net pour maximiser tes gains.</p></div>
+      <div class="service-card"><div class="service-num">02</div><div class="service-icon"><i class="fa-brands fa-telegram"></i></div><h3 class="service-title">Canal Telegram Privé</h3><p class="service-desc">Accès à mon canal privé avec signaux en temps réel, analyses quotidiennes et support communautaire. Rejoins une communauté de 13 000+ traders.</p></div>
+      <div class="service-card"><div class="service-num">03</div><div class="service-icon"><i class="fa-solid fa-graduation-cap"></i></div><h3 class="service-title">Formation Complète</h3><p class="service-desc">Programme structuré pour débutants et avancés. Apprends à analyser les marchés, gérer ton risque et développer ta rentabilité sur le long terme.</p></div>
+      <div class="service-card"><div class="service-num">04</div><div class="service-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><h3 class="service-title">Accompagnement Personnalisé</h3><p class="service-desc">Suivi individuel adapté à ton profil et tes objectifs. Coaching privé pour accélérer ta progression et atteindre tes objectifs financiers.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALERIE FORMATIONS ══ -->
+<section id="formations" class="section-pad">
+  <div class="container">
+    <div class="formations-header">
+      <div class="label">En images</div>
+      <h2 class="section-h2 reveal">Nos <em>sessions</em> de formation.</h2>
+    </div>
+    <div class="formations-grid">
+      <div class="formation-photo-card large reveal">
+        <img src="https://via.placeholder.com/800x600/1a1a40/c9a84c?text=MIS+Trading+Academy" alt="Session de formation MIS Trading Academy" class="formation-img" loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <div class="formation-photo-fallback" style="display:none;"><i class="fa-solid fa-chart-bar" style="font-size:40px;opacity:.25;color:var(--gold);"></i></div>
+        <div class="formation-photo-label">Session Principale</div>
+      </div>
+      <div class="formation-photo-card reveal reveal-delay-1">
+        <img src="https://via.placeholder.com/400x300/1a1a40/c9a84c?text=Analyse+Technique" alt="Analyse technique indices synthétiques" class="formation-img" loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <div class="formation-photo-fallback" style="display:none;"><i class="fa-solid fa-chart-line" style="font-size:40px;opacity:.25;color:var(--gold);"></i></div>
+        <div class="formation-photo-label">Analyse Technique</div>
+      </div>
+      <div class="formation-photo-card reveal reveal-delay-1">
+        <img src="https://via.placeholder.com/400x300/1a1a40/c9a84c?text=Session+Live" alt="Session live trading Mr WAL" class="formation-img" loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <div class="formation-photo-fallback" style="display:none;"><i class="fa-solid fa-arrow-trend-up" style="font-size:40px;opacity:.25;color:var(--gold);"></i></div>
+        <div class="formation-photo-label">Session Live</div>
+      </div>
+      <div class="formation-photo-card reveal reveal-delay-2">
+        <img src="https://via.placeholder.com/400x300/1a1a40/c9a84c?text=Coaching" alt="Coaching personnalisé trading" class="formation-img" loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <div class="formation-photo-fallback" style="display:none;"><i class="fa-solid fa-graduation-cap" style="font-size:40px;opacity:.25;color:var(--gold);"></i></div>
+        <div class="formation-photo-label">Coaching</div>
+      </div>
+      <div class="formation-photo-card large reveal reveal-delay-2">
+        <img src="https://via.placeholder.com/800x600/1a1a40/c9a84c?text=Certificats" alt="Certificats MIS Trading Academy" class="formation-img" loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <div class="formation-photo-fallback" style="display:none;"><i class="fa-solid fa-trophy" style="font-size:40px;opacity:.25;color:var(--gold);"></i></div>
+        <div class="formation-photo-label">Certificats & Résultats</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COURSE / PRICING ══ -->
+<section id="course" class="section-pad">
+  <div class="container">
+    <div class="course-inner">
+      <div>
+        <div class="label reveal">Notre Programme Phare</div>
+        <h2 class="course-h2 reveal">Formation Indices Synthétiques :<br/>De <em>zéro</em> à trader<br/>rentable.</h2>
+        <div class="gold-line reveal"></div>
+        <p class="course-desc reveal">Un programme complet pour maîtriser les indices synthétiques sur Gowt.net. Stratégies exclusives, gestion du risque et psychologie du trader pour des résultats concrets.</p>
+        <div class="modules-list reveal">
+          <div class="module-item"><span class="module-check">✦</span>Introduction aux indices synthétiques (Volatility, Step, Boom & Crash)</div>
+          <div class="module-item"><span class="module-check">✦</span>Configuration et prise en main du broker Gowt.net</div>
+          <div class="module-item"><span class="module-check">✦</span>Stratégies gagnantes pour chaque type d'indice</div>
+          <div class="module-item"><span class="module-check">✦</span>Analyse technique avancée adaptée aux indices</div>
+          <div class="module-item"><span class="module-check">✦</span>Gestion du risque et money management</div>
+          <div class="module-item"><span class="module-check">✦</span>Psychologie du trader et discipline</div>
+          <div class="module-item"><span class="module-check">✦</span>Accès au canal Telegram privé avec signaux</div>
+          <div class="module-item"><span class="module-check">✦</span>Suivi personnalisé et coaching individuel</div>
+        </div>
+      </div>
+      <div class="pricing-card reveal">
+        <div class="pricing-header">
+          <div class="pricing-badge">Offre Complète</div>
+          <div class="pricing-name">Formation Premium</div>
+          <div class="pricing-price">49<small> 000 F CFA</small></div>
+          <div class="pricing-usd">/ 85 USD</div>
+          <div class="pricing-orig">Valeur estimée : 150 000 F CFA</div>
+        </div>
+        <div class="pricing-body">
+          <ul class="pricing-feat">
+            <li><strong>Accès à vie à la formation</strong></li>
+            <li>Canal Telegram privé inclus</li>
+            <li>Signaux en temps réel</li>
+            <li>Stratégies exclusives</li>
+            <li>Support WhatsApp personnalisé</li>
+            <li>Communauté de traders actifs</li>
+            <li>Mises à jour permanentes</li>
+          </ul>
+          <a href="https://t.me/+4jV86YR_JSplMWRk" target="_blank" rel="noopener" class="btn-telegram">
+            <i class="fa-brands fa-telegram" style="font-size:18px;"></i><span>Rejoindre le canal</span>
+          </a>
+          <a href="https://gowt.net/ib65217" target="_blank" rel="noopener" class="btn-wa" style="background:#25D366;margin-top:12px;">
+            <i class="fa-brands fa-whatsapp" style="font-size:18px;"></i><span>Créer compte Gowt</span>
+          </a>
+          <p class="pricing-note">Inscription directe · Réponse sous 24h</p>
+          <div class="pricing-schedule">
+            <strong><i class="fa-regular fa-calendar" style="margin-right:6px;"></i>Prochaine session</strong>
+            Formation disponible immédiatement<br/>
+            <span style="color:var(--gold)">Accès instantané après inscription</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section id="testimonials" class="section-pad">
+  <div class="container">
+    <div class="testi-header">
+      <div class="label">Preuves sociales</div>
+      <h2 class="testi-h2 reveal">Ils ont <em>transformé</em><br/>leur vie grâce au trading.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">Grâce à Mr WAL, j'ai enfin compris comment trader les indices synthétiques. Sa méthode est claire, efficace et j'ai commencé à être rentable dès le premier mois. Je recommande à 100% !</p>
+        <div class="testi-author">
+          <div class="testi-avatar">K</div>
+          <div><div class="testi-name">Koffi A.</div><div class="testi-country">Togo 🇹🇬</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">Le canal Telegram est une mine d'or. Les signaux sont précis et le support est toujours là pour répondre aux questions. MIS Trading Academy est la meilleure formation que j'aie suivie.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">F</div>
+          <div><div class="testi-name">Fatou D.</div><div class="testi-country">Sénégal 🇸🇳</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">Débutant complet il y a 3 mois, aujourd'hui je trade en toute confiance sur Gowt.net. Mr WAL prend le temps d'expliquer et de suivre chacun. Merci pour tout !</p>
+        <div class="testi-author">
+          <div class="testi-avatar">J</div>
+          <div><div class="testi-name">Jean-Marc B.</div><div class="testi-country">Cameroun 🇨🇲</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG ══ -->
+<section id="blog" class="section-pad">
+  <div class="container">
+    <div class="blog-header">
+      <div>
+        <div class="label reveal">Ressources & Analyses</div>
+        <h2 class="blog-h2 reveal">Les <em>secrets</em> des<br/>indices synthétiques.</h2>
+      </div>
+      <a href="#blog" class="btn btn-outline">Voir tout →</a>
+    </div>
+    <div class="blog-grid">
+      <article class="blog-card featured reveal" itemscope itemtype="https://schema.org/Article">
+        <div class="blog-img-zone">
+          <img src="https://via.placeholder.com/800x600/1a1a40/c9a84c?text=Volatility+Indices" alt="Volatility Indices stratégies" loading="lazy"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="blog-img-fallback" style="display:none;"><i class="fa-solid fa-chart-line" style="font-size:40px;opacity:.2;color:var(--gold);"></i></div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-cat">Indices Synthétiques</div>
+          <h3 class="blog-title" itemprop="headline">Volatility 10 à 100 : Comment choisir l'indice adapté à ton profil de trader</h3>
+          <p class="blog-excerpt">Les indices de volatilité offrent des opportunités uniques. Découvre lequel correspond le mieux à ton style de trading et comment maximiser tes gains sur chacun...</p>
+          <div class="blog-meta">15 Juillet 2025 · 6 min</div>
+        </div>
+      </article>
+      <article class="blog-card reveal reveal-delay-1">
+        <div class="blog-img-zone">
+          <img src="https://via.placeholder.com/400x300/1a1a40/c9a84c?text=Boom+%26+Crash" alt="Boom and Crash indices" loading="lazy"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="blog-img-fallback" style="display:none;"><i class="fa-solid fa-arrow-trend-up" style="font-size:40px;opacity:.2;color:var(--gold);"></i></div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-cat">Stratégies</div>
+          <h3 class="blog-title">Boom & Crash : La stratégie des pics pour des gains rapides</h3>
+          <p class="blog-excerpt">Comment identifier les points d'entrée parfaits sur les indices Boom et Crash pour profiter des mouvements violents du marché...</p>
+          <div class="blog-meta">02 Juillet 2025 · 5 min</div>
+        </div>
+      </article>
+      <article class="blog-card reveal reveal-delay-2">
+        <div class="blog-img-zone">
+          <img src="https://via.placeholder.com/400x300/1a1a40/c9a84c?text=Money+Management" alt="Gestion du risque trading" loading="lazy"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="blog-img-fallback" style="display:none;"><i class="fa-solid fa-brain" style="font-size:40px;opacity:.2;color:var(--gold);"></i></div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-cat">Gestion du risque</div>
+          <h3 class="blog-title">La règle des 2% : Protège ton capital et dure sur les marchés</h3>
+          <p class="blog-excerpt">Le money management est la clé de la longévité en trading. Voici comment appliquer la règle des 2% sur les indices synthétiques...</p>
+          <div class="blog-meta">28 Juin 2025 · 4 min</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact" class="section-pad">
+  <div class="container">
+    <div class="contact-inner">
+      <div>
+        <div class="label reveal">Contact & Inscription</div>
+        <h2 class="contact-h2 reveal">Prêt à <em>gagner</em><br/>avec le trading ?</h2>
+        <div class="gold-line reveal"></div>
+        <p class="contact-sub reveal">Rejoins ma communauté et commence ta formation dès maintenant. Contacte-moi directement pour toute question — je réponds personnellement sous 24h.</p>
+        
+        <a href="https://t.me/+4jV86YR_JSplMWRk" target="_blank" rel="noopener" class="telegram-big-contact reveal">
+          <i class="fa-brands fa-telegram" style="font-size:28px;flex-shrink:0;"></i>
+          <div>
+            <div style="font-weight:600;margin-bottom:2px;">Canal Telegram Privé</div>
+            <div style="font-size:13px;opacity:.8;">+13 000 abonnés · Signaux quotidiens</div>
+          </div>
+        </a>
+        
+        <a href="https://gowt.net/ib65217" target="_blank" rel="noopener" class="wa-big-contact reveal" style="background:#25D366;margin-top:12px;">
+          <i class="fa-brands fa-whatsapp" style="font-size:28px;flex-shrink:0;"></i>
+          <div>
+            <div style="font-weight:600;margin-bottom:2px;">Créer compte sur Gowt.net</div>
+            <div style="font-size:13px;opacity:.8;">Broder partenaire · Indices synthétiques</div>
+          </div>
+        </a>
+        
+        <div style="margin-top:40px;">
+          <div class="contact-item reveal"><div class="contact-icon"><i class="fa-solid fa-phone"></i></div><div class="contact-info"><strong>Téléphone</strong><span>01 97 75 51 85</span></div></div>
+          <div class="contact-item reveal"><div class="contact-icon"><i class="fa-solid fa-envelope"></i></div><div class="contact-info"><strong>Email</strong><span>dutywaliyou@gmail.com</span></div></div>
+          <div class="contact-item reveal"><div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div><div class="contact-info"><strong>Localisation</strong><span>Abomey-Calavi, Bénin</span></div></div>
+          <div class="contact-item reveal"><div class="contact-icon"><i class="fa-solid fa-link"></i></div><div class="contact-info"><strong>Site Web</strong><span>crd.co/mr-wal</span></div></div>
+        </div>
+      </div>
+      <!-- FORM → Telegram -->
+      <div>
+        <form class="form reveal" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group"><label for="nom">Nom et Prénom *</label><input type="text" id="nom" name="nom" placeholder="Ex : Jean Dupont" required /></div>
+            <div class="form-group"><label for="nationalite">Nationalité *</label><input type="text" id="nationalite" name="nationalite" placeholder="Ex : Béninoise" required /></div>
+          </div>
+          <div class="form-group"><label for="whatsapp">Numéro WhatsApp *</label><input type="tel" id="whatsapp" name="whatsapp" placeholder="+229 XX XX XX XX" required /></div>
+          <div class="form-group">
+            <label for="niveau">Niveau en trading *</label>
+            <select id="niveau" name="niveau" required>
+              <option value="">Sélectionnez votre niveau</option>
+              <option>Débutant complet</option>
+              <option>Intermédiaire</option>
+              <option>Avancé</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="message">Message / Objectifs</label><textarea id="message" name="message" placeholder="Partagez vos objectifs ou questions..."></textarea></div>
+          <button type="submit" class="btn-telegram"><i class="fa-brands fa-telegram" style="font-size:18px;"></i><span>Envoyer et rejoindre</span></button>
+          <p class="form-note"><i class="fa-brands fa-telegram" style="margin-right:4px;"></i>Vous serez redirigé vers Telegram avec votre message pré-rempli</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Mr WAL Officiel<span>.</span></div>
+        <p class="footer-brand-text">Trader & Formateur expert en indices synthétiques. Fondateur de MIS Trading Academy — meilleure entreprise du secteur du trading en 2023.</p>
+      </div>
+      <div class="footer-col"><h4>Navigation</h4><ul>
+        <li><a href="#accueil">Accueil</a></li><li><a href="#about">À propos</a></li>
+        <li><a href="#services">Services</a></li><li><a href="#formations">Galerie</a></li>
+        <li><a href="#course">Formation</a></li><li><a href="#testimonials">Témoignages</a></li>
+        <li><a href="#blog">Blog</a></li><li><a href="#contact">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Formation</h4><ul>
+        <li><a href="#course">Formation Premium</a></li><li><a href="https://t.me/+4jV86YR_JSplMWRk">Canal Telegram</a></li>
+        <li><a href="https://gowt.net/ib65217">Broker Gowt.net</a></li><li><a href="#blog">Articles & Analyses</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="tel:+229197755185"><i class="fa-solid fa-phone" style="margin-right:6px;"></i>01 97 75 51 85</a></li>
+        <li><a href="mailto:dutywaliyou@gmail.com"><i class="fa-solid fa-envelope" style="margin-right:6px;"></i>Email</a></li>
+        <li><a href="https://t.me/+4jV86YR_JSplMWRk"><i class="fa-brands fa-telegram" style="margin-right:6px;"></i>Telegram</a></li>
+        <li><a href="https://crd.co/mr-wal"><i class="fa-solid fa-link" style="margin-right:6px;"></i>crd.co</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025–2026 Mr WAL Officiel · MIS Trading Academy. Tous droits réservés.<br/><small style="opacity:.6;">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des résultats futurs.</small></div>
+      <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Politique RGPD</a><a href="#">CGV</a><span class="rgpd-badge">RGPD ✓</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const TELEGRAM_LINK = 'https://t.me/+4jV86YR_JSplMWRk';
+  const GOWT_LINK = 'https://gowt.net/ib65217';
+  const PHONE = '229197755185';
+  const EMAIL = 'dutywaliyou@gmail.com';
+
+  // PARTICLES
+  const canvas=document.getElementById('canvas-bg'),ctx=canvas.getContext('2d');
+  let W,H,P;
+  function initC(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+  function mkP(n){P=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.2+.3,a:Math.random()*.5+.1}));}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(201,168,76,${p.a})`;ctx.fill();});
+    for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const dx=P[i].x-P[j].x,dy=P[i].y-P[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<120){ctx.beginPath();ctx.moveTo(P[i].x,P[i].y);ctx.lineTo(P[j].x,P[j].y);ctx.strokeStyle=`rgba(201,168,76,${.1*(1-d/120)})`;ctx.lineWidth=.5;ctx.stroke();}}
+    requestAnimationFrame(draw);
+  }
+  initC();mkP(60);draw();window.addEventListener('resize',()=>{initC();mkP(60);});
+
+  // NAVBAR + PROGRESS
+  const nav=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>{
+    nav.classList.toggle('scrolled',window.scrollY>60);
+    document.getElementById('progress-bar').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+  });
+
+  // MOBILE MENU
+  document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
+  document.getElementById('mobileClose').addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open'));
+  document.querySelectorAll('.mobile-link').forEach(l=>l.addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open')));
+
+  // REVEAL
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // COUNTERS
+  function animCtr(el,t){let v=0;const iv=setInterval(()=>{v+=Math.ceil(t/70);if(v>=t){el.textContent=t+'+';clearInterval(iv);}else el.textContent=v;},28);}
+  const cObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.stat-num[data-target]').forEach(n=>animCtr(n,+n.dataset.target));cObs.unobserve(e.target);}}),{threshold:.5});
+  const hs=document.querySelector('.hero-stats');if(hs)cObs.observe(hs);
+
+  // FORM → TELEGRAM
+  document.getElementById('contactForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const nom=document.getElementById('nom').value.trim();
+    const natl=document.getElementById('nationalite').value.trim();
+    const wa=document.getElementById('whatsapp').value.trim();
+    const niv=document.getElementById('niveau').value;
+    const msg=document.getElementById('message').value.trim();
+    if(!nom||!natl||!wa||!niv){alert('Veuillez remplir tous les champs obligatoires (*)');return;}
+    const text=`Bonjour Mr WAL 👋\n\nJe souhaite rejoindre ta formation sur les indices synthétiques.\n\n📋 *Mes informations :*\n• Nom : ${nom}\n• Nationalité : ${natl}\n• WhatsApp : ${wa}\n• Niveau : ${niv}${msg?'\n• Message : '+msg:''}\n\n✅ Je suis prêt(e) à commencer ma formation !`;
+    
+    // Créer un lien Telegram avec le message (nécessite que l'utilisateur ait Telegram installé ou utilise web)
+    window.open(`https://t.me/+4jV86YR_JSplMWRk?text=${encodeURIComponent(text)}`,'_blank','noopener,noreferrer');
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "public",
+  "ignoreCommand": "bash ../scripts/vercel-ignore/landing.sh",
+  "redirects": [
+    { "source": "/r/:slug", "destination": "https://app.restafy.shop/r/:slug", "permanent": false },
+    { "source": "/:slug((?!confidentialite$|cgu$|cgv$|conditions-utilisation$|mentions-legales$|cookies$|demo$|assets$|_next$|api$|favicon.*|apple-touch-icon.*|manifest.*|sitemap\\.xml$|robots\\.txt$|404$|styles\\.css$|r$|widget$|apropos$|services$|evenements$|tarifs$|faq$|rejoindre$|partenariat$|apercus$|probleme$|confiance$|restaurants-confiance$|etapes$|pionniers$)[a-zA-Z0-9][a-zA-Z0-9_-]*)", "destination": "https://app.restafy.shop/r/:slug", "permanent": false }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    },
+    {
+      "source": "/assets/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, s-maxage=31536000, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/:file(.*\\.html)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate, max-age=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate, max-age=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
+      "source": "/:slug(apropos|services|evenements|tarifs|faq|rejoindre|partenariat|apercus|cookies|confidentialite|conditions-utilisation|cgu|cgv|mentions-legales|demo)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate, max-age=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
+      "source": "/styles.css",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate, max-age=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" }
+      ]
+    }
+  ]
+}

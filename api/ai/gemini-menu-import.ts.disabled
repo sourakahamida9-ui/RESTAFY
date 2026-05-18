@@ -1,0 +1,128 @@
+import type { VercelRequest, VercelResponse } from '@vercel/node';
+
+type GeminiItem = {
+  name: string;
+  description: string;
+  price: number | null;
+  category: string;
+};
+
+type GeminiResponse = {
+  candidates?: Array<{
+    content?: { parts?: Array<{ text?: string }> };
+    finishReason?: string;
+  }>;
+  error?: { message?: string; code?: number };
+};
+
+function sanitizeItems(items: unknown): GeminiItem[] {
+  if (!Array.isArray(items)) return [];
+  return items
+    .filter((item) => item && typeof item === 'object')
+    .map((item) => item as Record<string, unknown>)
+    .filter((item) => typeof item.name === 'string' && item.name.trim().length > 0)
+    .map((item) => ({
+      name: String(item.name).trim().slice(0, 150),
+      description: typeof item.description === 'string' ? item.description.trim().slice(0, 500) : '',
+      price: typeof item.price === 'number' && item.price >= 0 ? Math.round(item.price) : null,
+      category: typeof item.category === 'string' && item.category.trim() ? item.category.trim().slice(0, 100) : 'Plats',
+    }));
+}
+
+function parseGeminiJsonText(text: string): GeminiItem[] {
+  const cleaned = text.replace(/```json\s*/gi, '').replace(/```\s*/g, '').trim();
+  let root: unknown = null;
+
+  try {
+    root = JSON.parse(cleaned);
+  } catch {
+    const match = cleaned.match(/\[[\s\S]*\]/);
+    if (match) {
+      root = JSON.parse(match[0]);
+    }
+  }
+
+  if (Array.isArray(root)) return sanitizeItems(root);
+  if (root && typeof root === 'object') {
+    const o = root as { items?: unknown; menu?: unknown };
+    if (Array.isArray(o.items)) return sanitizeItems(o.items);
+    if (Array.isArray(o.menu)) return sanitizeItems(o.menu);
+  }
+  return [];
+}
+
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, apikey');
+
+  if (req.method === 'OPTIONS') return res.status(204).end();
+  if (req.method !== 'POST') return res.status(405).json({ success: false, error: 'Method not allowed' });
+
+  const geminiKey = (process.env.GEMINI_API_KEY || process.env.GOOGLE_AI_API_KEY || '').trim();
+  if (!geminiKey) {
+    return res.status(500).json({ success: false, error: 'GEMINI_API_KEY manquante sur Vercel (/api/ai/gemini-menu-import).' });
+  }
+
+  try {
+    const body = (typeof req.body === 'string' ? JSON.parse(req.body) : req.body ?? {}) as {
+      image?: string;
+      mimeType?: string;
+    };
+    const image = typeof body.image === 'string' ? body.image.trim() : '';
+    const mimeType = typeof body.mimeType === 'string' && body.mimeType.trim() ? body.mimeType.trim() : 'image/jpeg';
+    if (!image) {
+      return res.status(400).json({ success: false, error: 'Champ image (base64) requis.' });
+    }
+
+    const model = (process.env.GEMINI_MODEL || 'gemini-1.5-flash').trim();
+    const prompt =
+      "Tu es un assistant spécialisé dans l'extraction de menus de restaurant.\n" +
+      'Réponds UNIQUEMENT avec un JSON valide, sans markdown.\n' +
+      'Format attendu: {"success":true,"items":[{"name":"Nom du plat","description":"Courte description ou vide","price":2500,"category":"Plats"}]}';
+
+    const r = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(geminiKey)}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ inlineData: { mimeType, data: image } }, { text: prompt }] }],
+          generationConfig: {
+            temperature: 0.1,
+            topK: 32,
+            topP: 0.95,
+            maxOutputTokens: 8192,
+            responseMimeType: 'application/json',
+          },
+        }),
+      },
+    );
+
+    const raw = await r.text();
+    if (!r.ok) {
+      return res.status(500).json({ success: false, error: `Gemini API error ${r.status}: ${raw.slice(0, 220)}` });
+    }
+
+    const g = JSON.parse(raw) as GeminiResponse;
+    if (g.error?.message) {
+      return res.status(500).json({ success: false, error: `Gemini: ${g.error.message}` });
+    }
+
+    const text = g.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
+    if (!text.trim()) {
+      return res.status(500).json({ success: false, error: `Gemini sans texte (finishReason: ${g.candidates?.[0]?.finishReason ?? 'unknown'})` });
+    }
+
+    const items = parseGeminiJsonText(text);
+    return res.status(200).json({
+      success: true,
+      items,
+      count: items.length,
+      message: `${items.length} plat${items.length > 1 ? 's' : ''} extrait${items.length > 1 ? 's' : ''}`,
+    });
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    return res.status(500).json({ success: false, error: msg.slice(0, 400) });
+  }
+}

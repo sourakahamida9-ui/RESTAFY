@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Démo Restafy — Parcours clients & restaurants</title>
+    <meta
+      name="description"
+      content="Aperçu des parcours Restafy : commandes, événements, billetterie, espace restaurant. Liens vers l’application en production."
+    />
+    <!-- Chemins racine : obligatoire pour /demo (sinon le navigateur résout ./ en /demo/... → CSS 404) -->
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="/assets/favicon-32x32.png" type="image/png" sizes="32x32" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap nav">
+        <a href="/" class="logo" aria-label="Restafy — accueil vitrine">RESTAFY<span>.</span></a>
+        <nav class="nav-links" aria-label="Principal">
+          <a href="/">Accueil vitrine</a>
+          <a href="https://app.restafy.shop/" class="btn btn-primary btn-arrow" rel="noopener noreferrer">Ouvrir l’app</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap" style="padding-top: 2.5rem; padding-bottom: 4rem; max-width: 720px">
+      <p class="section-kicker">Démo</p>
+      <h1 style="margin-top: 0.5rem">Parcours Restafy en production</h1>
+      <p class="sub" style="margin-bottom: 2rem">
+        Cette page regroupe les entrées utiles pour <strong>tester</strong> ou <strong>présenter</strong> Restafy
+        tel qu’il est déployé aujourd’hui : clients, billetterie, et espace restaurateur.
+      </p>
+
+      <section class="join-section" style="margin-bottom: 2rem">
+        <h2 class="section-kicker" style="margin-bottom: 0.75rem">Convives & billetterie</h2>
+        <ul style="line-height: 1.8; margin: 0; padding-left: 1.25rem">
+          <li>
+            <a href="https://app.restafy.shop/" rel="noopener noreferrer"><strong>Accueil app</strong></a>
+            — découverte des restaurants et navigation générale.
+          </li>
+          <li>
+            <a href="https://app.restafy.shop/events" rel="noopener noreferrer"><strong>Événements & billetterie</strong></a>
+            — marketplace, achat de billets, parcours « Mes billets » côté client connecté.
+          </li>
+        </ul>
+      </section>
+
+      <section class="join-section" style="margin-bottom: 2rem">
+        <h2 class="section-kicker" style="margin-bottom: 0.75rem">Restaurants</h2>
+        <ul style="line-height: 1.8; margin: 0; padding-left: 1.25rem">
+          <li>
+            <a href="https://app.restafy.shop/restaurant/signup" rel="noopener noreferrer"><strong>Créer un restaurant</strong></a>
+            — inscription dédiée aux pros.
+          </li>
+          <li>
+            <a href="https://app.restafy.shop/restaurant/login" rel="noopener noreferrer"><strong>Connexion restaurant</strong></a>
+            — tableau de bord, menu, commandes, réservations, événements, promos, etc.
+          </li>
+        </ul>
+      </section>
+
+      <section class="join-section">
+        <h2 class="section-kicker" style="margin-bottom: 0.75rem">Vitrine & contact</h2>
+        <p class="sub" style="margin: 0">
+          Offre commerciale et formulaire partenaires :
+          <a href="/#rejoindre"><strong>Rejoindre Restafy</strong></a> sur la
+          <a href="/">page d’accueil</a>.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-bottom">
+        <p>© Restafy — Démo · Liens vers l’environnement de production.</p>
+      </div>
+    </footer>
+  </body>
+</html>
