@@ -142,9 +142,9 @@ export default function Kitchen() {
       if (!result.ok) {
         await fetchOrders();
         if (result.error === 'invalid_transition') {
-          toast.error(`Transition impossible: ${result.from} → ${result.to}`);
+          toast.error('Cette action n\'est pas possible pour le moment. Actualisez la page.');
         } else {
-          toast.error('Erreur: ' + (result.error ?? 'unknown'));
+          toast.error('Une erreur est survenue. Veuillez réessayer.');
         }
       } else {
         toast.success(target === 'preparing' ? 'Démarré en cuisine' : 'Marquée prête');

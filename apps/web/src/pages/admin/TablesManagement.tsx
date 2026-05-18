@@ -141,7 +141,7 @@ export default function TablesManagement() {
       .single();
 
     if (error) {
-      toast.error('Erreur: ' + error.message);
+      toast.error('Impossible d\'ajouter la table. Veuillez réessayer.');
     } else if (data) {
       setTables(prev => [...prev, data as TableRow]);
       toast.success(`Table ${newNumber} ajoutée`);
@@ -163,7 +163,7 @@ export default function TablesManagement() {
       .eq('id', table.id);
 
     if (error) {
-      toast.error('Erreur: ' + error.message);
+      toast.error('Impossible de modifier la table. Veuillez réessayer.');
       return false;
     }
 
@@ -181,7 +181,7 @@ export default function TablesManagement() {
       .eq('id', tableId);
 
     if (error) {
-      toast.error('Erreur: ' + error.message);
+      toast.error('Impossible de supprimer la table. Veuillez réessayer.');
       return;
     }
 

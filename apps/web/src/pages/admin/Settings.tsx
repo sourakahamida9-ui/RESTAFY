@@ -439,7 +439,7 @@ export default function Settings() {
     } catch (err) {
       if (import.meta.env.DEV) console.error('[Settings] save error:', err);
       // CORRECTION: alert() → toast.error()
-      toast.error(`Erreur : ${err instanceof Error ? err.message : 'Erreur inconnue'}`);
+      toast.error('Impossible de sauvegarder les paramètres. Veuillez réessayer.');
     } finally {
       setSaving(false);
     }
@@ -460,7 +460,7 @@ export default function Settings() {
           Votre profil n'est pas lié à un restaurant. Contactez l'administrateur.
         </p>
         <p className="text-xs text-red-400 mt-4">
-          Profile ID: {profile?.id || 'N/A'} | Role: {profile?.role || 'N/A'}
+          Contactez le support si le problème persiste.
         </p>
       </div>
     </div>
