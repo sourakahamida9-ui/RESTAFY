@@ -1,13 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { getSupabaseAdmin as getMemoizedSupabaseAdmin } from './_shared/supabaseAdmin';
 import { checkRateLimit, getClientIp } from './_shared/rateLimit';
-
-const ALLOWED_ORIGINS = [
-  'https://app.restafy.shop',
-  'https://scan.restafy.shop',
-  'https://restafy.shop',
-  'https://www.restafy.shop',
-];
+import { applyCors } from './_shared/cors';
 
 type TeamScanAccess = {
   tokenId: string;
@@ -42,29 +36,6 @@ const ALLOWED_STATUSES = new Set([
   'delivered',
   'cancelled',
 ]);
-
-function isOriginAllowed(origin: string): boolean {
-  if (!origin) return false;
-  if (ALLOWED_ORIGINS.includes(origin)) return true;
-  try {
-    const { hostname } = new URL(origin);
-    if (hostname === 'localhost' || hostname === '127.0.0.1') return true;
-    if (hostname.endsWith('.restafy.shop')) return true;
-    if (hostname.endsWith('.vercel.app')) return true;
-    return false;
-  } catch {
-    return false;
-  }
-}
-
-function applyCors(res: VercelResponse, req: VercelRequest): void {
-  const origin = typeof req.headers.origin === 'string' ? req.headers.origin : '';
-  const allowedOrigin = isOriginAllowed(origin) ? origin : ALLOWED_ORIGINS[0];
-  res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.setHeader('Vary', 'Origin');
-}
 
 class ServerConfigError extends Error {
   constructor(message: string) {

@@ -71,7 +71,12 @@ let restaurantCache: {
   userId: string | null;
 } = { data: null, timestamp: 0, userId: null };
 
-const RESTAURANT_CACHE_DURATION = 60 * 1000; // 60 secondes
+const RESTAURANT_CACHE_DURATION = 15 * 1000; // 15 seconds — shorter to reflect admin changes faster
+
+/** Invalidate the restaurant cache so the next fetch gets fresh data from DB. */
+export function invalidateRestaurantCache(): void {
+  restaurantCache = { data: null, timestamp: 0, userId: null };
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // useRestaurants

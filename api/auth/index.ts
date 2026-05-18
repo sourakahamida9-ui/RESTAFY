@@ -174,33 +174,15 @@ async function confirmUserEmailViaGoTrue(
 
 const MAX_AGE_MS = 48 * 60 * 60 * 1000;
 
-const ALLOWED_ORIGINS = [
-  'https://app.restafy.shop',
-  'https://restafy.shop',
-  'https://www.restafy.shop',
-];
-
-function isOriginAllowed(origin: string): boolean {
-  if (!origin) return false;
-  if (ALLOWED_ORIGINS.includes(origin)) return true;
-  try {
-    const { hostname } = new URL(origin);
-    if (hostname === 'restafy.shop' || hostname.endsWith('.restafy.shop')) return true;
-    if (hostname.endsWith('.vercel.app')) return true;
-    if (hostname === 'localhost' || hostname === '127.0.0.1') return true;
-    return false;
-  } catch {
-    return false;
-  }
-}
-
+// CORS — uses centralized config; auth also allows the `apikey` header.
+import { applyCors as _baseCors } from '../_shared/cors';
 function applyCors(res: VercelResponse, req: VercelRequest): void {
-  const origin = typeof req.headers.origin === 'string' ? req.headers.origin : '';
-  const allowedOrigin = isOriginAllowed(origin) ? origin : ALLOWED_ORIGINS[0];
-  res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, apikey');
-  res.setHeader('Vary', 'Origin');
+  _baseCors(res, req);
+  // auth endpoint additionally needs the `apikey` header
+  const prev = String(res.getHeader('Access-Control-Allow-Headers') || '');
+  if (!prev.includes('apikey')) {
+    res.setHeader('Access-Control-Allow-Headers', prev + ', apikey');
+  }
 }
 
 function metadataRoleMatchesExpected(
