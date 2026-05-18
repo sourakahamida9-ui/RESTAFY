@@ -106,7 +106,7 @@ export function handleSupabaseError(error: SupabaseError | unknown): {
   // Gestion par motifs textuels
   if (rawMessage.includes('Bucket not found')) {
     return {
-      userMessage: 'Erreur serveur: bucket manquant',
+      userMessage: 'Un problème est survenu. Veuillez réessayer',
       devMessage: rawMessage,
       code: 'BUCKET_NOT_FOUND',
     };
@@ -114,7 +114,7 @@ export function handleSupabaseError(error: SupabaseError | unknown): {
 
   if (rawMessage.includes('Invalid URL')) {
     return {
-      userMessage: 'Erreur configuration. Contactez l\'administrateur',
+      userMessage: 'Un problème est survenu. Veuillez réessayer',
       devMessage: rawMessage,
       code: 'INVALID_CONFIG',
     };
@@ -122,7 +122,7 @@ export function handleSupabaseError(error: SupabaseError | unknown): {
 
   if (rawMessage.includes('infinite recursion')) {
     return {
-      userMessage: 'Erreur système détectée. Veuillez recharger',
+      userMessage: 'Un problème est survenu. Veuillez recharger la page',
       devMessage: rawMessage,
       code: 'RECURSION_ERROR',
     };
@@ -138,7 +138,7 @@ export function handleSupabaseError(error: SupabaseError | unknown): {
 
   if (rawMessage.includes('CORS') || rawMessage.includes('cors')) {
     return {
-      userMessage: 'Erreur de configuration serveur',
+      userMessage: 'Un problème est survenu. Veuillez réessayer',
       devMessage: rawMessage,
       code: 'CORS_ERROR',
     };

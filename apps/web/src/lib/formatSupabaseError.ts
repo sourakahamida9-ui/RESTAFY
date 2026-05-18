@@ -64,8 +64,7 @@ export function formatAuthSignupErrorMessage(raw: string): string {
   if (/database error saving new user|saving new user/i.test(msg)) {
     return (
       'Impossible de finaliser le profil (souvent un numéro de téléphone déjà utilisé sur un autre compte). ' +
-      'Utilisez un autre numéro ou laissez-le vide, puis réessayez. ' +
-      'Si vous gérez la base : ré-exécutez scripts/082-handle-new-user-safe-role.sql sur Supabase.'
+      'Utilisez un autre numéro ou laissez-le vide, puis réessayez.'
     );
   }
   if (/rate limit|over_email_send|email rate limit|too many.*email/i.test(msg)) {
@@ -79,8 +78,7 @@ export function formatAuthSignupErrorMessage(raw: string): string {
   }
   if (/failed to fetch|load failed|networkerror|network error/i.test(msg)) {
     return (
-      'Connexion au serveur impossible. Vérifiez Internet, que le projet Supabase est actif, et déployez les fonctions « register-confirmed » / « confirm-restaurant-signup ». ' +
-      'Sinon : Supabase → Authentication → Email → désactiver « Confirm email » pour permettre l’inscription sans ces fonctions.'
+      'Connexion au serveur impossible. Vérifiez votre connexion Internet et réessayez dans quelques instants.'
     );
   }
   return msg;
@@ -119,7 +117,7 @@ export function formatAuthErrorMessage(err: unknown): string {
   if (/database error saving new user|saving new user/i.test(combined)) {
     return (
       'Impossible de finaliser le profil (souvent un numéro de téléphone déjà utilisé). ' +
-      'Essayez un autre numéro ou contactez le support. Côté technique : exécuter scripts/082 sur Supabase.'
+      'Essayez un autre numéro ou contactez le support.'
     );
   }
   if (/signup.*disabled|signups not allowed|email signups are disabled/i.test(combined)) {
@@ -127,8 +125,8 @@ export function formatAuthErrorMessage(err: unknown): string {
   }
   if (/server_timeout/i.test(raw)) {
     return (
-      'Le service met du temps à répondre. Réessayez dans quelques secondes ; ' +
-      'vérifiez votre connexion et le tableau de statut Supabase si le problème continue.'
+      'Le service met du temps à répondre. ' +
+      'Vérifiez votre connexion et réessayez dans quelques secondes.'
     );
   }
 
