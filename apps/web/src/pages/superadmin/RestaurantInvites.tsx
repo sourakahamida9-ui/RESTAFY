@@ -115,7 +115,7 @@ export default function RestaurantInvites() {
       if (delError) throw delError;
       setInvites(prev => prev.filter(i => i.id !== id));
     } catch (err: any) {
-      alert(`Erreur suppression: ${err.message}`);
+      alert('Impossible de supprimer le lien. Veuillez réessayer.');
     }
   };
 

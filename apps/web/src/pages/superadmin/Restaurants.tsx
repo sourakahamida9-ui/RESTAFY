@@ -274,7 +274,7 @@ export default function SuperAdminRestaurants() {
         if (import.meta.env.DEV) console.warn('[Email] Email du propriétaire introuvable pour:', restaurant.name);
       }
     } catch (err: any) {
-      toast.error(`Erreur inattendue : ${err instanceof Error ? err.message : 'Erreur'}`);
+      toast.error('Une erreur inattendue est survenue. Veuillez réessayer.');
     } finally {
       setActionLoading(null);
     }
