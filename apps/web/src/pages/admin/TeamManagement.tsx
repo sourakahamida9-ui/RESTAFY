@@ -405,7 +405,7 @@ export default function TeamManagement() {
       setMembers(prev => prev.filter(m => m.id !== memberId));
       toast.success('Membre supprimé');
     } catch (err: any) {
-      toast.error('Erreur: ' + err.message);
+      toast.error('Impossible de supprimer le membre. Veuillez réessayer.');
     }
   };
 
@@ -420,7 +420,7 @@ export default function TeamManagement() {
       if (error) throw error;
       setMembers(prev => prev.map(m => m.id === member.id ? { ...m, is_active: newVal } : m));
     } catch (err: any) {
-      toast.error('Erreur: ' + err.message);
+      toast.error('Impossible de modifier le statut du membre. Veuillez réessayer.');
     }
   };
 

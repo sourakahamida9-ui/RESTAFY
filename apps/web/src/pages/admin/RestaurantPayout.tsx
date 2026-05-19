@@ -188,7 +188,7 @@ export default function RestaurantPayout() {
 
     } catch (err: any) {
       console.error('Withdraw error:', err);
-      toast.error(err.message || 'Erreur lors du retrait');
+      toast.error('Impossible d\'effectuer le retrait. Veuillez réessayer.');
     } finally {
       setProcessingWithdraw(false);
     }
