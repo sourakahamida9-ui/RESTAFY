@@ -173,7 +173,7 @@ export default function SuperAdminRestaurants() {
       setEmailMessage('');
     } catch (error: any) {
       if (import.meta.env.DEV) console.error('[Email] Error:', error);
-      toast.error(error.message || 'Erreur lors de l\'envoi de l\'email');
+      toast.error('Impossible d\'envoyer l\'email. Veuillez réessayer.');
     } finally {
       setSendingEmail(false);
     }
@@ -199,7 +199,7 @@ export default function SuperAdminRestaurants() {
         if (error.code === '42501' || error.message?.includes('policy') || error.message?.includes('permission')) {
           setRlsError(true);
         } else {
-          setGeneralError(error.message);
+          setGeneralError('Impossible de charger les restaurants. Veuillez réessayer.');
         }
         return;
       }
@@ -223,7 +223,7 @@ export default function SuperAdminRestaurants() {
       }));
       setRestaurants(mapped);
     } catch (err: any) {
-      setGeneralError(err.message);
+      setGeneralError('Une erreur est survenue. Veuillez réessayer.');
     } finally {
       setLoading(false);
     }
@@ -247,7 +247,7 @@ export default function SuperAdminRestaurants() {
         if (error.code === '42501' || error.message?.includes('policy')) {
           setRlsError(true);
         } else {
-          toast.error(`Erreur : ${error.message}`);
+          toast.error('Impossible de modifier le statut. Veuillez réessayer.');
         }
         return;
       }

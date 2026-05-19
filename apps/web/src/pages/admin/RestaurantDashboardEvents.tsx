@@ -374,7 +374,7 @@ export default function RestaurantDashboardEvents() {
       toast.success('Événement supprimé');
       void fetchAll(true);
     } catch (err: unknown) {
-      toast.error(err instanceof Error ? err.message : 'Suppression impossible');
+      toast.error('Impossible de supprimer l\'événement. Veuillez réessayer.');
     }
   };
 
@@ -386,7 +386,7 @@ export default function RestaurantDashboardEvents() {
     if (!error) {
       setEvents((prev) => prev.map((e) => (e.id === event.id ? { ...e, is_published: !e.is_published } : e)));
       toast.success(event.is_published ? 'Événement dépublié' : 'Événement publié');
-    } else toast.error(error.message);
+    } else toast.error('Impossible de modifier la publication. Veuillez réessayer.');
   };
 
   const validateScan = async (rawOverride?: string) => {

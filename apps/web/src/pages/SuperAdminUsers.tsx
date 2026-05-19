@@ -321,7 +321,7 @@ export default function SuperAdminUsers() {
       setUserToDelete(null);
 
     } catch (error) {
-      alert(error instanceof Error ? error.message : 'Erreur lors de la suppression');
+      alert('Impossible de supprimer l\'utilisateur. Veuillez réessayer.');
     } finally {
       setIsDeleting(false);
     }

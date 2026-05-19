@@ -1152,7 +1152,7 @@ function SecuritySettings() {
     setSaving(true);
     const { error } = await supabase.auth.updateUser({ password: form.next });
     setSaving(false);
-    if (error) setMsg({ text: error.message, ok: false });
+    if (error) setMsg({ text: 'Impossible de modifier le mot de passe. Veuillez réessayer.', ok: false });
     else { setForm({ next: '', confirm: '' }); setMsg({ text: 'Mot de passe modifié avec succès ✓', ok: true }); }
     setTimeout(() => setMsg(null), 4000);
   };

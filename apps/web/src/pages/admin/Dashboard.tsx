@@ -305,7 +305,7 @@ export default function Dashboard() {
       }
       if (cancelled) return;
       if (error) {
-        toast.error("Impossible d'activer l'établissement : " + error.message);
+        toast.error("Impossible d'activer l'établissement. Veuillez réessayer.");
         return;
       }
       setRestaurant((r) =>

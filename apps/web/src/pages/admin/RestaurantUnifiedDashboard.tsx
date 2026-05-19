@@ -516,7 +516,7 @@ export default function RestaurantUnifiedDashboard() {
       toast.success(`Commande ${ACTION_LABELS[newStatus] || 'mise à jour'}`);
       stopAlerts();
     } else {
-      toast.error('Erreur: ' + error.message);
+      toast.error('Impossible de mettre à jour la commande. Veuillez réessayer.');
     }
   }, [orders, restaurantId, stopAlerts]);
 

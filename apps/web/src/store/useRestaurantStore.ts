@@ -75,7 +75,7 @@ export const useRestaurantStore = create<RestaurantState>((set) => ({
       set({ menuItems, loading: false });
     } catch (error) {
       set({
-        error: error instanceof Error ? error.message : 'Impossible de charger le menu',
+        error: 'Impossible de charger le menu. Veuillez réessayer.',
         loading: false,
       });
     }
@@ -95,7 +95,7 @@ export const useRestaurantStore = create<RestaurantState>((set) => ({
         ),
       }));
     } catch (error) {
-      set({ error: error instanceof Error ? error.message : 'Failed to update item' });
+      set({ error: 'Impossible de modifier l\'article. Veuillez réessayer.' });
     }
   },
 }));

@@ -326,7 +326,7 @@ export default function SuperAdminUsers() {
 
     } catch (error) {
       if (import.meta.env.DEV) console.error('Error deleting user:', error);
-      toast.error(error instanceof Error ? error.message : 'Erreur lors de la suppression');
+      toast.error('Impossible de supprimer l\'utilisateur. Veuillez réessayer.');
     } finally {
       setIsDeleting(false);
     }

@@ -718,11 +718,8 @@ export default function Home() {
                 <div className="mb-5 p-4 bg-red-50 border border-red-100 rounded-xl text-sm text-red-700 space-y-2">
                   <p className="font-bold">Impossible de charger les restaurants</p>
                   <p className="text-red-600/90 text-xs leading-relaxed">
-                    Ce n’est pas toujours un problème de connexion internet. Détail technique :
+                    Vérifiez votre connexion internet et réessayez.
                   </p>
-                  <pre className="text-[11px] font-mono bg-white/80 border border-red-100 rounded-lg p-3 overflow-x-auto whitespace-pre-wrap break-words text-red-800">
-                    {error.message}
-                  </pre>
                   <button
                     type="button"
                     onClick={() => refetch()}

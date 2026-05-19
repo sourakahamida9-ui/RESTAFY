@@ -113,7 +113,7 @@ export default function Analytics() {
       {error && (
         <div className="bg-red-500/10 border border-red-500/20 p-4 rounded-2xl text-red-400 text-sm flex items-center gap-3">
           <Activity className="w-5 h-5" />
-          {error.message || 'Erreur lors du chargement des données'}
+          Impossible de charger les données. Veuillez réessayer.
         </div>
       )}
 
