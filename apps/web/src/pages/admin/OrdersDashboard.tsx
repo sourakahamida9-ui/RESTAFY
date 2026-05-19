@@ -619,7 +619,7 @@ export default function OrdersDashboard() {
           .update({ driver_id: picked.id, driver_assigned_at: new Date().toISOString() })
           .eq('id', orderId);
         if (drvErr) {
-          toast.error('Erreur assignation livreur: ' + drvErr.message);
+          toast.error('Impossible d\'assigner le livreur. Veuillez réessayer.');
           return;
         }
       } else {
@@ -655,9 +655,9 @@ export default function OrdersDashboard() {
     if (!result.ok) {
       setOrders(prev);
       if (result.error === 'invalid_transition') {
-        toast.error(`Transition impossible: ${result.from} → ${result.to}`);
+        toast.error('Cette action n\'est pas possible pour le moment. Actualisez la page.');
       } else {
-        toast.error('Erreur: ' + (result.error ?? 'unknown'));
+        toast.error('Une erreur est survenue. Veuillez réessayer.');
       }
       return;
     }
@@ -675,13 +675,13 @@ export default function OrdersDashboard() {
     const { error: reasonErr } = await supabase.from('orders')
       .update({ cancel_reason: reason }).eq('id', id);
     if (reasonErr) {
-      toast.error('Erreur: ' + reasonErr.message);
+      toast.error('Impossible d\'annuler la commande. Veuillez réessayer.');
       return;
     }
 
     const cancelResult = await changeOrderStatus(id, 'cancelled', 'desktop');
     if (!cancelResult.ok) {
-      toast.error('Erreur: ' + (cancelResult.error ?? 'unknown'));
+      toast.error('Impossible d\'annuler la commande. Veuillez réessayer.');
     } else {
       toast.success('Commande annulée');
     }
@@ -694,8 +694,8 @@ export default function OrdersDashboard() {
     const { error: e } = await supabase.from('orders')
       .update({ driver_id: driverId, driver_assigned_at: driverId ? new Date().toISOString() : null, updated_at: new Date().toISOString() })
       .eq('id', orderId);
-    if (e) toast.error('Erreur: ' + e.message);
-    else toast.success(driverId ? 'Livreur assigne' : 'Livreur retire');
+    if (e) toast.error('Impossible de modifier le livreur. Veuillez réessayer.');
+    else toast.success(driverId ? 'Livreur assigné' : 'Livreur retiré');
   };
 
   // Set prep time
@@ -705,8 +705,8 @@ export default function OrdersDashboard() {
     const { error: e } = await supabase.from('orders')
       .update({ prep_time_min: minutes, estimated_delivery: estimated, updated_at: new Date().toISOString() })
       .eq('id', orderId);
-    if (e) toast.error('Erreur: ' + e.message);
-    else toast.success(`Temps de preparation: ${minutes} min`);
+    if (e) toast.error('Impossible de modifier le temps de préparation. Veuillez réessayer.');
+    else toast.success(`Temps de préparation : ${minutes} min`);
   };
 
   // Filter

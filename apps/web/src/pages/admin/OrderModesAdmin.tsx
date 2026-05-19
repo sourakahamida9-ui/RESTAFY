@@ -42,9 +42,8 @@ export default function OrderModesAdmin() {
         if (err) throw err;
         setModes(data || []);
       } catch (err) {
-        const msg = err instanceof Error ? err.message : 'Erreur de chargement';
-        console.error('Error fetching modes:', msg);
-        setError(msg);
+        if (import.meta.env.DEV) console.error('Error fetching modes:', err);
+        setError('Impossible de charger les modes de commande');
       } finally {
         setLoading(false);
       }
@@ -76,9 +75,8 @@ export default function OrderModesAdmin() {
       setEditing(null);
       setTimeout(() => setSuccess(null), 3000);
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Erreur de sauvegarde';
-      console.error('Error saving:', msg);
-      setError(msg);
+      if (import.meta.env.DEV) console.error('Error saving:', err);
+      setError('Impossible de sauvegarder. Veuillez réessayer.');
     }
   };
 
@@ -97,9 +95,8 @@ export default function OrderModesAdmin() {
       setSuccess('Mode supprimé');
       setTimeout(() => setSuccess(null), 3000);
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Erreur de suppression';
-      console.error('[v0] Error deleting:', msg);
-      setError(msg);
+      if (import.meta.env.DEV) console.error('[v0] Error deleting:', err);
+      setError('Impossible de supprimer. Veuillez réessayer.');
     }
   };
 
@@ -116,8 +113,8 @@ export default function OrderModesAdmin() {
         m.id === id ? { ...m, is_active: !currentStatus } : m
       ));
     } catch (err) {
-      console.error('[v0] Error toggling:', err);
-      setError(err instanceof Error ? err.message : 'Erreur');
+      if (import.meta.env.DEV) console.error('[v0] Error toggling:', err);
+      setError('Impossible de modifier le statut. Veuillez réessayer.');
     }
   };
 

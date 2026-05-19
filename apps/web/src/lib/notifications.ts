@@ -190,8 +190,15 @@ export const createNotification = async (userId: string, payload: NotificationPa
   } catch (e) { console.error('[Notification] Failed:', e); }
 };
 
-export const sendEmailNotification = async (to: string, subject: string, _html: string): Promise<boolean> => {
-  console.log('[Email]', { to, subject }); return true;
+export const sendEmailNotification = async (to: string, subject: string, html: string): Promise<boolean> => {
+  try {
+    const { sendEmail } = await import('./email');
+    const result = await sendEmail({ to, subject, htmlContent: html });
+    return result.success;
+  } catch (err) {
+    console.error('[Notification] sendEmailNotification failed:', err);
+    return false;
+  }
 };
 
 export const notifyNewOrder = (orderNumber: string, total: number, customerName?: string): void => {

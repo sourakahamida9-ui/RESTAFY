@@ -145,7 +145,9 @@ export function useKkiapay(): UseKkiapayResult {
       });
 
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Erreur inconnue';
+      const msg = (err instanceof Error && (err.message.includes('widget') || err.message.includes('Kkiapay') || err.message.includes('Clé API') || err.message.includes('Rechargez')))
+        ? err.message
+        : 'Une erreur est survenue avec le paiement. Veuillez réessayer.';
       if (mountedRef.current) {
         setError(msg);
         setLoading(false);
@@ -194,7 +196,9 @@ export function useKkiapay(): UseKkiapayResult {
         fees: data?.fees,
       };
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Erreur de vérification';
+      const msg = (err instanceof Error && (err.message.includes('Session expirée') || err.message.includes('Vérification')))
+        ? err.message
+        : 'Impossible de vérifier le paiement. Veuillez réessayer.';
       setError(msg);
       return { success: false, error: msg };
     } finally {

@@ -205,7 +205,7 @@ export default function Profile() {
     setSaving(true);
     const { error } = await supabase.auth.updateUser({ password: pwForm.next });
     setSaving(false);
-    if (error) showToast(error.message, 'error');
+    if (error) showToast('Impossible de modifier le mot de passe. Veuillez réessayer.', 'error');
     else {
       setPwForm({ current: '', next: '', confirm: '' });
       showToast('Mot de passe modifié ✓');

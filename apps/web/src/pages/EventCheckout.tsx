@@ -113,16 +113,8 @@ export default function EventCheckout() {
 
   const isFormValid = formData.name.trim() && formData.email.trim() && formData.phone.trim();
 
-  const extractErrorMessage = (err: unknown): string => {
-    if (!err) return 'Erreur inconnue';
-    if (err instanceof Error) return err.message;
-    if (typeof err === 'object') {
-      const e = err as Record<string, unknown>;
-      if (typeof e.message === 'string') return e.message;
-      if (typeof e.details === 'string') return e.details;
-      if (typeof e.hint === 'string') return e.hint;
-    }
-    return String(err);
+  const extractErrorMessage = (_err: unknown): string => {
+    return 'Une erreur est survenue. Veuillez réessayer.';
   };
 
   const [isSubmitting, setIsSubmitting] = useState(false);

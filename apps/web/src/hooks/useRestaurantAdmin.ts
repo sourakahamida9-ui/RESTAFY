@@ -205,7 +205,7 @@ export function useRestaurantPayments(restaurantId: string | null | undefined) {
       } catch (err) {
         if (import.meta.env.DEV) console.error('[useRestaurantPayments] Erreur chargement paiements:', err);
         if (mounted) {
-          setPaymentError(err instanceof Error ? err.message : 'Impossible de charger les paiements');
+          setPaymentError('Impossible de charger les paiements');
         }
       } finally {
         if (mounted) setLoading(false);

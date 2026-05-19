@@ -18,9 +18,9 @@ export function useEmailService() {
       }
       return result;
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Failed to send email';
+      const message = 'Impossible d\'envoyer l\'email de confirmation.';
       setError(message);
-      console.error('[Email] Order email error:', message);
+      if (import.meta.env.DEV) console.error('[Email] Order email error:', err);
       return { success: false, error: message };
     } finally {
       setLoading(false);
@@ -38,9 +38,9 @@ export function useEmailService() {
       }
       return result;
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Failed to send email';
+      const message = 'Impossible d\'envoyer l\'email du billet.';
       setError(message);
-      console.error('[Email] Ticket email error:', message);
+      if (import.meta.env.DEV) console.error('[Email] Ticket email error:', err);
       return { success: false, error: message };
     } finally {
       setLoading(false);

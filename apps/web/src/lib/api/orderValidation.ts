@@ -142,7 +142,7 @@ export async function validateAndCalculateOrder(input: OrderValidationInput): Pr
     console.error('[Order Validation]', error);
     return { 
       valid: false, 
-      error: error instanceof Error ? error.message : 'Erreur lors de la validation' 
+      error: 'Erreur lors de la validation de la commande. Veuillez réessayer.' 
     };
   }
 }

@@ -390,7 +390,7 @@ export default function RestaurantDetail() {
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err);
       if (msg.includes('unique') || msg.includes('duplicate')) toast.error('Vous avez déjà noté cette commande');
-      else toast.error('Erreur : ' + msg);
+      else toast.error('Une erreur est survenue. Veuillez réessayer.');
     } finally { setSubmittingReview(false); }
   }, [user, restaurant?.id, orderIdForReview, newReview]);
 

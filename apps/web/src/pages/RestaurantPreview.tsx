@@ -199,9 +199,8 @@ export default function RestaurantPreview() {
         if (cats.length > 0) setActiveCategory(cats[0].id);
 
       } catch (err: unknown) {
-        const msg = err instanceof Error ? err.message : String(err);
-        console.error('[Preview] error:', msg);
-        if (!cancelled) setError(msg);
+        if (import.meta.env.DEV) console.error('[Preview] error:', err);
+        if (!cancelled) setError('Impossible de charger le restaurant');
       } finally {
         if (!cancelled) setLoading(false);
       }

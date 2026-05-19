@@ -57,7 +57,7 @@ export default function RestaurantSlug() {
       .then(({ data, error }) => {
         if (cancelled) return;
         if (error) {
-          toast.error('Impossible de charger le restaurant : ' + error.message);
+          toast.error('Impossible de charger le restaurant. Veuillez réessayer.');
           setRestaurant(null);
         } else if (data) {
           const row = data as Restaurant;

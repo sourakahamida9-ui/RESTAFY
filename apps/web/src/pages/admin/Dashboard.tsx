@@ -305,7 +305,7 @@ export default function Dashboard() {
       }
       if (cancelled) return;
       if (error) {
-        toast.error("Impossible d'activer l'établissement : " + error.message);
+        toast.error("Impossible d'activer l'établissement. Veuillez réessayer.");
         return;
       }
       setRestaurant((r) =>
@@ -414,7 +414,7 @@ export default function Dashboard() {
             .update({ driver_id: picked.id, driver_assigned_at: new Date().toISOString() })
             .eq('id', orderId);
           if (drvErr) {
-            toast.error('Erreur assignation livreur: ' + drvErr.message);
+            toast.error('Impossible d\'assigner le livreur. Veuillez réessayer.');
             return;
           }
           assignedDriver = picked.name;
@@ -431,16 +431,16 @@ export default function Dashboard() {
         const result = await changeOrderStatus(orderId, newStatus, 'desktop');
         if (!result.ok) {
           if (result.error === 'invalid_transition') {
-            toast.error(`Transition impossible: ${result.from} → ${result.to}`);
+            toast.error('Cette action n\'est pas possible pour le moment. Actualisez la page.');
           } else {
-            toast.error('Erreur: ' + (result.error ?? 'unknown'));
+            toast.error('Une erreur est survenue. Veuillez réessayer.');
           }
           return;
         }
         if (assignedDriver) toast.success(`En livraison — ${assignedDriver} assigné automatiquement`);
         else toast.success('Statut mis à jour');
       } catch (err: unknown) {
-        toast.error('Erreur: ' + (err instanceof Error ? err.message : String(err)));
+        toast.error('Une erreur est survenue. Veuillez réessayer.');
       }
     },
     [orders, restaurantId],

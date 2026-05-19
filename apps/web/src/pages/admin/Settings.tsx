@@ -31,6 +31,7 @@ import { RestafyLoader } from '@/components/ui/RestafyLoader';
 import { RestaurantThemeToggle } from '@/components/admin/RestaurantThemeToggle';
 import { useNotificationPreferences } from '@/hooks/useNotificationPreferences';
 import { playNotificationSound } from '@/lib/notifications';
+import { invalidateRestaurantCache } from '@/hooks/useRestaurant';
 
 /** Champs formulaire : suit le thème clair/sombre du dashboard (évite texte foncé sur fond zinc-950). */
 const rSettingsInput = cn(
@@ -334,11 +335,12 @@ export default function Settings() {
 
     const fetchRestaurant = async () => {
       try {
+        const RESTAURANT_FIELDS = 'id,name,slug,phone,description,address,city,ussd_mtn,ussd_moov,ussd_celtiis,delivery_fee,min_order,delivery_time_min,delivery_time_max,logo_url,banner_url,settings' as const;
         let { data, error } = await supabase
-          .from('restaurants').select('id,name,slug,phone,description,address,city,ussd_mtn,ussd_moov,ussd_celtiis,delivery_fee,min_order,delivery_time_min,delivery_time_max,logo_url,banner_url').eq('id', restaurantId).maybeSingle();
+          .from('restaurants').select(RESTAURANT_FIELDS).eq('id', restaurantId).maybeSingle();
 
         if (!data && profile?.id) {
-          const fb = await supabase.from('restaurants').select('id,name,slug,phone,description,address,city,ussd_mtn,ussd_moov,ussd_celtiis,delivery_fee,min_order,delivery_time_min,delivery_time_max,logo_url,banner_url').eq('owner_id', profile.id).maybeSingle();
+          const fb = await supabase.from('restaurants').select(RESTAURANT_FIELDS).eq('owner_id', profile.id).maybeSingle();
           if (fb.data) {
             data = fb.data;
             if (fb.data.id !== restaurantId) {
@@ -413,16 +415,31 @@ export default function Settings() {
       }).eq('id', restaurantId);
 
       if (error) {
-        // CORRECTION: console.error → DEV guard
         if (import.meta.env.DEV) console.error('[Settings] update error:', error);
         throw error;
       }
-      // CORRECTION: DOM toast manuel → sonner toast
+      // Update local restaurant state so child components see fresh data
+      setRestaurant(prev => prev ? {
+        ...prev,
+        name: formData.name,
+        phone: formData.phone || null,
+        description: formData.description || null,
+        address: formData.address || null,
+        city: formData.city || '',
+        ussd_mtn: formData.ussd_mtn?.trim() || null,
+        ussd_moov: formData.ussd_moov?.trim() || null,
+        ussd_celtiis: formData.ussd_celtiis?.trim() || null,
+        delivery_fee: Number(formData.delivery_fee) || 0,
+        min_order: Number(formData.min_order) || 0,
+        delivery_time_min: Number(formData.delivery_time_min) || 30,
+        delivery_time_max: Number(formData.delivery_time_max) || 60,
+      } : prev);
+      invalidateRestaurantCache();
       toast.success('Paramètres enregistrés !');
     } catch (err) {
       if (import.meta.env.DEV) console.error('[Settings] save error:', err);
       // CORRECTION: alert() → toast.error()
-      toast.error(`Erreur : ${err instanceof Error ? err.message : 'Erreur inconnue'}`);
+      toast.error('Impossible de sauvegarder les paramètres. Veuillez réessayer.');
     } finally {
       setSaving(false);
     }
@@ -443,7 +460,7 @@ export default function Settings() {
           Votre profil n'est pas lié à un restaurant. Contactez l'administrateur.
         </p>
         <p className="text-xs text-red-400 mt-4">
-          Profile ID: {profile?.id || 'N/A'} | Role: {profile?.role || 'N/A'}
+          Contactez le support si le problème persiste.
         </p>
       </div>
     </div>
@@ -498,7 +515,7 @@ export default function Settings() {
             {activeTab === 'loyalty'       && <LoyaltySettings loyaltySettings={loyaltySettings} />}
             {activeTab === 'ussd'          && <USSDSettings formData={formData} setFormData={setFormData} />}
             {activeTab === 'delivery'      && <DeliverySettings formData={formData} setFormData={setFormData} />}
-            {activeTab === 'notifications' && <NotificationsSettings restaurantId={restaurantId} restaurant={restaurant} />}
+            {activeTab === 'notifications' && <NotificationsSettings restaurantId={restaurantId} restaurant={restaurant} onSettingsChange={(settings) => setRestaurant(prev => prev ? { ...prev, settings } : prev)} />}
             {activeTab === 'integration'   && <IntegrationSettings restaurantId={restaurantId} restaurantName={restaurant.name} />}
             {activeTab === 'security'      && <SecuritySettings />}
             {activeTab === 'export'        && <ExportSettings restaurantId={restaurantId} restaurantName={restaurant.name} />}
@@ -1029,7 +1046,7 @@ const NOTIF_FIELDS: { key: string; Icon: LucideIcon; label: string; desc: string
   { key: 'notif_daily_summary', Icon: BarChart3,     label: 'Résumé quotidien',      desc: 'Rapport de fin de journée par SMS/email' },
 ];
 
-function NotificationsSettings({ restaurantId, restaurant }: { restaurantId: string; restaurant: Restaurant }) {
+function NotificationsSettings({ restaurantId, restaurant, onSettingsChange }: { restaurantId: string; restaurant: Restaurant; onSettingsChange?: (settings: Record<string, unknown>) => void }) {
   const defaultPrefs: Record<string, boolean> = {
     notif_new_order: true, notif_payment: true, notif_order_cancel: true,
     notif_low_stock: false, notif_new_review: false, notif_daily_summary: false,
@@ -1054,7 +1071,11 @@ function NotificationsSettings({ restaurantId, restaurant }: { restaurantId: str
       .update({ settings: { ...(restaurant?.settings || {}), ...prefs }, updated_at: new Date().toISOString() })
       .eq('id', restaurantId);
     setSaving(false);
-    if (!error) { setSaved(true); setTimeout(() => setSaved(false), 3000); }
+    if (!error) {
+      const merged = { ...(restaurant?.settings || {}), ...prefs };
+      onSettingsChange?.(merged);
+      setSaved(true); setTimeout(() => setSaved(false), 3000);
+    }
   };
 
   return (
@@ -1131,7 +1152,7 @@ function SecuritySettings() {
     setSaving(true);
     const { error } = await supabase.auth.updateUser({ password: form.next });
     setSaving(false);
-    if (error) setMsg({ text: error.message, ok: false });
+    if (error) setMsg({ text: 'Impossible de modifier le mot de passe. Veuillez réessayer.', ok: false });
     else { setForm({ next: '', confirm: '' }); setMsg({ text: 'Mot de passe modifié avec succès ✓', ok: true }); }
     setTimeout(() => setMsg(null), 4000);
   };

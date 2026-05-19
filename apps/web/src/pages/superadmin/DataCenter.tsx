@@ -76,7 +76,7 @@ export default function DataCenter() {
       const missingTables = new Set<string>();
 
       const pushErr = (label: string, err: { message?: string; code?: string } | null) => {
-        if (err?.message) errors.push(`${label}: ${err.message}`);
+        if (err?.message) errors.push(`${label}`);
       };
 
       const noteMissing = (table: string, err: { message?: string; code?: string } | null | undefined) => {
@@ -307,7 +307,7 @@ export default function DataCenter() {
       } catch (err) {
         if (import.meta.env.DEV) console.error('[DataCenter] fetch error:', err);
         if (!cancelled) {
-          setFetchError(err instanceof Error ? err.message : 'Erreur de chargement des statistiques.');
+          setFetchError('Impossible de charger les statistiques. Veuillez réessayer.');
         }
       } finally {
         if (!cancelled) setStatsLoading(false);

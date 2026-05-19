@@ -54,7 +54,7 @@ export default function SuperAdminLogin() {
 
       if (!isSuperAdmin) {
         setError(
-          `Accès refusé. Votre rôle actuel est : "${profile.role}". Seuls les comptes super_admin sont autorisés ici.`
+          'Accès refusé. Seuls les comptes administrateurs sont autorisés ici.'
         );
         await supabase.auth.signOut();
         setLoading(false);
@@ -63,9 +63,7 @@ export default function SuperAdminLogin() {
 
       navigate('/superadmin', { replace: true });
     } catch (err) {
-      const message =
-        err instanceof Error ? err.message : 'Erreur lors de la connexion';
-      setError(message);
+      setError('Erreur lors de la connexion. Veuillez réessayer.');
       setLoading(false);
     }
   };

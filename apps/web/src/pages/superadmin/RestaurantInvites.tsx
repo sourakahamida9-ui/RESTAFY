@@ -50,13 +50,13 @@ export default function RestaurantInvites() {
         if (fetchError.code === '42501' || fetchError.message?.includes('policy')) {
           setError('Politique RLS manquante. Exécutez le SQL de correction ci-dessous.');
         } else {
-          setError(`Erreur: ${fetchError.message}`);
+          setError('Impossible de charger les invitations. Veuillez réessayer.');
         }
         return;
       }
       setInvites(data || []);
     } catch (err: any) {
-      setError(err.message || 'Erreur inconnue');
+      setError('Une erreur inattendue est survenue. Veuillez réessayer.');
     } finally {
       setLoading(false);
     }
@@ -89,7 +89,7 @@ export default function RestaurantInvites() {
         if (insertError.code === '42501' || insertError.message?.includes('policy')) {
           setError('RLS bloque l\'insertion. Exécutez le SQL de correction ci-dessous.');
         } else {
-          setError(`Erreur création: ${insertError.message}`);
+          setError('Impossible de créer l\'invitation. Veuillez réessayer.');
         }
         return;
       }
@@ -99,7 +99,7 @@ export default function RestaurantInvites() {
       setShowForm(false);
       await fetchInvites();
     } catch (err: any) {
-      setError(err.message);
+      setError('Une erreur est survenue. Veuillez réessayer.');
     } finally {
       setGenerating(false);
     }
@@ -115,7 +115,7 @@ export default function RestaurantInvites() {
       if (delError) throw delError;
       setInvites(prev => prev.filter(i => i.id !== id));
     } catch (err: any) {
-      alert(`Erreur suppression: ${err.message}`);
+      alert('Impossible de supprimer le lien. Veuillez réessayer.');
     }
   };
 

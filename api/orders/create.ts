@@ -1,6 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { getSupabaseAdmin } from '../_shared/supabaseAdmin';
 import { checkRateLimit, getClientIp } from '../_shared/rateLimit';
+import { applyCors } from '../_shared/cors';
 // NOTE: previously imported `validateAndCalculateOrder` from
 // `../../src/lib/api/orderValidation`. That cross-directory import was causing
 // Vercel to emit FUNCTION_INVOCATION_FAILED at module-load time (crash before
@@ -11,34 +12,6 @@ import { checkRateLimit, getClientIp } from '../_shared/rateLimit';
 // Cart.tsx`) goes straight to POST /api/orders/create, so removing this
 // import restores ordering without losing any product surface.
 
-const ALLOWED_ORIGINS = [
-  'https://app.restafy.shop',
-  'https://restafy.shop',
-  'https://www.restafy.shop',
-];
-
-function isOriginAllowed(origin: string): boolean {
-  if (!origin) return false;
-  if (ALLOWED_ORIGINS.includes(origin)) return true;
-  try {
-    const { hostname } = new URL(origin);
-    if (hostname === 'restafy.shop' || hostname.endsWith('.restafy.shop')) return true;
-    if (hostname.endsWith('.vercel.app')) return true;
-    if (hostname === 'localhost' || hostname === '127.0.0.1') return true;
-    return false;
-  } catch {
-    return false;
-  }
-}
-
-function applyCors(res: VercelResponse, req: VercelRequest) {
-  const origin = typeof req.headers.origin === 'string' ? req.headers.origin : '';
-  const allowedOrigin = isOriginAllowed(origin) ? origin : ALLOWED_ORIGINS[0];
-  res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.setHeader('Vary', 'Origin');
-}
 
 // ═══════════════════════════════════════════════════════════════
 // Email helpers (inline to avoid extra serverless function)

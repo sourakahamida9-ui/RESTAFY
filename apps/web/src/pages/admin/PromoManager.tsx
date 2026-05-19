@@ -111,7 +111,7 @@ function CreatePromoModal({ restaurantId, onClose, onCreated }: {
       .single();
 
     setSaving(false);
-    if (error) { setErr(error.message); return; }
+    if (error) { setErr('Impossible de créer le code promo. Veuillez réessayer.'); return; }
     onCreated(data as PromoCode);
     onClose();
   };

@@ -160,7 +160,7 @@ export function usePaymentPolling(
         }
       }
     } catch (err) {
-      setLastError(err instanceof Error ? err.message : 'Erreur inconnue');
+      setLastError('Erreur de connexion. Nouvelle tentative en cours...');
     }
 
     // Re-arm
