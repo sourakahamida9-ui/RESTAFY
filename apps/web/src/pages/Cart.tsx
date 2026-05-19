@@ -517,9 +517,6 @@ export default function Cart() {
       
       if (err instanceof Error) {
         errorMessage = err.message;
-      } else if (typeof err === 'object' && err !== null) {
-        const errorObj = err as Record<string, unknown>;
-        errorMessage = String(errorObj.message || errorObj.error || errorObj.details || JSON.stringify(err));
       } else if (typeof err === 'string') {
         errorMessage = err;
       }
@@ -550,7 +547,7 @@ export default function Cart() {
       } else if (lower.includes('creation de commande') || lower.includes('order')) {
         userMsg = 'Impossible de créer la commande. Vérifiez votre panier et réessayez.';
       } else {
-        userMsg = `Paiement impossible : ${errorMessage}`;
+        userMsg = 'Paiement impossible. Veuillez réessayer.';
       }
       
       setError(userMsg);
@@ -670,7 +667,7 @@ export default function Cart() {
       setShowPayment(false);
       navigate(`/track/${orderPayload.order_id}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Erreur lors de la création');
+      setError('Impossible de créer la commande. Veuillez réessayer.');
     }
   }, [
     user, restaurantId, orderMode, pickupTime, tableNumber,

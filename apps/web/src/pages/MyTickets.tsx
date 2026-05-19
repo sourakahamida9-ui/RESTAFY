@@ -207,10 +207,8 @@ export default function MyTickets() {
 
       setTickets((data as unknown as MyTicket[]) || []);
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message
-        : (err as any)?.message || 'Erreur de chargement';
-      console.error('[MyTickets] Erreur:', err);
-      setError(msg);
+      if (import.meta.env.DEV) console.error('[MyTickets] Erreur:', err);
+      setError('Impossible de charger vos billets. Veuillez réessayer.');
     } finally {
       setLoading(false);
     }

@@ -74,9 +74,8 @@ export function useRestaurantReservations(restaurantId: string | null) {
       if (err) throw err;
       setReservations((data ?? []) as TableReservation[]);
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Erreur chargement réservations';
-      setError(msg);
-      toast.error('Erreur chargement réservations');
+      setError('Impossible de charger les réservations');
+      toast.error('Impossible de charger les réservations');
     } finally {
       setLoading(false);
     }
@@ -146,8 +145,7 @@ export function useRestaurantReservations(restaurantId: string | null) {
         await fetchReservations();
         return true;
       } catch (err: unknown) {
-        const msg = err instanceof Error ? err.message : 'Erreur';
-        toast.error('Erreur: ' + msg);
+        toast.error('Impossible de confirmer la réservation. Veuillez réessayer.');
         return false;
       }
     },
@@ -171,8 +169,7 @@ export function useRestaurantReservations(restaurantId: string | null) {
         await fetchReservations();
         return true;
       } catch (err: unknown) {
-        const msg = err instanceof Error ? err.message : 'Erreur';
-        toast.error('Erreur: ' + msg);
+        toast.error('Impossible de refuser la réservation. Veuillez réessayer.');
         return false;
       }
     },
@@ -193,8 +190,7 @@ export function useRestaurantReservations(restaurantId: string | null) {
         await fetchReservations();
         return true;
       } catch (err: unknown) {
-        const msg = err instanceof Error ? err.message : 'Erreur';
-        toast.error('Erreur: ' + msg);
+        toast.error('Impossible de terminer la réservation. Veuillez réessayer.');
         return false;
       }
     },

@@ -246,7 +246,7 @@ export function useCustomerLoyalty(restaurantId: string | null) {
       setState(prev => ({
         ...prev,
         loading: false,
-        error: err instanceof Error ? err.message : 'Erreur de chargement',
+        error: 'Impossible de charger les informations de fidélité',
       }));
     }
   }, [user?.id, restaurantId]);
@@ -286,7 +286,7 @@ export function useCustomerLoyalty(restaurantId: string | null) {
     } catch (err) {
       return {
         success: false,
-        error: err instanceof Error ? err.message : 'Erreur lors de la redemption',
+        error: 'Impossible d\'utiliser les points. Veuillez réessayer.',
       };
     }
   };
@@ -335,7 +335,7 @@ export function useRestaurantLoyaltySettings(restaurantId: string | null) {
           loyalty_welcome_bonus: data.loyalty_welcome_bonus ?? 50,
         });
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Erreur de chargement');
+        setError('Impossible de charger la configuration fidélité');
       } finally {
         setLoading(false);
       }
@@ -367,7 +367,7 @@ export function useRestaurantLoyaltySettings(restaurantId: string | null) {
       setConfig(prev => ({ ...prev, ...newConfig }));
       return { error: null };
     } catch (err) {
-      const errorMsg = err instanceof Error ? err.message : 'Erreur de sauvegarde';
+      const errorMsg = 'Impossible de sauvegarder la configuration';
       setError(errorMsg);
       return { error: errorMsg };
     } finally {

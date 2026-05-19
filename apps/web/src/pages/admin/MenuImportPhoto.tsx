@@ -284,7 +284,7 @@ async function extractMenuFromImage(file: File): Promise<ExtractedItem[]> {
 }
 
 function formatMenuImportDbError(err: unknown): string {
-  if (!err || typeof err !== 'object') return err instanceof Error ? err.message : 'Erreur inconnue lors de l’import.';
+  if (!err || typeof err !== 'object') return 'Erreur lors de l\'import. Veuillez réessayer.';
   const e = err as { message?: string; code?: string; details?: string };
   const msg = [e.message, e.details].filter(Boolean).join(' — ') || 'Erreur base de données.';
   const low = msg.toLowerCase();
@@ -498,8 +498,7 @@ export default function MenuImportPhoto() {
       setItems(extracted);
       setShowPasteFallback(false);
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : ANALYZE_FAILED_USER_MESSAGE;
-      setError(msg);
+      setError(ANALYZE_FAILED_USER_MESSAGE);
       setStep('preview');
       if (importSourceMode === 'direct') {
         setShowPasteFallback(true);

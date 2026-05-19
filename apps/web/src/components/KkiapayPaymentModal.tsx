@@ -85,7 +85,7 @@ export default function KkiapayPaymentModal({
         },
       });
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Erreur lors de l\'ouverture du widget';
+      const msg = 'Impossible d\'ouvrir le paiement. Veuillez réessayer.';
       setErrorMessage(msg);
       setStep('error');
       onError?.(msg);

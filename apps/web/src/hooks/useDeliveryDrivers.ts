@@ -37,8 +37,8 @@ export function useDeliveryDrivers(restaurantId: string | null) {
       if (err) throw err;
       setDrivers(data || []);
     } catch (err: any) {
-      setError(err.message);
-      toast.error('Erreur chargement livreurs');
+      setError('Impossible de charger les livreurs');
+      toast.error('Impossible de charger les livreurs');
     } finally {
       setLoading(false);
     }
@@ -87,7 +87,7 @@ export function useDeliveryDrivers(restaurantId: string | null) {
         toast.success(`${name} ajouté(e) comme livreur`);
         return true;
       } catch (err: any) {
-        toast.error('Erreur: ' + err.message);
+        toast.error('Impossible d\'ajouter le livreur. Veuillez réessayer.');
         return false;
       }
     },
@@ -108,7 +108,7 @@ export function useDeliveryDrivers(restaurantId: string | null) {
       toast.success('Livreur supprimé');
       return true;
     } catch (err: any) {
-      toast.error('Erreur: ' + err.message);
+      toast.error('Impossible de supprimer le livreur. Veuillez réessayer.');
       return false;
     }
   }, []);
@@ -134,7 +134,7 @@ export function useDeliveryDrivers(restaurantId: string | null) {
         toast.success(`Livreur marqué ${status}`);
         return true;
       } catch (err: any) {
-        toast.error('Erreur: ' + err.message);
+        toast.error('Impossible de modifier la disponibilité. Veuillez réessayer.');
         return false;
       }
     },
@@ -166,7 +166,7 @@ export function useDeliveryDrivers(restaurantId: string | null) {
         toast.success('Livreur assigné');
         return { driver, orderId };
       } catch (err: any) {
-        toast.error('Erreur: ' + err.message);
+        toast.error('Impossible d\'assigner le livreur. Veuillez réessayer.');
         return false;
       }
     },

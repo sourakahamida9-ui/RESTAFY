@@ -173,7 +173,7 @@ export default function CreateRestaurant() {
 
       setStep(5); // Step succès
     } catch (err: any) {
-      setError(err.message || 'Erreur lors de la création');
+      setError('Impossible de créer le restaurant. Veuillez réessayer.');
     } finally {
       setSaving(false);
     }

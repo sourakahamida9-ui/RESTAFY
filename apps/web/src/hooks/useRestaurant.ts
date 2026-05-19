@@ -16,22 +16,8 @@ type Item = Database['public']['Tables']['items']['Row'];
 type Category = Database['public']['Tables']['categories']['Row'];
 
 // ── Helper universel extraction erreur ────────────────────────────────────────
-function extractMsg(err: unknown): string {
-  if (!err) return 'Erreur inconnue';
-  if (err instanceof Error) return err.message;
-  if (typeof err === 'object') {
-    const e = err as Record<string, unknown>;
-    if (typeof e.message === 'string' && e.message) return e.message;
-    if (typeof e.details === 'string' && e.details) return e.details;
-    if (typeof e.hint === 'string' && e.hint) return e.hint;
-    if (typeof e.code === 'string' && e.code) return `Supabase error code: ${e.code}`;
-    if (typeof e.error === 'object' && e.error) {
-      const inner = e.error as Record<string, unknown>;
-      if (typeof inner.message === 'string') return inner.message;
-    }
-    try { return JSON.stringify(err); } catch { /* */ }
-  }
-  return String(err);
+function extractMsg(_err: unknown): string {
+  return 'Impossible de charger les données. Veuillez réessayer.';
 }
 
 // ── Hook utilitaire : userId courant via supabase.auth (PAS useAuth) ──────────

@@ -45,9 +45,8 @@ export default function PaymentMethodsAdmin() {
         if (err) throw err;
         setMethods(data || []);
       } catch (err) {
-        const msg = err instanceof Error ? err.message : 'Erreur de chargement';
-        console.error('Error fetching methods:', msg);
-        setError(msg);
+        if (import.meta.env.DEV) console.error('Error fetching methods:', err);
+        setError('Impossible de charger les moyens de paiement');
       } finally {
         setLoading(false);
       }
@@ -80,9 +79,8 @@ export default function PaymentMethodsAdmin() {
       setEditing(null);
       setTimeout(() => setSuccess(null), 3000);
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Erreur de sauvegarde';
-      console.error('Error saving:', msg);
-      setError(msg);
+      if (import.meta.env.DEV) console.error('Error saving:', err);
+      setError('Impossible de sauvegarder. Veuillez réessayer.');
     }
   };
 
@@ -101,9 +99,8 @@ export default function PaymentMethodsAdmin() {
       setSuccess('Méthode supprimée');
       setTimeout(() => setSuccess(null), 3000);
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Erreur de suppression';
-      console.error('[v0] Error deleting:', msg);
-      setError(msg);
+      if (import.meta.env.DEV) console.error('[v0] Error deleting:', err);
+      setError('Impossible de supprimer. Veuillez réessayer.');
     }
   };
 
@@ -120,8 +117,8 @@ export default function PaymentMethodsAdmin() {
         m.id === id ? { ...m, is_active: !currentStatus } : m
       ));
     } catch (err) {
-      console.error('[v0] Error toggling:', err);
-      setError(err instanceof Error ? err.message : 'Erreur');
+      if (import.meta.env.DEV) console.error('[v0] Error toggling:', err);
+      setError('Impossible de modifier le statut. Veuillez réessayer.');
     }
   };
 
